@@ -1,0 +1,8 @@
+.Grid {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+.Box {
+  background-color: pink;
+  padding: 10px 20px;
+}
