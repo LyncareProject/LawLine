@@ -9,7 +9,7 @@ exports.verifyToken = async (req, res, next) => {
     const accessToken = req.headers["x-access-token"];
     console.log(accessToken)
     if (!accessToken) {
-      return res.status(401).json({ message: "Access token missing" });
+      return res.json({ message: "Access token missing" });
     }
     const authResult = verify(accessToken);
     const decoded = jwt.decode(accessToken, JWT_SECRET_KEY);

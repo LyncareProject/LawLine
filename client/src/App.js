@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import { getAuth } from "./services/authService";
 import { useDispatch } from "react-redux";
 import { logout } from "./redux/userSlice";
+import CounselList from "./pages/CounselList/CounselList";
+import CounselDoc from "./pages/CounselDoc/CounselDoc";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +35,8 @@ function App() {
       dispatch(logout());
       localStorage.removeItem("Tokens");
     }
-  }, []);
+  }, [dispatch]);
+  
   return (
     <div className="App">
       <ToastContainer />
@@ -41,6 +44,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/counsel" element={<Counsel />} />
+        <Route path="/counsel/list" element={<CounselList />} />
+        <Route path="/counsel/:counselId" element={<CounselDoc />} />
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
       </Routes>

@@ -58,7 +58,8 @@ exports.getAuth = async (req, res) => {
     const refreshToken = req.refreshToken;
 
     const newAccessToken = await makeAccessToken({ id, roles });
-
+    const userData = await User.findOne({_id : id})
+    console.log('userData', userData)
     // DB에서 모든 역할 찾기
     const rolesData = await Role.find({ _id: { $in: roles } });
 
@@ -69,10 +70,12 @@ exports.getAuth = async (req, res) => {
       newAccessToken,
       refreshToken,
       roles: clientRoles,
+      id : userData._id,
+      name : userData.username
     });
   } catch (error) {
     console.error("Error in getAuth:", error); // 에러 로깅
-    res.status(401).send("Unauthorized"); // 401 Unauthorized 응답 전송
+    res.send("Unauthorized"); // 401 Unauthorized 응답 전송
   }
 };
 exports.Kakao = async (req, res) => {

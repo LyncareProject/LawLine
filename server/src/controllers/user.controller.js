@@ -17,7 +17,7 @@ exports.createUser = async (req, res)=>{
         const userRole = await Role.findOne({ name : 'User'})
         const newUser = new User({ email, username, password : hashedPassword, roles : userRole._id });
         await newUser.save();
-        res.status(201).json({ message : "Success" })
+        res.status(200).json({ message : "Success" })
     } catch (error) {
         console.error('Error during signup:', error);
         res.status(500).json({ message: 'Server error' });
