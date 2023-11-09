@@ -33,3 +33,19 @@ export const getAuth = async () => {
         }
     }
 };
+
+export const KakaoAuth = async (data) => {
+    try {
+        const response = await axios.post(API_URL + "auth/kakao", { data })
+        if (response.status === 200){
+            localStorage.setItem('Tokens', JSON.stringify({
+                'accessToken': response.data.accessToken,
+                'refreshToken': response.data.refreshToken
+            }))
+        }
+        return response.data;
+    } catch(error){
+        console.error('Error in getAuth', error);
+        throw error;
+    }
+};

@@ -14,8 +14,6 @@ const { token: Token } = db;
 
 exports.signIn = async (req, res) => {
   try {
-    // Client로 부터 email, password, autoLogin을 받음
-
     const { email, password, isAutoLogin } = req.body;
 
     const user = await User.findOne({ email });
@@ -79,35 +77,44 @@ exports.getAuth = async (req, res) => {
 };
 exports.Kakao = async (req, res) => {
   try {
-    console.log(req.body);
-    const { access_token, refresh_token } = req.body.data.response;
     const { properties, kakao_account } = req.body.data.profile;
-
     const existingUser = await User.findOne({ email: kakao_account.email });
     if (!existingUser) {
-      const userRole = await Role.findOne({ role: "User" });
+      const userRole = await Role.findOne({ name: "User" });
       const newUser = new User({
         email: kakao_account.email,
         username: properties.nickname,
-        profileImg : properties.profile_image,
+        profileImg: properties.profile_image,
         roles: [userRole._id],
       });
       await newUser.save();
-      return res.status(200).json({
-        message: "Success",
-        accessToken : access_token,
-        refreshToken : refresh_token,
-        profileImg : properties.profile_image,
-        email: existingUser.email,
-        username: existingUser.username,
-        roles: existingUser.roles,
+      const user = await User.findOne({ email: kakao_account.email });
+      accessToken = await makeAccessToken({
+        id: user._id,
+        roles: user.roles,
       });
+      refreshToken = await makeRefreshToken({ id: user._id });
+      res.status(200).json({
+        message: "Success",
+        accessToken,
+        refreshToken,
+        profileImg: user.profileImg,
+        email: user.email,
+        username: user.username,
+        roles: user.roles,
+      });
+      return
     }
+    accessToken = await makeAccessToken({
+      id: existingUser._id,
+      roles: existingUser.roles,
+    });
+    refreshToken = await makeRefreshToken({ id: existingUser._id });
     res.status(200).json({
       message: "Success",
-      accessToken : access_token,
-      refreshToken : refresh_token,
-      profileImg : existingUser.profileImg,
+      accessToken,
+      refreshToken,
+      profileImg: existingUser.profileImg,
       email: existingUser.email,
       username: existingUser.username,
       roles: existingUser.roles,

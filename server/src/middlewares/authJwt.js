@@ -7,6 +7,7 @@ const { makeToken, refreshVerify, verify } = require("../utils/token.utils");
 exports.verifyToken = async (req, res, next) => {
   try {
     const accessToken = req.headers["x-access-token"];
+    console.log(accessToken)
     if (!accessToken) {
       return res.status(401).json({ message: "Access token missing" });
     }
@@ -15,11 +16,12 @@ exports.verifyToken = async (req, res, next) => {
     if (authResult.ok === false && authResult.message === "jwt expired") {
       console.log("accessToken 토큰 만료");
       const refreshToken = req.headers.refresh;
+      console.log(refreshToken)
       const refreshResult = await refreshVerify(refreshToken, decoded.id);
       if (refreshResult === false) {
         console.log("refreshResult 토큰 만료");
         return res
-          .status(401)
+          // .status(401)
           .json({ message: "No authorized! 다시 로그인해주세요." });
       } else {
         console.log("refreshResult 토큰 살아있음");

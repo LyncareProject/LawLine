@@ -1,17 +1,31 @@
 import { useEffect } from "react";
 import { getAuth } from "../../services/authService";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/userSlice";
+
 
 const Counsel = () => {
-  // useEffect(() => {
-  //   try {
-  //     const fetchAuth = async () => {
-  //       const response = await getAuth()
-  //     };
-  //     fetchAuth();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    try {
+      const Tokens = JSON.parse(localStorage.getItem("Tokens"));
+      if (Tokens) {
+        const verifyAuth = async () => {
+          await getAuth();
+          const response = await getAuth();
+          if (response.message === "No authorized! 다시 로그인해주세요.") {
+            dispatch(logout());
+            localStorage.removeItem("Tokens");
+            return;
+          }
+        };
+        verifyAuth();
+      }
+    } catch (error) {
+      dispatch(logout());
+      localStorage.removeItem("Tokens");
+    }
+  }, []);
   return (
     <div className="Page">
       <div className="Wrap">
