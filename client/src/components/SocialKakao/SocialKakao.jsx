@@ -1,30 +1,37 @@
 import KakaoLogin from "react-kakao-login";
-import './SocialKakao.css'
+import "./SocialKakao.css";
 import { KakaoAuth } from "../../services/authService";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
-// import { login } from "../../redux/userSlice";
+import { toast } from "react-toastify";
 
 const SocialKakao = () => {
   const kakaoClientId = "1f0d197bc959c71086816a4efe5e1e0c";
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const kakaoOnSuccess = async (data) => {
     try {
-      const response = await KakaoAuth(data)
-      if(response.message === 'Success'){
-        dispatch(login({
-          isLogined : true,
+      const response = await KakaoAuth(data);
+      dispatch(
+        login({
+          isLogined: true,
           email: response.email,
           username: response.username,
-          profileImg : response.profileImg,
-          role : response.role
-        }))
-      }
-      navigate('/')
+          profileImg: response.profileImg,
+          role: response.role,
+        })
+      );
+      toast.success(<h3>{response.username}님 반갑습니다</h3>, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message, {
+        position: "top-center",
+        autoClose: 2000,
+      });
     }
   };
 
