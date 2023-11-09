@@ -1,0 +1,40 @@
+name: Remote SSH Command For LawLine Homepage Deploy
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+jobs:
+  build:
+    name: deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - name: executing remote ssh commands using key
+      uses: appleboy/ssh-action@master
+      with:
+          host: ${{ secrets.REMOTE_IP }} # 인스턴스 IP
+          username: ${{ secrets.REMOTE_USER }} # 우분투 아이디
+          key: ${{ secrets.REMOTE_PRIVATE_KEY }} # ec2 instance pem key
+          port: ${{ secrets.REMOTE_SSH_PORT }} # 접속포트
+          script: |
+            cd /home/ubuntu/LawLine
+            git pull origin main
+            cd /home/ubuntu/LawLine/server
+            echo "PORT=${{ secrets.PORT }}" >> .env
+            echo "WSPORT=${{ secrets.WSPORT }}" >> .env
+            echo "MONGO_USER=${{ secrets.MONGO_USER }}" >> .env
+            echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
+            echo "MONGO_CLUSTER=${{ secrets.MONGO_CLUSTER }}" >> .env
+            echo "MONGO_DBNAME=${{ secrets.MONGO_DBNAME }}" >> .env
+            echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> .env
+            echo "ACCESS_KEY=${{ secrets.ACCESS_KEY }}" >> .env
+            echo "SECRET_ACCESS_KEY=${{ secrets.SECRET_ACCESS_KEY }}" >> .env
+            echo "REGION=${{ secrets.REGION }}" >> .env
+            echo "S3_BUCKET=${{ secrets.S3_BUCKET }}" >> .env
+            echo "OPENAI_KEY=${{ secrets.OPENAI_KEY }}" >> .env
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            npm install 
+            pm2 restart main
