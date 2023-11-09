@@ -16,7 +16,7 @@ exports.signIn = async (req, res) => {
   try {
     // Client로 부터 email, password, autoLogin을 받음
 
-    const { email, password, autoLogin } = req.body;
+    const { email, password, isAutoLogin } = req.body;
 
     const user = await User.findOne({ email });
 
@@ -35,7 +35,7 @@ exports.signIn = async (req, res) => {
     accessToken = await makeAccessToken({ id: user._id, roles: user.roles });
 
     // RefreshToken 생성
-    if (autoLogin) {
+    if (isAutoLogin) {
       refreshToken = await makeRefreshTokenInfinite({ id: user._id });
     } else {
       refreshToken = await makeRefreshToken({ id: user._id });

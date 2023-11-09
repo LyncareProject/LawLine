@@ -14,10 +14,9 @@ exports.createUser = async (req, res)=>{
             return res.status(400).json({ message : "이미 존재하는 이메일입니다." })
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        const userRole = await Role.findOne({ role : 'User'})
-        const newUser = new User({ email, username, password : hashedPassword, roles : [userRole._id] });
+        const userRole = await Role.findOne({ name : 'User'})
+        const newUser = new User({ email, username, password : hashedPassword, roles : userRole._id });
         await newUser.save();
-
         res.status(201).json({ message : "Success" })
     } catch (error) {
         console.error('Error during signup:', error);

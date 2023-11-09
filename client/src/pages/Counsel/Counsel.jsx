@@ -1,4 +1,17 @@
+import { useEffect } from "react";
+import { getAuth } from "../../services/authService";
+
 const Counsel = () => {
+  // useEffect(() => {
+  //   try {
+  //     const fetchAuth = async () => {
+  //       const response = await getAuth()
+  //     };
+  //     fetchAuth();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, []);
   return (
     <div className="Page">
       <div className="Wrap">

@@ -3,6 +3,11 @@ import "./Login.css";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SocialKakao from "../../components/SocialKakao/SocialKakao";
+import { toast } from "react-toastify";
+import { signIn } from "../../services/authService";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/userSlice";
 
 const Login = () => {
   const [category, setCategory] = useState("User");
@@ -32,27 +37,76 @@ const Login = () => {
 };
 
 const UserLogin = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isAutoLogin, setisAutoLogin] = useState(false);
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = inputs;
+  const sendBtn = async () => {
+    try {
+      const response = await signIn({ email, password, isAutoLogin });
+      dispatch(
+        login({
+          isLogined: true,
+          isAutoLogin,
+          email: response.email,
+          username: response.username,
+          profileImg: response.profileImg,
+          roles: response.roles,
+        })
+      );
+      toast.success(<h3>{response.username}님 반갑습니다</h3>, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      navigate("/");
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+    }
+  };
   return (
     <>
-      <div className="LoginInput">
-        <label htmlFor="id">아이디</label>
-        <input
-          type="text"
-          name="id"
-          id="id"
-          placeholder="아이디를 입력해주세요."
-        />
-      </div>
-      <div className="LoginInput">
-        <label htmlFor="password">비밀번호</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="비밀번호를 입력해주세요."
-        />
-      </div>
+      <form>
+        <div className="LoginInput">
+          <label htmlFor="email">아이디</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="아이디를 입력해주세요."
+            value={email}
+            onChange={(e) => {
+              setInputs({
+                ...inputs,
+                [e.target.name]: e.target.value,
+              });
+            }}
+          />
+        </div>
+        <div className="LoginInput">
+          <label htmlFor="password">비밀번호</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="비밀번호를 입력해주세요."
+            value={password}
+            autoComplete="off"
+            onChange={(e) => {
+              setInputs({
+                ...inputs,
+                [e.target.name]: e.target.value,
+              });
+            }}
+          />
+        </div>
+      </form>
       <div className="CheckFindWrap">
         <div
           className="CheckWrap"
@@ -72,14 +126,16 @@ const UserLogin = () => {
           아이디/비밀번호 찾기
         </a>
       </div>
-      <button className="FetchBtn">로그인</button>
+      <button className="FetchBtn" onClick={sendBtn}>
+        로그인
+      </button>
       <div className="Or">
         <p>또는</p>
       </div>
       <SocialKakao />
       <div className="CheckFindWrap MT-30">
         <p className="RegistWord">아직 로라인 회원이 아니신가요?</p>
-        <a className="RegistBtn" href="/">
+        <a className="RegistBtn" href="/regist">
           회원가입
         </a>
       </div>
@@ -131,7 +187,7 @@ const LawyerLogin = () => {
       <button className="FetchBtn">로그인</button>
       <div className="CheckFindWrap MT-30">
         <p className="RegistWord">변호사님 아직 가입 안하셨나요?</p>
-        <a className="RegistBtn" href="/">
+        <a className="RegistBtn" href="/lawyer/regist">
           변호사 회원 가입
         </a>
       </div>
