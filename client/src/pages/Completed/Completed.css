@@ -1,0 +1,56 @@
+.Completed {
+  width: 80%;
+  margin: 0 auto;
+}
+.Ball{
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color:#D9D9D9;
+  border-radius: 30px;
+}
+
+.Completed .Check_b button{
+  min-height: 70px;
+  border: 0px solid #000;
+  border-radius: 12px;
+  background: #F0F0F0;
+  color: #000;
+text-align: center;
+font-family: Pretendard;
+font-size: 25px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: -0.75px;
+}
+
+/* 문의내용 */
+.Inquiry_details h4{
+  color: #2B2D2F;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.Inquiry_details textarea{
+  width: 100%;
+  margin-top: -10px;
+  resize: none;
+  min-height: 331px;
+  border-radius: 10px;
+  border: 1px solid #CFCFCF;
+}
+
+
+h5{
+  color: #00C126;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.75px;
+}

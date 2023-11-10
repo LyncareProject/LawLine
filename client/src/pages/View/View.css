@@ -1,0 +1,71 @@
+.View{
+  width: 80%;
+  margin: 0 auto;
+}
+.Ball{
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color:#D9D9D9;
+  border-radius: 30px;
+  margin-top: 30px;
+}
+.View h2{
+  color: #000;
+  text-align: left;
+  margin-top: 5px;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.75px;
+}
+.Check_b button{
+  width: 100%;
+  min-height: 70px;
+  border-radius: 12px;
+  background: #00C126;
+  border: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.75px;
+  margin-top: 20px;
+}
+
+/* 전화번호 비번 입력 */
+.Phone_number , .Passwor{
+  margin-top: 45px;
+  color: #2B2D2F;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  
+}
+.Phone_number img , .Passwor img{
+  max-width: 17px;
+  margin-right: 5px;
+  margin-left: 2px;
+}
+.Phone_number input , .Passwor input{
+  width: 100%;
+  color: #757575;
+font-family: Pretendard;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
+border: 0;
+}
+hr{
+  margin-top: 10px;
+  border-bottom: 1px solid #E2E4E5;
+  background-color: #E2E4E5;
+}
