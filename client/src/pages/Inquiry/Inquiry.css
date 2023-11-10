@@ -17,9 +17,9 @@ h3{
   font-size: 22px;
   font-style: normal;
   font-weight: 500;
-  line-height: 34px; /* 118.182% */
+  line-height: 30px; /* 118.182% */
   letter-spacing: -0.44px;
-
+  margin-top: 5px;
 }
 h2{
   color: #000;
@@ -30,7 +30,8 @@ h2{
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.9px;
-  margin-top: -15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
 }
 
 /* 문의 조회 */
@@ -76,12 +77,18 @@ letter-spacing: -0.75px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
   
 }
+.Phone_number p , .Passwor p{
+  margin-bottom: 10px;
+}
+
 .Phone_number img , .Passwor img{
   max-width: 17px;
   margin-right: 5px;
   margin-left: 2px;
+  
 }
 .Phone_number input , .Passwor input{
   width: 100%;
@@ -109,6 +116,8 @@ hr{
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 .Inquiry_details textarea{
   width: 100%;
@@ -138,4 +147,44 @@ hr{
   line-height: normal;
   letter-spacing: -0.75px;
   border: 0;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+@media  (min-width: 1200px){
+  .Inquiry{
+    width: 60%;
+  }
+    .Ball{
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  h3{
+    font-size: 30px;
+    line-height: 32px;
+  }
+  h2{font-size: 36px;}
+  .Phone_number , .Passwor{
+    font-size: 26px;
+    
+  }
+  .Phone_number input , .Passwor input{
+    font-size: 24px;
+  }
+ 
+  .Phone_number p img{
+    max-width: 20px;
+    margin-bottom: -2px;
+    margin-right: 8px;
+    
+  }
+   .Passwor p img{
+    max-width: 22px;
+ 
+  }
+
+  .Inquiry_details h4{
+    font-size: 26px;
+    line-height: 40px;
+  }
 }
