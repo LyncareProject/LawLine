@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { createCounsel } from "../../services/counselService";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import { createAIComment } from "../../services/commentService";
 
 const Counsel = () => {
   const navigate = useNavigate();
@@ -26,12 +27,12 @@ const Counsel = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const counselBtn = ()=>{
-    navigate('/counsel')
-  }
-  const searchBtn = ()=>{
-    navigate('/search')
-  }
+  const counselBtn = () => {
+    navigate("/counsel");
+  };
+  const searchBtn = () => {
+    navigate("/search");
+  };
   const sendBtn = async () => {
     try {
       const response = await createCounsel({
@@ -41,8 +42,12 @@ const Counsel = () => {
         password,
         desc,
       });
-      console.log(response);
       if (response.data.message === "Success") {
+        console.log(response);
+        createAIComment({
+          content: desc,
+          counselId: response.data.newCounsel._id,
+        });
         toast.success(<h3>상담 신청이 완료되었습니다.</h3>, {
           position: "top-center",
           autoClose: 2000,

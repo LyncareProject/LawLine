@@ -1,0 +1,17 @@
+.CommentWrap {
+  width: 100%;
+  padding: 20px 10px;
+  box-sizing: border-box;
+}
+.CommentHead {
+  display: flex;
+  border-top: 1px solid #838383;
+  border-bottom: 1px solid #bfbfbf;
+  padding: 20px 0;
+}
+.CommentBody {
+  border-bottom: 1px solid #838383;
+  padding: 20px 0;
+  line-height: 1.25em;
+  white-space: pre-wrap;
+}

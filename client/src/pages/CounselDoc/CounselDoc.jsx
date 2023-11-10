@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { readCounsel } from "../../services/counselService";
 import CommentEdit from "../../components/CommentEdit/CommentEdit";
-import CommentList from "../../components/CommentList/CommentList";
+import Comment from "../../components/Comment/Comment";
 import { getAuth } from "../../services/authService";
+import { readComment } from "../../services/commentService";
+import SubTitle from "../../components/SubTitle/SubTitle";
+import Title from "../../components/Title/Title";
+import Text from "../../components/Text/Text";
 
 const CounselDoc = () => {
   const [loading, setLoading] = useState(false);
@@ -15,6 +19,8 @@ const CounselDoc = () => {
     _id: "",
   });
   const [password, setPassword] = useState("");
+  const [comments, setComments] = useState([]);
+  console.log(comments);
   const navigate = useNavigate();
 
   const handlePassword = (e) => {
@@ -22,6 +28,7 @@ const CounselDoc = () => {
   };
 
   const authBtn = () => {
+    console.log(data.password);
     if (!password) {
       return alert("비밀번호를 입력하세요");
     }
@@ -40,9 +47,11 @@ const CounselDoc = () => {
       setLoading(true);
       const fetchData = async () => {
         const response = await readCounsel({ counselId });
-        const verityAuth = await getAuth();
-        setUser(verityAuth.data);
-        setData(response.data);
+        const commentResponse = await readComment({ commentId: counselId });
+        // const verityAuth = await getAuth();
+        // setUser(verityAuth.data);
+        await setData(response.data);
+        await setComments(commentResponse.data);
       };
       fetchData();
     } catch (error) {
@@ -57,18 +66,28 @@ const CounselDoc = () => {
   }
   return (
     <>
-      {auth ? (
-        <div>
-          <h1>{data.title}</h1>
-          <p>{data.name}</p>
-          <p>{data.phone}</p>
-          <p>{data.desc}</p>
+      {auth && data ? (
+        <div className="Wrap">
+          <Title title={data.title} />
+          <SubTitle subTitle={data.name} />
+          <SubTitle subTitle={data.phone} />
+          <Text text={data.desc} />
           <CommentEdit
             username={user.username}
             counselId={data._id}
             userId={user._id}
           />
-          <CommentList />
+
+          {comments &&
+            comments.map((comment, index) => (
+              <Comment
+                key={index}
+                name={comment.name}
+                content={comment.content}
+                createdAt={comment.createdAt}
+                updatedAt={comment.updatedAt}
+              />
+            ))}
         </div>
       ) : (
         <>

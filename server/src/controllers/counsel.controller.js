@@ -10,7 +10,7 @@ exports.createCounsel = async (req, res) => {
     const { title, name, phone, password, desc } = req.body;
     const newCounsel = new Counsel({ title, name, phone, password, desc });
     await newCounsel.save();
-    res.status(200).json({ message: "Success" });
+    res.status(200).json({ message: "Success", newCounsel });
   } catch (error) {
     console.error("Error during signup:", error);
     res.status(500).json({ message: "Server error" });
@@ -30,7 +30,7 @@ exports.findAllCounsel = async (req, res) => {
 
 exports.readCounsel = async (req, res) => {
   try {
-    console.log(req.params.counsel_id)
+    // console.log(req.params.counsel_id);
     const result = await Counsel.findOne({ _id: req.params.counsel_id });
     res.status(200).json(result);
   } catch (error) {
