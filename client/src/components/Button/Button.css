@@ -1,0 +1,9 @@
+.ComponentButton {
+  width: 100%;
+  padding: 20px 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}

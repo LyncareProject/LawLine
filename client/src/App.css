@@ -1,21 +1,89 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
 }
 body {
   box-sizing: border-box;
@@ -45,7 +113,7 @@ a {
   border-radius: 10px;
   border: none;
   background-color: #00c126;
-  color: #FFF;
+  color: #fff;
   font-size: 20px;
   font-weight: 700;
   line-height: 120%;
@@ -65,14 +133,21 @@ a {
   color: #7a8287;
 }
 .Input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #c4c8cb;
-  border-radius: 10px;
+  border: none;
+  border-bottom: 1px solid #e2e4e5;
+  border-radius: 0;
   color: #2b2d2f;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
-  box-sizing: border-box;
+  height: 40px;
+  line-height: 100%;
+  padding-left: 0;
+  width: 100%;
+}
+.Input:focus {
+  border-bottom: 1px solid #333;
+  border-radius: 0;
+  outline: none;
 }
 .TextArea {
   width: 100%;

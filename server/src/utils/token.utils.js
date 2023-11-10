@@ -17,7 +17,7 @@ exports.makeAccessToken = ({ id, roles }) => {
     {
       algorithm: "HS256",
       allowInsecureKeySizes: true,
-      expiresIn: "10s",
+      expiresIn: "15m",
     }
   );
   return accessToken;

@@ -5,6 +5,7 @@ import { logout } from "../../redux/userSlice";
 import { toast } from "react-toastify";
 import { createCounsel } from "../../services/counselService";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 const Counsel = () => {
   const navigate = useNavigate();
@@ -25,6 +26,12 @@ const Counsel = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const counselBtn = ()=>{
+    navigate('/counsel')
+  }
+  const searchBtn = ()=>{
+    navigate('/search')
+  }
   const sendBtn = async () => {
     try {
       const response = await createCounsel({
@@ -34,7 +41,7 @@ const Counsel = () => {
         password,
         desc,
       });
-      console.log(response)
+      console.log(response);
       if (response.data.message === "Success") {
         toast.success(<h3>상담 신청이 완료되었습니다.</h3>, {
           position: "top-center",
@@ -74,10 +81,23 @@ const Counsel = () => {
   return (
     <div className="Page">
       <div className="Wrap">
+        <Button
+          buttonName={"문의하기"}
+          buttonColor={"#00C126"}
+          buttonTextColor={"#FFF"}
+          buttonMargin={"10px 0"}
+          pressButton={counselBtn}
+        />
+        <Button
+          buttonName={"조회하기"}
+          buttonColor={"#F0F0F0"}
+          buttonTextColor={"#000"}
+          buttonMargin={"10px 0"}
+          pressButton={searchBtn}
+        />
         <div className="Block">
           <h2 className="Title">
-            제목 <span className="Gray">{"(10자 이상)"}</span>
-            <span className="Red">*</span>
+            제목 <span className="Red">*</span>
           </h2>
           <input
             className="Input"
@@ -90,8 +110,7 @@ const Counsel = () => {
         </div>
         <div className="Block">
           <h2 className="Title">
-            이름
-            <span className="Red">*</span>
+            이름 <span className="Red">*</span>
           </h2>
           <input
             className="Input"
@@ -104,8 +123,7 @@ const Counsel = () => {
         </div>
         <div className="Block">
           <h2 className="Title">
-            전화번호
-            <span className="Red">*</span>
+            전화번호 <span className="Red">*</span>
           </h2>
           <input
             className="Input"
@@ -118,7 +136,7 @@ const Counsel = () => {
         </div>
         <div className="Block">
           <h2 className="Title">
-            비밀번호 <span className="Gray">{"(숫자 4자리)"}</span>
+            비밀번호 <span className="Gray">{"(숫자 4자리)"}</span>{" "}
             <span className="Red">*</span>
           </h2>
           <input
@@ -132,8 +150,7 @@ const Counsel = () => {
         </div>
         <div className="Block">
           <h2 className="Title">
-            내용 <span className="Gray">{"(200자 이상)"}</span>
-            <span className="Red">*</span>
+            문의 내용 <span className="Red">*</span>
           </h2>
           <textarea
             className="TextArea"
@@ -143,9 +160,16 @@ const Counsel = () => {
             onChange={handleInputs}
           />
         </div>
-        <button className="Button" onClick={sendBtn}>
+        <Button
+          buttonName={"접수하기"}
+          buttonColor={"#00C126"}
+          buttonTextColor={"#FFF"}
+          buttonMargin={"10px 0"}
+          pressButton={sendBtn}
+        />
+        {/* <button className="Button" onClick={sendBtn}>
           상담 신청
-        </button>
+        </button> */}
       </div>
     </div>
   );

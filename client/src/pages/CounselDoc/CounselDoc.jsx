@@ -64,7 +64,7 @@ const CounselDoc = () => {
           <p>{data.phone}</p>
           <p>{data.desc}</p>
           <CommentEdit
-            name={user.username}
+            username={user.username}
             counselId={data._id}
             userId={user._id}
           />
