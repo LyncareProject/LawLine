@@ -72,18 +72,8 @@ exports.findAllComment = async (req, res) => {
 
 exports.readComment = async (req, res) => {
   try {
-    console.log(req.params.comment_id)
-    // const counselId = new mongoose.Types.ObjectId(req.params.counsel_id);
-    // // console.log(counselId)
-
     const result = await Comment.find({ counselId: req.params.comment_id }).sort()
-    // console.log(result)
-    // console.log(result);
     res.status(200).json(result);
-    // const result = await Comment.find({ counselId: req.params.counsel_id })
-    // const result = await Comment.find().sort()
-    // console.log(result)
-    // res.status(200).json(result);
   } catch (error) {
     console.error("Error during signup:", error);
     res.status(500).json({ message: "Server error" });
