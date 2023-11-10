@@ -31,7 +31,7 @@
 
 
 /* main */
-h3 {
+.Main h3 {
   color: #262626;
 text-align: center;
 font-family: Pretendard;
@@ -239,12 +239,12 @@ padding: 14px 0;
     }
 
   .section1_size{
-    width: 50%;
+    width: 40%;
   }
   .im {
     width: 50%;
   }
   .section2{
-    width: 50%;
+    width: 45%;
   }
 }

@@ -53,4 +53,26 @@ h5{
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.75px;
+  margin-top: 17px;
+  margin-bottom: 40px;
+}
+
+
+@media  (min-width: 1200px){
+  .Completed{
+    width: 60%;
+  }
+  .Ball{
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .Inquiry_details h4{
+    font-size: 26px;
+    line-height: 40px;
+  }
+  h5{
+    font-size: 30px;
+    margin-top: 20px;
+  }
 }

@@ -8,6 +8,7 @@
   height: 32px;
   background-color:#D9D9D9;
   border-radius: 30px;
+  margin-bottom: 10px;
 }
 
 .View_completed h2{
@@ -26,13 +27,20 @@
 
 /* 전화번호 */
 .Phone_number{
-  display: flex;
-  justify-content: space-between;
+  display: table;
   width: 100%;
   text-wrap: nowrap;
 }
 .Phone_number p {
-  margin-right: 20px;
+  display: table-cell;
+  width: 10%;
+  
+}
+.Phone_number input{
+  display: table-cell;
+  font-size: 20px;
+  margin-left: 10px;
+  
 }
 
 /* 문의내용 */
@@ -63,4 +71,49 @@ font-weight: 700;
 line-height: normal;
 letter-spacing: -0.75px;
 margin-top: 25px;
+}
+
+@media  (min-width: 1000px){
+  .View_completed{
+    width: 60%;
+  }
+    .Ball{
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  .View_completed h2{
+    font-size: 32px;
+    line-height: 32px;
+  }
+  .View_completed h4{
+    font-size: 26px;
+  }
+  .Phone_number input , .Passwor input{
+    font-size: 24px;
+  }
+ 
+  .Phone_number p img{
+    max-width: 20px;
+    margin-bottom: -2px;
+    margin-right: 8px;
+    
+  }
+   .Passwor p img{
+    max-width: 22px;
+ 
+  }
+  .Phone_number input{
+    font-size: 26px;
+  }
+
+  .View_completed h5{
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+@media  (min-width: 1400px){
+  .View_completed{
+    width: 50%;
+  }
 }

@@ -20,6 +20,7 @@
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.75px;
+  margin-top: 10px;
 }
 .Check_b button{
   width: 100%;
@@ -68,4 +69,53 @@ hr{
   margin-top: 10px;
   border-bottom: 1px solid #E2E4E5;
   background-color: #E2E4E5;
+}
+
+@media  (min-width: 1000px){
+  .View{
+    width: 60%;
+  }
+  .Ball{
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  h3{
+    font-size: 30px;
+    line-height: 32px;
+  }
+  .View h2{font-size: 36px;}
+  .Phone_number , .Passwor{
+    font-size: 26px;
+    
+  }
+  .Phone_number input , .Passwor input{
+    font-size: 24px;
+  }
+ 
+  .Phone_number p img{
+    max-width: 20px;
+    margin-bottom: -2px;
+    margin-right: 8px;
+    
+  }
+   .Passwor p img{
+    max-width: 22px;
+ 
+  }
+
+  .Inquiry_details h4{
+    font-size: 26px;
+    line-height: 40px;
+  }
+
+  .Check_b button{
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+}
+@media  (min-width: 1400px){
+  .View {
+    width: 50%;
+  }
 }
