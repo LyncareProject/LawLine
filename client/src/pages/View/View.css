@@ -65,6 +65,10 @@ font-weight: 400;
 line-height: 20px;
 border: 0;
 }
+.View .Phone_number p ,.View .Phone_number input{
+  display: block;
+  margin-left: 0;
+}
 hr{
   margin-top: 10px;
   border-bottom: 1px solid #E2E4E5;
@@ -116,6 +120,6 @@ hr{
 }
 @media  (min-width: 1400px){
   .View {
-    width: 50%;
+    width: 35%;
   }
 }

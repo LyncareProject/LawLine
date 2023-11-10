@@ -48,3 +48,51 @@
 .LoginBtn:hover {
   opacity: 0.7;
 }
+
+@media (max-width:650px) {
+  .App .Header {
+    width: 100%;
+    position: relative;
+    top: 0;
+    height: 100%;
+    background-color: #fff;
+  }
+  .HeaderWrap , .HeaderLeft ,.Menu  ,.Menu a , .LoginBtn{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    line-height: 50px;
+    text-indent: 0;
+    padding: 0;
+  }
+  .HeaderLeft{
+    position: relative;
+    display: block;
+  }
+  .Logo{
+    position: absolute;
+    top: 11px;
+    left: 10px;
+  }
+  .hamburger_icon{
+    position: absolute;
+    right: 10px;
+    width: 60px;
+  }
+  .x_icon{
+    position: absolute;
+    right: 10px;
+    width: 60px;
+    transition: all 0.3s;
+    display: none;
+  }
+  .Menu {
+    display: block;
+    padding-top: 70px;
+  }
+  .LoginBtn{
+    margin-bottom: 15px;
+  }
+}

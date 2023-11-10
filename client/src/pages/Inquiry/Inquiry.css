@@ -80,6 +80,10 @@ letter-spacing: -0.75px;
 
   
 }
+.Inquiry .Phone_number, .Inquiry .Phone_number input{
+  display: block;
+  margin-left: 0;
+}
 .Phone_number p , .Passwor p{
   margin-bottom: 10px;
 }
@@ -153,7 +157,7 @@ hr{
 
 @media  (min-width: 1200px){
   .Inquiry{
-    width: 60%;
+    width: 35%;
   }
     .Ball{
     margin-top: 40px;

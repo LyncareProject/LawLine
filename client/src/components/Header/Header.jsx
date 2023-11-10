@@ -1,6 +1,8 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/Logo.png";
+import hamburger_icon from "../../components/images/hamburger_icon.png";
+import x_icon from "../../components/images/x_icon.png";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -20,12 +22,16 @@ const Header = () => {
         <div className="HeaderLeft">
           <a href="/">
             <img className="Logo" src={Logo} alt="Logo" />
+            <img className="hamburger_icon" src={hamburger_icon} alt="hamburger_icon" />
+            <img className="x_icon" src={x_icon} alt="x_icon" />
+
           </a>
           <div className="Menu">
-            <Link to="/">홈</Link>
-            <Link to="/lawyers">변호사</Link>
+            {/* <Link to="/">홈</Link> */}
+            {/* <Link to="/lawyers">변호사</Link> */}
             <Link to="/counsel/list">상담 사례</Link>
             <Link to="/counsel">상담 신청</Link>
+            <Link to="/view">상담 조회</Link>
           </div>
         </div>
         {user.isLogined ? (
