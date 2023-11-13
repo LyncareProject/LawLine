@@ -3,6 +3,8 @@ import Group7 from './../../components/images/Group7.png'
 import Group8 from './../../components/images/Group8.png'
 import Group9 from './../../components/images/Group9.png'
 import KO_MEMBER from './../../components/images/KO_MEMBER.png'
+import { Link } from 'react-router-dom';
+
 
 const Main = ()=>{
 return (
@@ -13,11 +15,12 @@ return (
         <div className="section1">
           <div className='section1_size'>
             <div className='section_img'>
-              <p><img src= { Group7 } alt="상담하기" />상담하기</p>
-              <p><img src= { Group8 } alt="조회하기" />조회하기</p>
+            <p><Link to="/Counsel"><img src= { Group7 } alt="상담하기" />상담하기</Link></p>
+            <p><Link to="/View"><img src= { Group8 } alt="조회하기" />조회하기</Link></p>
+             
             </div>
             <div className='ai'>
-              <p><img src= { Group9 } alt="간단한 질문도 AI도우미가 답변해드려요 beta" /></p>
+              <p><Link to="/Counsel"><img src= { Group9 } alt="간단한 질문도 AI도우미가 답변해드려요 beta" /></Link></p>
               <p className='ai_text'>간단한 질문도 AI도우미가 답변해드려요 <span>BETA</span></p>
               <p className='im'><img src= { KO_MEMBER } alt="임영준변호사사진" />임영준변호사사진</p>
             </div>

@@ -26,17 +26,17 @@
 
 
 /* 전화번호 */
-.Phone_number{
+.View_completed .Phone_number{
   display: table;
   width: 100%;
   text-wrap: nowrap;
 }
-.Phone_number p {
+.View_completed .Phone_number p {
   display: table-cell;
   width: 10%;
   
 }
-.Phone_number input{
+.View_completed .Phone_number input{
   display: table-cell;
   font-size: 20px;
   margin-left: 10px;
@@ -61,7 +61,7 @@
   border: 1px solid #CFCFCF;
 }
 
-h5{
+.View_completed h5{
   color: #00C126;
 text-align: center;
 font-family: Pretendard;
@@ -114,6 +114,6 @@ margin-top: 25px;
 
 @media  (min-width: 1400px){
   .View_completed{
-    width: 50%;
+    width: 35%;
   }
 }

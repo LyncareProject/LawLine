@@ -5,8 +5,6 @@ import { logout } from "../../redux/userSlice";
 import { toast } from "react-toastify";
 import { createCounsel } from "../../services/counselService";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
-import { createAIComment } from "../../services/commentService";
 
 const Counsel = () => {
   const navigate = useNavigate();

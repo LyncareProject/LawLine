@@ -17,9 +17,6 @@ import { useDispatch } from "react-redux";
 import { logout } from "./redux/userSlice";
 import CounselList from "./pages/CounselList/CounselList";
 import CounselDoc from "./pages/CounselDoc/CounselDoc";
-import CounselSearch from "./pages/CounselSearch/CounselSearch";
-import CounselResult from "./pages/CounselResult/CounselResult";
-import CounselConfirm from "./pages/CounselConfirm/CounselConfirm";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,7 +44,11 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <Header />
+      <Header>
+      <Sidebar />
+      </Header> 
+      
+      
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/Inquiry" element={<Inquiry />} />
