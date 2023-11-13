@@ -19,7 +19,6 @@ exports.createCounsel = async (req, res) => {
 
 exports.findAllCounsel = async (req, res) => {
   try {
-    console.log("findAllCounsel");
     const result = await Counsel.find().sort();
     res.status(200).json(result);
   } catch (error) {
