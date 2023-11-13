@@ -11,5 +11,6 @@ db.token = require("./token.model");
 db.role = require("./role.model");
 db.counsel = require("./counsel.model");
 db.comment = require("./comment.model");
+db.forward = require("./forward.model");
 
 module.exports = db;

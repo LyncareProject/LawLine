@@ -21,8 +21,7 @@ const CounselDoc = () => {
   });
   const [password, setPassword] = useState("");
   const [comments, setComments] = useState([]);
-  console.log(comments);
-
+  
   const navigate = useNavigate();
 
   const handlePassword = (e) => {

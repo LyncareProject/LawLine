@@ -17,6 +17,9 @@ import CounselDoc from "./pages/CounselDoc/CounselDoc";
 import CounselConfirm from "./pages/CounselConfirm/CounselConfirm";
 import CounselSearch from "./pages/CounselSearch/CounselSearch";
 import CounselResult from "./pages/CounselResult/CounselResult";
+import MyPage from "./pages/MyPage/MyPage";
+import ForwardingLink from "./utils/ForwardingLink/ForwardingLink";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +60,10 @@ function App() {
         <Route path="/counsel/:counselId" element={<CounselDoc />} />
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/not-found" element={<NotFound />} />
+
+        <Route path="/:path" element={<ForwardingLink />} />
       </Routes>
     </div>
   );
