@@ -3,9 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./pages/Main/Main";
 import Inquiry from "./pages/Inquiry/Inquiry";
-import Completed from "./pages/Completed/Completed";
-import View from "./pages/View/View";
-import View_completed from "./pages/View_completed/View_completed";
 import Counsel from "./pages/Counsel/Counsel";
 import Login from "./pages/Login/Login";
 import Header from "./components/Header/Header";
@@ -52,9 +49,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/Inquiry" element={<Inquiry />} />
-        {/* <Route path="/Completed" element={<Completed />} /> */}
-        {/* <Route path="/View" element={<View />} />
-        <Route path="/View_completed" element={<View_completed />} /> */}
         <Route path="/counsel" element={<Counsel />} />
         <Route path="/counsel/confirm" element={<CounselConfirm />} />
         <Route path="/counsel/search" element={<CounselSearch />} />
