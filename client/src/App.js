@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "./redux/userSlice";
 import CounselList from "./pages/CounselList/CounselList";
 import CounselDoc from "./pages/CounselDoc/CounselDoc";
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +45,11 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <Header />
+      <Header>
+      <Sidebar />
+      </Header> 
+      
+      
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/Inquiry" element={<Inquiry />} />

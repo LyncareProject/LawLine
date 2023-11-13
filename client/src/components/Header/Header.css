@@ -49,6 +49,10 @@
   opacity: 0.7;
 }
 
+.hamburger_icon , .x_icon{
+  display: none;
+}
+
 @media (max-width:650px) {
   .App .Header {
     width: 100%;
@@ -77,16 +81,17 @@
     left: 10px;
   }
   .hamburger_icon{
+    display: block;
     position: absolute;
     right: 10px;
     width: 60px;
   }
   .x_icon{
+    display: none;
     position: absolute;
     right: 10px;
     width: 60px;
     transition: all 0.3s;
-    display: none;
   }
   .Menu {
     display: block;

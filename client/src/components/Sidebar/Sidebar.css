@@ -1,0 +1,63 @@
+.Header{
+  position: relative;
+}
+.sidebar-container {
+  display: none;
+}
+
+.sidebar-button {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  background-color: #fff;
+  border: 0;
+}
+
+.sidebar-content {
+  position: absolute;
+  top: 0;
+  right: -300px; /* 처음에는 왼쪽으로 숨김 */
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease; /* 서서히 나오도록 설정 */
+}
+
+.sidebar-content.show {
+  right: 0; /* 나타날 때는 오른쪽으로 이동 */
+}
+.sidebar-button p{
+  display: block;
+  width: 40px;
+  background-color: #fff;
+}
+
+.sidebar-button img{
+  display: block;
+  width: 55px;
+}
+
+.nav_link{
+  position: absolute;
+  display: block;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-bottom: 10px;
+}
+.nav_link p{
+  font-family: Pretendard;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.nav_link p:hover{
+  text-decoration: underline;
+  transition: all 0.3s;
+}
+@media  (max-width: 600px){
+  .sidebar-container{
+    display: block;
+  }
+}

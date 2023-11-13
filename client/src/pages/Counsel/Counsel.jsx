@@ -5,6 +5,7 @@ import { logout } from "../../redux/userSlice";
 import { toast } from "react-toastify";
 import { createCounsel } from "../../services/counselService";
 import { useNavigate } from "react-router-dom";
+import "./Counsel.css"
 
 const Counsel = () => {
   const navigate = useNavigate();

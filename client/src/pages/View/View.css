@@ -69,7 +69,7 @@ border: 0;
   display: block;
   margin-left: 0;
 }
-hr{
+.View hr{
   margin-top: 10px;
   border-bottom: 1px solid #E2E4E5;
   background-color: #E2E4E5;
@@ -83,7 +83,7 @@ hr{
     margin-top: 40px;
     margin-bottom: 10px;
   }
-  h3{
+  .View h3{
     font-size: 30px;
     line-height: 32px;
   }

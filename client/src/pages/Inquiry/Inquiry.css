@@ -10,7 +10,7 @@
   border-radius: 30px;
 }
 
-h3{
+.Inquiry h3{
   color: #000;
   text-align: center;
   font-family: Pretendard;
@@ -21,7 +21,7 @@ h3{
   letter-spacing: -0.44px;
   margin-top: 5px;
 }
-h2{
+.Inquiry h2{
   color: #000;
   text-align: center;
   font-family: Pretendard;
@@ -35,7 +35,7 @@ h2{
 }
 
 /* 문의 조회 */
-P button{
+.Inquiry P button{
   width: 100%;
   margin: 0 auto;
 }
@@ -104,7 +104,7 @@ font-weight: 400;
 line-height: 20px;
 border: 0;
 }
-hr{
+.Inquiry hr{
   margin-top: 10px;
   border-bottom: 1px solid #E2E4E5;
   background-color: #E2E4E5;
@@ -163,11 +163,13 @@ hr{
     margin-top: 40px;
     margin-bottom: 10px;
   }
-  h3{
+  .Inquiry h3{
     font-size: 30px;
     line-height: 32px;
   }
-  h2{font-size: 36px;}
+  .Inquiry h2{
+    font-size: 36px;
+  }
   .Phone_number , .Passwor{
     font-size: 26px;
     
