@@ -51,7 +51,7 @@ exports.createAIComment = async (req, res) => {
 exports.createComment = async (req, res) => {
   try {
     const { name, content, userId, counselId } = req.body;
-    const newComment = new Comment({ title, name, phone, password, desc });
+    const newComment = new Comment({ name, content, userId, counselId });
     await newComment.save();
     res.status(200).json({ message: "Success" });
   } catch (error) {
@@ -82,7 +82,7 @@ exports.readComment = async (req, res) => {
 exports.updateComment = async (req, res) => {
   try {
     req.body.updatedAt = moment().format("YYYY-MM-DD hh:mm:ss");
-    await Comment.findOneAndUpdate({ _id: req.params.counsel_id }, req.body);
+    await Comment.findOneAndUpdate({ _id: req.params.comment_id }, req.body);
     res.json({ message: "Updated" });
   } catch (error) {
     console.error("Error during signup:", error);
@@ -92,7 +92,7 @@ exports.updateComment = async (req, res) => {
 
 exports.deleteComment = async (req, res) => {
   try {
-    await Comment.deleteOne({ _id: req.params.counsel_id });
+    await Comment.deleteOne({ _id: req.params.comment_id });
     res.status(200).json({ message: "Deleted" });
   } catch (error) {
     console.error("Error during signup:", error);

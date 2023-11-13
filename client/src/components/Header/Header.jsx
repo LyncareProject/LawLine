@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/userSlice";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,6 +14,13 @@ const Header = () => {
 
   const logoutBtn = () => {
     dispatch(logout());
+    localStorage.removeItem("Tokens");
+    toast.success(<h3>로그아웃 되었습니다.</h3>, {
+      position: "top-center",
+      autoClose: 2000,
+    });
+    navigate('/')
+
   };
   return (
     <div className="Header">

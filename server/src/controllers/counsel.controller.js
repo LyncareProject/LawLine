@@ -30,8 +30,23 @@ exports.findAllCounsel = async (req, res) => {
 
 exports.readCounsel = async (req, res) => {
   try {
-    // console.log(req.params.counsel_id);
     const result = await Counsel.findOne({ _id: req.params.counsel_id });
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("Error during signup:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+exports.searchCounsel = async (req, res) => {
+  try {
+    const { phone, password } = req.body
+    const result = await Counsel.findOne({ phone : phone });
+    if(!result){
+      return res.status(404).json({message: "입력된 정보로 상담 신청된 내역이 없습니다."});
+    }
+    if(result.password !== password){
+      return res.status(404).json({message: "비밀번호 오류"});
+    }
     res.status(200).json(result);
   } catch (error) {
     console.error("Error during signup:", error);

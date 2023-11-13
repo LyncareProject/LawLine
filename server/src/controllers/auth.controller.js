@@ -54,24 +54,25 @@ exports.signIn = async (req, res) => {
 
 exports.getAuth = async (req, res) => {
   try {
+    console.log("getAuth")
     const { id, roles } = req.decoded;
     const refreshToken = req.refreshToken;
 
     const newAccessToken = await makeAccessToken({ id, roles });
-    const userData = await User.findOne({_id : id})
-    console.log('userData', userData)
+    const userData = await User.findOne({ _id: id });
+    console.log("userData", userData);
     // DB에서 모든 역할 찾기
-    const rolesData = await Role.find({ _id: { $in: roles } });
-
+    const rolesData = await Role.findOne({ _id: { $in: roles } });
+    console.log("rolesData : ", rolesData);
     // 클라이언트에 전송할 역할 데이터 생성
-    const clientRoles = rolesData.map((role) => role.role); // role 객체의 'name' 속성을 사용하여 배열 생성
-
+    // const clientRoles = rolesData.map((role) => role.name); // role 객체의 'name' 속성을 사용하여 배열 생성
+    // console.log("clientRoles : ", clientRoles);
     res.status(200).json({
       newAccessToken,
       refreshToken,
-      roles: clientRoles,
-      id : userData._id,
-      name : userData.username
+      id: userData._id,
+      name: userData.username,
+      roles: rolesData.name,
     });
   } catch (error) {
     console.error("Error in getAuth:", error); // 에러 로깅
@@ -106,7 +107,7 @@ exports.Kakao = async (req, res) => {
         username: user.username,
         roles: user.roles,
       });
-      return
+      return;
     }
     accessToken = await makeAccessToken({
       id: existingUser._id,

@@ -16,11 +16,13 @@ const CounselDoc = () => {
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState({
     username: "",
-    _id: "",
+    id: "",
+    roles: "",
   });
   const [password, setPassword] = useState("");
   const [comments, setComments] = useState([]);
   console.log(comments);
+
   const navigate = useNavigate();
 
   const handlePassword = (e) => {
@@ -49,9 +51,26 @@ const CounselDoc = () => {
         const response = await readCounsel({ counselId });
         const commentResponse = await readComment({ commentId: counselId });
         // const verityAuth = await getAuth();
-        // setUser(verityAuth.data);
+        // await setUser(verityAuth.data);
         await setData(response.data);
         await setComments(commentResponse.data);
+        // Token이 있을 때 검증
+        const Tokens = JSON.parse(localStorage.getItem("Tokens"));
+        if (Tokens) {
+          const authResponse = await getAuth();
+          console.log(authResponse);
+          setUser({
+            username: authResponse.name,
+            id: authResponse.id,
+            roles: authResponse.roles,
+          });
+          if (
+            authResponse.roles === "Laywer" ||
+            authResponse.roles === "Admin"
+          ) {
+            setAuth(true);
+          }
+        }
       };
       fetchData();
     } catch (error) {
@@ -59,7 +78,7 @@ const CounselDoc = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [counselId, loading]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -72,42 +91,55 @@ const CounselDoc = () => {
           <SubTitle subTitle={data.name} />
           <SubTitle subTitle={data.phone} />
           <Text text={data.desc} />
-          <CommentEdit
-            username={user.username}
-            counselId={data._id}
-            userId={user._id}
-          />
+          {(user.roles === "Laywer" || user.roles === "Admin") && (
+            <CommentEdit
+              username={user.username}
+              counselId={data._id}
+              userId={user.id}
+              setLoading={setLoading}
+            />
+          )}
 
           {comments &&
             comments.map((comment, index) => (
               <Comment
                 key={index}
+                commentId={comment._id}
+                counselId={comment.counselId}
+                userId={comment.userId}
+                currentUser={user}
                 name={comment.name}
                 content={comment.content}
                 createdAt={comment.createdAt}
                 updatedAt={comment.updatedAt}
+                setLoading={setLoading}
               />
             ))}
         </div>
       ) : (
-        <>
-          <input
-            type="password"
-            onChange={handlePassword}
-            name="password"
-            maxLength={4}
-            onKeyUp={(e) => {
-              if (e.key === "Enter") {
-                authBtn();
-              }
-            }}
-          />
-          <button className="passwordBtn" onClick={authBtn}>
-            입력
-          </button>
-        </>
+        <VerifyPassword handlePassword={handlePassword} authBtn={authBtn} />
       )}
     </>
+  );
+};
+const VerifyPassword = (props) => {
+  return (
+    <div className="Wrap">
+      <input
+        type="password"
+        onChange={props.handlePassword}
+        name="password"
+        maxLength={4}
+        onKeyUp={(e) => {
+          if (e.key === "Enter") {
+            props.authBtn();
+          }
+        }}
+      />
+      <button className="passwordBtn" onClick={props.authBtn}>
+        입력
+      </button>
+    </div>
   );
 };
 export default CounselDoc;

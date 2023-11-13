@@ -31,7 +31,7 @@ const Counsel = () => {
     navigate("/counsel");
   };
   const searchBtn = () => {
-    navigate("/search");
+    navigate("/counsel/search");
   };
   const sendBtn = async () => {
     try {
@@ -43,7 +43,6 @@ const Counsel = () => {
         desc,
       });
       if (response.data.message === "Success") {
-        console.log(response);
         createAIComment({
           content: desc,
           counselId: response.data.newCounsel._id,
@@ -52,7 +51,7 @@ const Counsel = () => {
           position: "top-center",
           autoClose: 2000,
         });
-        navigate("/");
+        navigate("/counsel", {state: desc});
       }
     } catch (error) {
       toast.error(error.response.data.message, {

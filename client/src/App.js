@@ -17,6 +17,9 @@ import { useDispatch } from "react-redux";
 import { logout } from "./redux/userSlice";
 import CounselList from "./pages/CounselList/CounselList";
 import CounselDoc from "./pages/CounselDoc/CounselDoc";
+import CounselSearch from "./pages/CounselSearch/CounselSearch";
+import CounselResult from "./pages/CounselResult/CounselResult";
+import CounselConfirm from "./pages/CounselConfirm/CounselConfirm";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,10 +51,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/Inquiry" element={<Inquiry />} />
-        <Route path="/Completed" element={<Completed />} />
-        <Route path="/View" element={<View />} />
-        <Route path="/View_completed" element={<View_completed />} />
+        {/* <Route path="/Completed" element={<Completed />} /> */}
+        {/* <Route path="/View" element={<View />} />
+        <Route path="/View_completed" element={<View_completed />} /> */}
         <Route path="/counsel" element={<Counsel />} />
+        <Route path="/counsel/confirm" element={<CounselConfirm />} />
+        <Route path="/counsel/search" element={<CounselSearch />} />
+        <Route path="/counsel/result" element={<CounselResult />} />
         <Route path="/counsel/list" element={<CounselList />} />
         <Route path="/counsel/:counselId" element={<CounselDoc />} />
         <Route path="/login" element={<Login />} />

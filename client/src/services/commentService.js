@@ -18,9 +18,11 @@ export const createComment = ({ name, content, userId, counselId }) => {
 export const findAllComment = () => {
   return axios.get(API_URL + "comment");
 };
+
 export const readComment = ({ commentId }) => {
   return axios.get(API_URL + `comment/${commentId}`);
 };
+
 export const updateComment = ({
   commentId,
   name,

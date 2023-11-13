@@ -1,0 +1,124 @@
+.View {
+  width: 80%;
+  margin: 0 auto;
+}
+.Ball {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color: #d9d9d9;
+  border-radius: 30px;
+  margin-top: 30px;
+}
+.View h2 {
+  color: #000;
+  text-align: left;
+  margin-top: 5px;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.75px;
+  margin-top: 10px;
+}
+.Check_b button {
+  width: 100%;
+  min-height: 70px;
+  border-radius: 12px;
+  background: #00c126;
+  border: 0;
+  color: #fff;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.75px;
+  margin-top: 20px;
+}
+
+/* 전화번호 비번 입력 */
+.Phone_number,
+.Passwor {
+  margin-top: 45px;
+  color: #2b2d2f;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.Phone_number img,
+.Passwor img {
+  max-width: 17px;
+  margin-right: 5px;
+  margin-left: 2px;
+}
+.Phone_number input,
+.Passwor input {
+  width: 100%;
+  color: #757575;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  border: 0;
+}
+hr {
+  margin-top: 10px;
+  border-bottom: 1px solid #e2e4e5;
+  background-color: #e2e4e5;
+}
+
+@media (min-width: 1000px) {
+  .View {
+    width: 60%;
+  }
+  .Ball {
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 30px;
+    line-height: 32px;
+  }
+  .View h2 {
+    font-size: 36px;
+  }
+  .Phone_number,
+  .Passwor {
+    font-size: 26px;
+  }
+  .Phone_number input,
+  .Passwor input {
+    font-size: 24px;
+  }
+
+  .Phone_number p img {
+    max-width: 20px;
+    margin-bottom: -2px;
+    margin-right: 8px;
+  }
+  .Passwor p img {
+    max-width: 22px;
+  }
+
+  .Inquiry_details h4 {
+    font-size: 26px;
+    line-height: 40px;
+  }
+
+  .Check_b button {
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 1400px) {
+  .View {
+    width: 50%;
+  }
+}

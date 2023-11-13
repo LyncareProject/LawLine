@@ -16,6 +16,9 @@ export const findAllCounsel = () => {
 export const readCounsel = ({ counselId }) => {
   return axios.get(API_URL + `counsel/${counselId}`);
 };
+export const searchCounsel = ({ phone, password }) => {
+  return axios.post(API_URL + `counsel/search`, { phone, password });
+};
 export const updateCounsel = ({
   counselId,
   title,
