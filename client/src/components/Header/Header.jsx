@@ -41,7 +41,7 @@ const Header = () => {
             {/* <Link to="/lawyers">변호사</Link> */}
             <Link to="/counsel/list">상담 사례</Link>
             <Link to="/counsel">상담 신청</Link>
-            <Link to="/view">상담 조회</Link>
+            <Link to="/counsel/search">상담 조회</Link>
           </div>
         </div>
         {user.isLogined ? (
