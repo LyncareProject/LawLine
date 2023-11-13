@@ -17,6 +17,9 @@ import { useDispatch } from "react-redux";
 import { logout } from "./redux/userSlice";
 import CounselList from "./pages/CounselList/CounselList";
 import CounselDoc from "./pages/CounselDoc/CounselDoc";
+import CounselConfirm from "./pages/CounselConfirm/CounselConfirm";
+import CounselSearch from "./pages/CounselSearch/CounselSearch";
+import CounselResult from "./pages/CounselResult/CounselResult";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,15 +43,12 @@ function App() {
       localStorage.removeItem("Tokens");
     }
   }, [dispatch]);
-  
+
   return (
     <div className="App">
       <ToastContainer />
-      <Header>
-      <Sidebar />
-      </Header> 
-      
-      
+      <Header> </Header>
+
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/Inquiry" element={<Inquiry />} />
