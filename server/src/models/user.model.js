@@ -4,7 +4,10 @@ const moment = require("moment");
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   username: { type: String, required: true },
-  profileImg :  { type: String },
+  profileImg: { type: String },
+  phone: { type: String },
+  callNumber: { type: String },
+  registNumber: { type: String },
   password: { type: String },
   createdAt: { type: String, default: moment().format("YYYY-MM-DD hh:mm:ss") },
   updatedAt: { type: String },

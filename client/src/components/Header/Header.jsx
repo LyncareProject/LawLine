@@ -21,21 +21,22 @@ const Header = () => {
       position: "top-center",
       autoClose: 2000,
     });
-    navigate('/')
-
+    navigate("/");
   };
   return (
     <div className="Header">
-          <img className="hamburger_icon" src={hamburger_icon} alt="hamburger_icon" />
-            <img className="x_icon" src={x_icon} alt="x_icon" />
+      <img
+        className="hamburger_icon"
+        src={hamburger_icon}
+        alt="hamburger_icon"
+      />
+      <img className="x_icon" src={x_icon} alt="x_icon" />
       <div className="HeaderWrap">
         <div className="HeaderLeft">
           <a href="/">
             <img className="Logo" src={Logo} alt="Logo" />
-        
-
           </a>
-          
+
           <div className="Menu">
             {/* <Link to="/">홈</Link> */}
             {/* <Link to="/lawyers">변호사</Link> */}

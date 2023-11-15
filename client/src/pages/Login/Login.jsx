@@ -74,7 +74,7 @@ const UserLogin = () => {
     <>
       <form>
         <div className="LoginInput">
-          <label htmlFor="email">아이디</label>
+          <label htmlFor="email">이메일</label>
           <input
             type="text"
             name="email"
@@ -187,7 +187,7 @@ const LawyerLogin = () => {
       <button className="FetchBtn">로그인</button>
       <div className="CheckFindWrap MT-30">
         <p className="RegistWord">변호사님 아직 가입 안하셨나요?</p>
-        <a className="RegistBtn" href="/lawyer/regist">
+        <a className="RegistBtn" href="/regist/lawyer">
           변호사 회원 가입
         </a>
       </div>

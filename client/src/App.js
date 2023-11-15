@@ -8,7 +8,7 @@ import Login from "./pages/Login/Login";
 import Header from "./components/Header/Header";
 import Regist from "./pages/Regist/Regist";
 import { ToastContainer } from "react-toastify";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAuth } from "./services/authService";
 import { useDispatch } from "react-redux";
 import { logout } from "./redux/userSlice";
@@ -20,9 +20,24 @@ import CounselResult from "./pages/CounselResult/CounselResult";
 import MyPage from "./pages/MyPage/MyPage";
 import ForwardingLink from "./utils/ForwardingLink/ForwardingLink";
 import NotFound from "./pages/NotFound/NotFound";
+import LawyerRegist from "./pages/LawyerRegist/LawyerRegist";
+import MobileHeader from "./components/MobileHeader/MoblieHeader";
 
 function App() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  console.log(windowWidth);
   const dispatch = useDispatch();
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   useEffect(() => {
     try {
       const Tokens = JSON.parse(localStorage.getItem("Tokens"));
@@ -47,7 +62,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <Header> </Header>
+      {windowWidth >= 768 ? <Header /> : <MobileHeader />}
 
       <Routes>
         <Route path="/" element={<Main />} />
@@ -60,6 +75,7 @@ function App() {
         <Route path="/counsel/:counselId" element={<CounselDoc />} />
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
+        <Route path="/regist/lawyer" element={<LawyerRegist />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/not-found" element={<NotFound />} />
 
