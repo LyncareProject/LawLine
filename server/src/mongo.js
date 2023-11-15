@@ -18,7 +18,7 @@ async function connectToDatabase() {
     await client;
     console.log("MongoDB connection successful");
   } catch (error) {
-    console.error("MongoDB connection failed :", error);
+    console.error("MongoDB connection failed : ", error);
     throw new Error("MongoDB connection failed");
   }
 }
