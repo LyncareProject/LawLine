@@ -17,26 +17,26 @@ const Main = () => {
         <div className="section1_size">
           <div className="section_img">
             <p>
-              <Link to="/Counsel">
+              <a href="/counsel">
                 <img src={Group7} alt="상담하기" />
                 상담하기
-              </Link>
+              </a>
             </p>
             <p>
-              <Link to="/View">
+              <a href="/counsel/search">
                 <img src={Group8} alt="조회하기" />
                 조회하기
-              </Link>
+              </a>
             </p>
           </div>
           <div className="ai">
             <p>
-              <Link to="/Counsel">
+              <a href="/counsel">
                 <img
                   src={Group9}
                   alt="간단한 질문도 AI도우미가 답변해드려요 beta"
                 />
-              </Link>
+              </a>
             </p>
             <p className="ai_text">
               간단한 질문도 AI도우미가 답변해드려요 <span>BETA</span>
