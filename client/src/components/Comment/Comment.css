@@ -1,17 +1,24 @@
 .CommentWrap {
   width: 100%;
-  padding: 20px 10px;
+  padding: 20px 0;
   box-sizing: border-box;
 }
+
 .CommentHead {
   display: flex;
-  border-top: 1px solid #838383;
-  border-bottom: 1px solid #bfbfbf;
-  padding: 20px 0;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  justify-content: space-between;
 }
 .CommentBody {
-  border-bottom: 1px solid #838383;
-  padding: 20px 0;
+  padding: 20px 0px 20px 20px;
   line-height: 1.25em;
   white-space: pre-wrap;
+}
+.ComentBodyDesc {
+  padding: 10px 0px 10px 10px;
+  padding-left: 20px;
+  border-left: 1px solid #00C126;
 }

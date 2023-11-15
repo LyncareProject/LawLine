@@ -19,7 +19,7 @@ exports.createCounsel = async (req, res) => {
 
 exports.findAllCounsel = async (req, res) => {
   try {
-    const result = await Counsel.find().sort();
+    const result = await Counsel.find().sort({ createdAt : -1 });
     res.status(200).json(result);
   } catch (error) {
     console.error("Error during signup:", error);

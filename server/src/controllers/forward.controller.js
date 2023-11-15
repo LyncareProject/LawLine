@@ -7,7 +7,7 @@ exports.forwardPath = async (req, res) => {
   try {
     const path = req.params.path;
     console.log(path);
-
+    
     // Try to find the document with the given path
     let forwardEntry = await Forward.findOne({ path: path });
 

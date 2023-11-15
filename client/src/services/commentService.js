@@ -7,11 +7,18 @@ export const createAIComment = ({ content, counselId }) => {
     counselId,
   });
 };
-export const createComment = ({ name, content, userId, counselId }) => {
+export const createComment = ({
+  name,
+  content,
+  userId,
+  userRole,
+  counselId,
+}) => {
   return axios.post(API_URL + "comment", {
     name,
     content,
     userId,
+    userRole,
     counselId,
   });
 };
@@ -28,12 +35,14 @@ export const updateComment = ({
   name,
   content,
   userId,
+  userRole,
   counselId,
 }) => {
   return axios.put(API_URL + `comment/${commentId}`, {
     name,
     content,
     userId,
+    userRole,
     counselId,
   });
 };

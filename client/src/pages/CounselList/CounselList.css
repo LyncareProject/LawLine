@@ -1,0 +1,45 @@
+.CounselHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.CounselList {
+  display: flex;
+  width: 100%;
+  padding: 15px 10px;
+  border-bottom: 1px solid #bdbdbd;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+.CounselList:first-child {
+  border-top: 1px solid #535353;
+}
+.CounselList:last-child {
+  border-bottom: 1px solid #535353;
+  margin-bottom: 80px;
+}
+.CounselTitle {
+  width: calc(100% - 100px);
+}
+.CounselTitle p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  width: 90%;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+.CommentStatus {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.CommentStatus img {
+  margin-right: 5px;
+}

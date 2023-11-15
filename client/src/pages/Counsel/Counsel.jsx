@@ -7,6 +7,7 @@ import { createCounsel } from "../../services/counselService";
 import { useNavigate } from "react-router-dom";
 import { createAIComment } from "../../services/commentService";
 import Button from "../../components/Button/Button";
+import Text from "../../components/Text/Text";
 
 const Counsel = () => {
   const navigate = useNavigate();
@@ -27,12 +28,7 @@ const Counsel = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const counselBtn = () => {
-    navigate("/counsel");
-  };
-  const searchBtn = () => {
-    navigate("/counsel/search");
-  };
+
   const sendBtn = async () => {
     try {
       const response = await createCounsel({
@@ -51,7 +47,7 @@ const Counsel = () => {
           position: "top-center",
           autoClose: 2000,
         });
-        navigate("/counsel", {state: desc});
+        navigate("/counsel/confirm", { state: desc });
       }
     } catch (error) {
       toast.error(error.response.data.message, {
@@ -85,19 +81,21 @@ const Counsel = () => {
   return (
     <div className="Page">
       <div className="Wrap">
-        <Button
-          buttonName={"문의하기"}
-          buttonColor={"#00C126"}
-          buttonTextColor={"#FFF"}
-          buttonMargin={"10px 0"}
-          pressButton={counselBtn}
+        <Text
+          textAlign={"center"}
+          fontSize={22}
+          fontWeight={400}
+          fontColor={"#000"}
+          Margin={"60px 0 15px 0"}
+          text={"어려운 법률이야기\n혼자서 해결하기 힘드시죠?"}
         />
-        <Button
-          buttonName={"조회하기"}
-          buttonColor={"#F0F0F0"}
-          buttonTextColor={"#000"}
-          buttonMargin={"10px 0"}
-          pressButton={searchBtn}
+        <Text
+          textAlign={"center"}
+          fontSize={30}
+          fontWeight={700}
+          fontColor={"#000"}
+          Margin={"0 0 15px 0"}
+          text={"전문가가 도와드리겠습니다"}
         />
         <div className="Block">
           <h2 className="Title">

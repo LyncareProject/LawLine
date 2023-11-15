@@ -5,11 +5,13 @@ const Text = (props) => {
     <div>
       <p
         style={{
+          textAlign: props.textAlign,
           fontSize: props.fontSize,
           fontWeight: props.fontWeight,
           color: props.fontColor,
           margin: props.Margin,
-          lineHeight: "1.25em",
+          lineHeight: "1.5em",
+          whiteSpace: "pre-wrap"
         }}
       >
         {props.text}

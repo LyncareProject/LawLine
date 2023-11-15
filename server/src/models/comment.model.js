@@ -11,6 +11,9 @@ const commentSchema = new mongoose.Schema({
     ref: 'User', 
     required: true
   },
+  userRole: { 
+    type: String, 
+  },
   counselId: { 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Counsel', 

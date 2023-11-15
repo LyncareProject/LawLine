@@ -8,6 +8,9 @@ import { readComment } from "../../services/commentService";
 import SubTitle from "../../components/SubTitle/SubTitle";
 import Title from "../../components/Title/Title";
 import Text from "../../components/Text/Text";
+import InputWrap from "../../components/InputWrap/InputWrap";
+import { toast } from "react-toastify";
+import "./CounselDoc.css";
 
 const CounselDoc = () => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +24,7 @@ const CounselDoc = () => {
   });
   const [password, setPassword] = useState("");
   const [comments, setComments] = useState([]);
-  
+  console.log(comments)
   const navigate = useNavigate();
 
   const handlePassword = (e) => {
@@ -29,15 +32,23 @@ const CounselDoc = () => {
   };
 
   const authBtn = () => {
-    console.log(data.password);
     if (!password) {
       return alert("비밀번호를 입력하세요");
     }
     if (password.length !== 4) {
-      return alert("비밀번호는 4자리입니다.");
+      toast.error(<h3>비밀번호는 4자리입니다</h3>, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      return;
     }
     if (password !== data.password) {
-      return alert("비밀번호가 일치하지 않습니다");
+      toast.error(<h3>비밀번호가 일치하지 않습니다</h3>, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      setPassword("");
+      return;
     }
     if (password === data.password) {
       return setAuth(true);
@@ -87,14 +98,22 @@ const CounselDoc = () => {
       {auth && data ? (
         <div className="Wrap">
           <Title title={data.title} />
-          <SubTitle subTitle={data.name} />
-          <SubTitle subTitle={data.phone} />
           <Text text={data.desc} />
+          <div className="CounselInfo">
+            <p className="CounselInfoPhone">
+              전화번호 : <span>{data.phone}</span>
+            </p>
+            <p className="CounselInfoCreateAt">
+              작성일 : <span>{data.createdAt}</span>
+            </p>
+          </div>
+          <hr style={{ border: "none", height: "2px", backgroundColor: "#CFCFCF" }} />
           {(user.roles === "Laywer" || user.roles === "Admin") && (
             <CommentEdit
               username={user.username}
               counselId={data._id}
               userId={user.id}
+              userRole={user.roles}
               setLoading={setLoading}
             />
           )}
@@ -106,6 +125,7 @@ const CounselDoc = () => {
                 commentId={comment._id}
                 counselId={comment.counselId}
                 userId={comment.userId}
+                userRole={comment.userRole}
                 currentUser={user}
                 name={comment.name}
                 content={comment.content}
@@ -116,28 +136,52 @@ const CounselDoc = () => {
             ))}
         </div>
       ) : (
-        <VerifyPassword handlePassword={handlePassword} authBtn={authBtn} />
+        <VerifyPassword
+          password={password}
+          title={data.title}
+          handlePassword={handlePassword}
+          authBtn={authBtn}
+        />
       )}
     </>
   );
 };
+
 const VerifyPassword = (props) => {
   return (
     <div className="Wrap">
-      <input
-        type="password"
+      <Text
+        textAlign={"left"}
+        fontSize={25}
+        fontWeight={600}
+        fontColor={"#000"}
+        Margin={"35px 0px"}
+        text={props.title}
+      />
+      <Text
+        textAlign={"left"}
+        fontSize={18}
+        fontWeight={800}
+        fontColor={"#03C126"}
+        Margin={"0px 0px 35px 0px"}
+        text={"비밀번호 확인 후 게시물 열람이 가능합니다"}
+      />
+      <InputWrap
+        id={"password"}
+        label={"비밀번호"}
+        placeholder={"비밀번호를 입력해주세요"}
         onChange={props.handlePassword}
-        name="password"
         maxLength={4}
+        value={props.password}
         onKeyUp={(e) => {
           if (e.key === "Enter") {
-            props.authBtn();
+            return props.authBtn();
+          }
+          if (e.target.value.length === 4) {
+            return props.authBtn();
           }
         }}
       />
-      <button className="passwordBtn" onClick={props.authBtn}>
-        입력
-      </button>
     </div>
   );
 };

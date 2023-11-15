@@ -1,0 +1,19 @@
+.InputWrap {
+  width: 100%;
+}
+.InputWrap label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.InputWrap label img {
+  margin-right: 5px;
+}
+
+.InputWrap input {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid #E2E4E5;
+  font-size: 18px;
+}

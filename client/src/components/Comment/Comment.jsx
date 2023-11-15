@@ -61,20 +61,28 @@ const Comment = (props) => {
   };
   return (
     <div className="CommentWrap">
-      <div className="CommentHead">
-        <p>{props.name}</p>
+      <div
+        className="CommentHead"
+        style={
+          props.name === "로라인 AI"
+            ? { backgroundColor: "rgba(0, 193, 38, 0.15)", color: "#00C126" }
+            : { backgroundColor: "#F4F4F4" }
+        }
+      >
+        <p>{props.name} {props.userRole === "Admin" && "관리자"} {props.userRole === "Lawyer" && "변호사"}</p>
         <p>{props.createdAt}</p>
-        {props.updatedAt && <p>{props.updatedAt}</p>}
-        {props.userId === props.currentUser.id && (
-          <>
-            <button onClick={() => modifyBtn({ data: props.content })}>
-              수정
-            </button>
-            <button onClick={deleteBtn}>삭제</button>
-          </>
-        )}
-        {}
+        {/* {props.updatedAt && <p>{props.updatedAt}</p>} */}
       </div>
+
+      {props.userId === props.currentUser.id && (
+        <div>
+          <button onClick={() => modifyBtn({ data: props.content })}>
+            수정
+          </button>
+          <button onClick={deleteBtn}>삭제</button>
+        </div>
+      )}
+
       <div className="CommentBody">
         {mode ? (
           <>
@@ -88,7 +96,28 @@ const Comment = (props) => {
             <button onClick={updateBtn}>수정 완료</button>
           </>
         ) : (
-          <p>{props.content}</p>
+          <div
+            className="ComentBodyDesc"
+            style={
+              props.name === "로라인 AI"
+                ? {
+                    borderLeft: "1px solid #00C126",
+                  }
+                : { borderLeft: "1px solid #000" }
+            }
+          >
+            <p
+              style={
+                props.name === "로라인 AI"
+                  ? {
+                      fontWeight: 400,
+                    }
+                  : { fontWeight: 700 }
+              }
+            >
+              {props.content}
+            </p>
+          </div>
         )}
       </div>
     </div>

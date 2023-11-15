@@ -6,6 +6,7 @@ const { OPENAI_KEY } = require("../common");
 const mongoose = require("mongoose");
 
 const { user: User } = db;
+const { counsel: Counsel } = db;
 const { comment: Comment } = db;
 
 const openai = new OpenAI({
@@ -22,7 +23,7 @@ let conversationHistory = [
 
 exports.createAIComment = async (req, res) => {
   try {
-    console.log("createAIComment Start")
+    console.log("createAIComment Start");
     const { content, counselId } = req.body;
     conversationHistory.push({
       role: "user",
@@ -32,7 +33,6 @@ exports.createAIComment = async (req, res) => {
       messages: conversationHistory,
       model: "gpt-4",
     });
-    // console.log(chatCompletion.choices[0].message.content);
     const newComment = new Comment({
       name: "로라인 AI",
       content: chatCompletion.choices[0].message.content,
@@ -40,7 +40,15 @@ exports.createAIComment = async (req, res) => {
       counselId: counselId,
     });
     await newComment.save();
-    console.log("createAIComment Completed")
+    await Counsel.findOneAndUpdate(
+      { _id: counselId },
+      {
+        $set: {
+          comment: "AIComment",
+        },
+      }
+    );
+    console.log("createAIComment Completed");
     res.status(200).json({ message: "Success" });
   } catch (error) {
     console.error("Error during signup:", error);
@@ -50,9 +58,23 @@ exports.createAIComment = async (req, res) => {
 
 exports.createComment = async (req, res) => {
   try {
-    const { name, content, userId, counselId } = req.body;
-    const newComment = new Comment({ name, content, userId, counselId });
+    const { name, content, userId, userRole, counselId } = req.body;
+    const newComment = new Comment({
+      name,
+      content,
+      userId,
+      userRole,
+      counselId,
+    });
     await newComment.save();
+    await Counsel.findOneAndUpdate(
+      { _id: counselId },
+      {
+        $set: {
+          comment: "LawyerComment",
+        },
+      }
+    );
     res.status(200).json({ message: "Success" });
   } catch (error) {
     console.error("Error during signup:", error);
@@ -72,7 +94,9 @@ exports.findAllComment = async (req, res) => {
 
 exports.readComment = async (req, res) => {
   try {
-    const result = await Comment.find({ counselId: req.params.comment_id }).sort()
+    const result = await Comment.find({
+      counselId: req.params.comment_id,
+    }).sort();
     res.status(200).json(result);
   } catch (error) {
     console.error("Error during signup:", error);

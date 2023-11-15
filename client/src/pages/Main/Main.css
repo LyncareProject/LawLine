@@ -9,14 +9,14 @@
 
 @font-face {
   font-family: 'Pretendard';
-  src: url('./../../fonts/Pretendard-Medium.woff2') , url('./../../fonts/Pretendard-Medium.woff')
+  src: url('./../../assets/fonts/Pretendard-Medium.woff2') , url('./../../assets/fonts/Pretendard-Medium.woff')
   format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Pretendard-Blod';
-  src: url('./../../fonts/Pretendard-Bold.woff') , url('./../../fonts/Pretendard-Bold.woff2')
+  src: url('./../../assets/fonts/Pretendard-Bold.woff') , url('./../../assets/fonts/Pretendard-Bold.woff2')
   format('woff2');
   font-weight: bold;
   font-style: normal;
