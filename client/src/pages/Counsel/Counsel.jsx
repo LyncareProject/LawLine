@@ -86,7 +86,7 @@ const Counsel = () => {
           fontSize={22}
           fontWeight={400}
           fontColor={"#000"}
-          Margin={"60px 0 15px 0"}
+          margin={"60px 0 15px 0"}
           text={"어려운 법률이야기\n혼자서 해결하기 힘드시죠?"}
         />
         <Text
@@ -94,7 +94,7 @@ const Counsel = () => {
           fontSize={30}
           fontWeight={700}
           fontColor={"#000"}
-          Margin={"0 0 15px 0"}
+          margin={"0 0 15px 0"}
           text={"전문가가 도와드리겠습니다"}
         />
         <div className="Block">
@@ -169,9 +169,6 @@ const Counsel = () => {
           buttonMargin={"10px 0"}
           pressButton={sendBtn}
         />
-        {/* <button className="Button" onClick={sendBtn}>
-          상담 신청
-        </button> */}
       </div>
     </div>
   );

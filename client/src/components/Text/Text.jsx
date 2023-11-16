@@ -9,7 +9,7 @@ const Text = (props) => {
           fontSize: props.fontSize,
           fontWeight: props.fontWeight,
           color: props.fontColor,
-          margin: props.Margin,
+          margin: props.margin,
           lineHeight: "1.5em",
           whiteSpace: "pre-wrap"
         }}

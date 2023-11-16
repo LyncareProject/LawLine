@@ -26,8 +26,9 @@ import MobileHeader from "./components/MobileHeader/MoblieHeader";
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  console.log(windowWidth);
   const dispatch = useDispatch();
+
+  // 브라우저 넓이 측정
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -35,9 +36,10 @@ function App() {
 
     window.addEventListener("resize", handleResize);
 
-    // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // 유저 권한
   useEffect(() => {
     try {
       const Tokens = JSON.parse(localStorage.getItem("Tokens"));

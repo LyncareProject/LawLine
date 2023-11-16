@@ -31,7 +31,7 @@ const CounselList = () => {
           fontSize={25}
           fontWeight={600}
           fontColor={"#000"}
-          Margin={"35px 0"}
+          margin={"35px 0"}
           text={"상담사례"}
         />
         <Text
@@ -39,7 +39,7 @@ const CounselList = () => {
           fontSize={25}
           fontWeight={600}
           fontColor={"#000"}
-          Margin={"35px 0"}
+          margin={"35px 0"}
           text={data && `총 ${data.length}건`}
         />
       </div>
@@ -64,7 +64,7 @@ const CounselList = () => {
                       fontSize={14}
                       fontWeight={700}
                       fontColor={"#00C126"}
-                      Margin={"0"}
+                      margin={"0"}
                       text={"답변완료"}
                     />
                   </div>
@@ -77,7 +77,7 @@ const CounselList = () => {
                       fontSize={14}
                       fontWeight={700}
                       fontColor={"#000"}
-                      Margin={"0"}
+                      margin={"0"}
                       text={"답변완료"}
                     />
                   </div>

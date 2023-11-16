@@ -97,7 +97,7 @@ const CounselDoc = () => {
     <>
       {auth && data ? (
         <div className="Wrap">
-          <Title title={data.title} />
+          <Title title={data.title} margin={"20px 0"}/>
           <Text text={data.desc} />
           <div className="CounselInfo">
             <p className="CounselInfoPhone">
@@ -155,7 +155,7 @@ const VerifyPassword = (props) => {
         fontSize={25}
         fontWeight={600}
         fontColor={"#000"}
-        Margin={"35px 0px"}
+        margin={"35px 0px"}
         text={props.title}
       />
       <Text
@@ -163,7 +163,7 @@ const VerifyPassword = (props) => {
         fontSize={18}
         fontWeight={800}
         fontColor={"#03C126"}
-        Margin={"0px 0px 35px 0px"}
+        margin={"0px 0px 35px 0px"}
         text={"비밀번호 확인 후 게시물 열람이 가능합니다"}
       />
       <InputWrap
@@ -173,6 +173,7 @@ const VerifyPassword = (props) => {
         onChange={props.handlePassword}
         maxLength={4}
         value={props.password}
+        icon={"IconKey"}
         onKeyUp={(e) => {
           if (e.key === "Enter") {
             return props.authBtn();

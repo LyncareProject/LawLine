@@ -2,50 +2,49 @@
   width: 80%;
   margin: 0 auto;
 }
-.Ball{
+.Ball {
   display: block;
   width: 32px;
   height: 32px;
-  background-color:#D9D9D9;
+  background-color: #d9d9d9;
   border-radius: 30px;
 }
 
-.Completed .Check_b button{
+.Completed .Check_b button {
   min-height: 70px;
   border: 0px solid #000;
   border-radius: 12px;
-  background: #F0F0F0;
+  background: #f0f0f0;
   color: #000;
-text-align: center;
-font-family: Pretendard;
-font-size: 25px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-letter-spacing: -0.75px;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.75px;
 }
 
 /* 문의내용 */
-.Inquiry_details h4{
-  color: #2B2D2F;
+.Inquiry_details h4 {
+  color: #2b2d2f;
   font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
-.Inquiry_details textarea{
+.Inquiry_details textarea {
   width: 100%;
   margin-top: -10px;
   resize: none;
   min-height: 331px;
   border-radius: 10px;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #cfcfcf;
 }
 
-
-.Completed h5{
-  color: #00C126;
+.Completed h5 {
+  color: #00c126;
   text-align: center;
   font-family: Pretendard;
   font-size: 25px;
@@ -57,21 +56,20 @@ letter-spacing: -0.75px;
   margin-bottom: 40px;
 }
 
-
-@media  (min-width: 1200px){
-  .Completed{
+@media (min-width: 1200px) {
+  .Completed {
     width: 35%;
   }
-  .Ball{
+  .Ball {
     margin-top: 40px;
     margin-bottom: 10px;
   }
-  
-  .Inquiry_details h4{
+
+  .Inquiry_details h4 {
     font-size: 26px;
     line-height: 40px;
   }
-  .Completed h5{
+  .Completed h5 {
     font-size: 30px;
     margin-top: 20px;
   }

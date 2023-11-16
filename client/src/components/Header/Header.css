@@ -53,7 +53,7 @@
   display: none;
 }
 
-@media (max-width:650px) {
+/* @media (max-width:650px) {
   .App .Header {
     width: 100%;
     position: relative;
@@ -100,4 +100,4 @@
   .LoginBtn{
     margin-bottom: 15px;
   }
-}
+} */

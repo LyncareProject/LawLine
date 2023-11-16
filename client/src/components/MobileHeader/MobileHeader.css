@@ -1,8 +1,34 @@
 .MobileHeader {
+  position: relative;
   width: 100%;
   padding: 16px;
-} 
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  z-index: 9;
+}
 .MobileHeader .Logo {
-  width: 130px;
+  width: 160px;
   padding: 16px;
-} 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Sidebar {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  transition: all 0.3s ease-in;
+  z-index: 8;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #7a8287;
+  box-sizing: border-box;
+}
