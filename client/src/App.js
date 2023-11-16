@@ -22,10 +22,11 @@ import ForwardingLink from "./utils/ForwardingLink/ForwardingLink";
 import NotFound from "./pages/NotFound/NotFound";
 import LawyerRegist from "./pages/LawyerRegist/LawyerRegist";
 import MobileHeader from "./components/MobileHeader/MoblieHeader";
+import ChatRoom from "./pages/ChatRoom/ChatRoom";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const [chatRoom, setChatRoom]= useState(false);
   const dispatch = useDispatch();
 
   // 브라우저 넓이 측정
@@ -64,6 +65,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
+      {/* <ChatRoom /> */}
       {windowWidth >= 768 ? <Header /> : <MobileHeader />}
 
       <Routes>
