@@ -1,5 +1,4 @@
 const db = require("../models");
-const moment = require("moment");
 
 const { forward: Forward } = db;
 

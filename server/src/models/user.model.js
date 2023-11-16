@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema({
   callNumber: { type: String },
   registNumber: { type: String },
   password: { type: String },
-  createdAt: { type: String, default: moment().format("YYYY-MM-DD hh:mm:ss") },
+  createdAt: {
+    type: String,
+    default: () => moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss"),
+  },
   updatedAt: { type: String },
   roles: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
 });

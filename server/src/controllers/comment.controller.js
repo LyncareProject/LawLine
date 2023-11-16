@@ -105,7 +105,7 @@ exports.readComment = async (req, res) => {
 };
 exports.updateComment = async (req, res) => {
   try {
-    req.body.updatedAt = moment().format("YYYY-MM-DD hh:mm:ss");
+    req.body.updatedAt = moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
     await Comment.findOneAndUpdate({ _id: req.params.comment_id }, req.body);
     res.json({ message: "Updated" });
   } catch (error) {

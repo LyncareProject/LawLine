@@ -1,6 +1,6 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 const { user: User } = db;
 const { counsel: Counsel } = db;
@@ -19,7 +19,7 @@ exports.createCounsel = async (req, res) => {
 
 exports.findAllCounsel = async (req, res) => {
   try {
-    const result = await Counsel.find().sort({ createdAt : -1 });
+    const result = await Counsel.find().sort({ createdAt: -1 });
     res.status(200).json(result);
   } catch (error) {
     console.error("Error during signup:", error);
@@ -38,13 +38,17 @@ exports.readCounsel = async (req, res) => {
 };
 exports.searchCounsel = async (req, res) => {
   try {
-    const { phone, password } = req.body
-    const result = await Counsel.findOne({ phone : phone });
-    if(!result){
-      return res.status(404).json({message: "입력된 정보로 상담 신청된 내역이 없습니다."});
+    const { phone, password } = req.body;
+    const result = await Counsel.findOne({ phone: phone }).sort({
+      createdAt: -1,
+    });
+    if (!result) {
+      return res
+        .status(404)
+        .json({ message: "입력된 정보로 상담 신청된 내역이 없습니다." });
     }
-    if(result.password !== password){
-      return res.status(404).json({message: "비밀번호 오류"});
+    if (result.password !== password) {
+      return res.status(404).json({ message: "비밀번호 오류" });
     }
     res.status(200).json(result);
   } catch (error) {
@@ -54,7 +58,9 @@ exports.searchCounsel = async (req, res) => {
 };
 exports.updateCounsel = async (req, res) => {
   try {
-    req.body.updatedAt = moment().format("YYYY-MM-DD hh:mm:ss");
+    req.body.updatedAt = moment()
+      .tz("Asia/Seoul")
+      .format("YYYY-MM-DD HH:mm:ss");
     await Counsel.findOneAndUpdate({ _id: req.params.counsel_id }, req.body);
     res.json({ message: "Updated" });
   } catch (error) {
