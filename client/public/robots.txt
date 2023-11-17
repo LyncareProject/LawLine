@@ -1,3 +1,9 @@
 
 User-agent: *
-Allow: /
+Disallow: /
+Allow: /$
+Allow: /counsel
+Allow: /counsel/list
+Allow: /counsel/search
+Allow: /img
+Allow: /favicon
