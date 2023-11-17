@@ -158,3 +158,12 @@
   margin: 10px 0;
   color: #E80001;
 }
+
+@media (min-width : 768px) {
+  .Login {
+    padding: 80px 16px;
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+  }
+}
