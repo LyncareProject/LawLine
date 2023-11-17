@@ -32,20 +32,20 @@ return (
                변호사 임영준입니다</h3>
           <ul>
             <li className='li_title'>변호사 약력</li>
-            <li>서울특별시 <span>양천구 공익변호사단</span></li>
-            <li>서울 양천구 <span>법률고문 위촉</span></li>
-            <li>대법원 <span>국선변호인</span></li>
-            <li>충청북도 <span>마을변호사</span></li>
-            <li>서울남부지방법원 <span>소송구조 지정변호사</span></li>
-            <li>서울남부지방법원 논스톱 <span>국선 변호인</span></li>
-            <li>제2017-168호 <span>이혼상속 등 전문분야</span> 등록</li>
-            <li>서울창업진흥원 청년창업지원센터 <span>법률자문위원</span></li>
-            <li>인천지방법원 <span>국선변호인</span></li>
-            <li>온라인유통센터 <span>법률자문위원</span></li>
-            <li>중앙해양심판원 <span>해양사고조사심판변론인</span></li>
-            <li>대한가정법률복지상담원 <span>인천지부 법무이사</span></li>
-            <li>법무법인 정곡 남부사무소 <span>대표변호사</span></li>
-            <li className='li_last'><span>공정거래위원회 가맹거래사</span></li>
+            <li>현)법무법인 정곡 <span>서울사무소 대표변호사</span></li>
+            <li>제 2017-168호 <span>이혼상속 등 전문분야 등록</span></li>
+            <li>현)서울 양천구청 <span>법률고문 위촉</span></li>
+            <li>현)서울특별시 <span>공익변호사단</span></li>
+            <li>현)공정거래위원회 <span>가맹거래사</span></li>
+            <li>현)충청북도 <span>마을변호사</span></li>
+            <li>전)대법원 <span>국선변호인</span></li>
+            <li>전)서울남부지방법원 <span>소송구조 지정변호사</span></li>
+            <li>전)서울남부지방법원 <span>논스톱 국선 변호인</span></li>
+            <li>전)대한가정법률복지상담원 <span>인천지부 법무이사</span></li>
+            <li>전)인천지방법원  <span>국선변호인(성폭력 전담부)</span></li>
+            <li>전)서울창업진흥원 <span>청년창업지원센터 법률자문위원</span></li>
+            <li>전)온라인유통센터 <span>법률자문위원</span></li>
+            <li className='li_last'>전)중앙해양심판원<span>해양사고조사심판변론인</span></li>
           </ul>
         </div>
   

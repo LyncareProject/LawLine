@@ -1,8 +1,8 @@
-.View {
+.CounselSearch {
   width: 80%;
   margin: 0 auto;
 }
-.Ball {
+.CounselSearch .Ball {
   display: block;
   width: 32px;
   height: 32px;
@@ -10,7 +10,7 @@
   border-radius: 30px;
   margin-top: 30px;
 }
-.View h2 {
+.CounselSearch h2 {
   color: #000;
   text-align: left;
   margin-top: 5px;
@@ -22,7 +22,7 @@
   letter-spacing: -0.75px;
   margin-top: 10px;
 }
-.Check_b button {
+.CounselSearch .Check_b button {
   width: 100%;
   min-height: 70px;
   border-radius: 12px;
@@ -40,8 +40,8 @@
 }
 
 /* 전화번호 비번 입력 */
-.Phone_number,
-.Passwor {
+.CounselSearch .Phone_number,
+.CounselSearch .Passwor {
   margin-top: 45px;
   color: #2b2d2f;
   font-family: Pretendard;
@@ -50,14 +50,14 @@
   font-weight: 500;
   line-height: normal;
 }
-.Phone_number img,
-.Passwor img {
+.CounselSearch .Phone_number img,
+.CounselSearch .Passwor img {
   max-width: 17px;
   margin-right: 5px;
   margin-left: 2px;
 }
-.Phone_number input,
-.Passwor input {
+.CounselSearch .Phone_number input,
+.CounselSearch .Passwor input {
   width: 100%;
   color: #757575;
   font-family: Pretendard;
@@ -67,58 +67,59 @@
   line-height: 20px;
   border: 0;
 }
-hr {
+.CounselSearch hr {
   margin-top: 10px;
   border-bottom: 1px solid #e2e4e5;
   background-color: #e2e4e5;
 }
 
 @media (min-width: 1000px) {
-  .View {
-    width: 60%;
+  .CounselSearch {
+    width: 50%;
   }
-  .Ball {
+  .CounselSearch .Ball {
     margin-top: 40px;
     margin-bottom: 10px;
   }
-  h3 {
+  .CounselSearch h3 {
     font-size: 30px;
     line-height: 32px;
   }
-  .View h2 {
+  .CounselSearch h2 {
     font-size: 36px;
   }
-  .Phone_number,
-  .Passwor {
+  .CounselSearch .Phone_number,
+  .CounselSearch .Passwor {
     font-size: 26px;
   }
-  .Phone_number input,
-  .Passwor input {
+  .CounselSearch .Phone_number input,
+  .CounselSearch .Passwor input {
     font-size: 24px;
   }
 
-  .Phone_number p img {
+  .CounselSearch .Phone_number p img {
     max-width: 20px;
     margin-bottom: -2px;
     margin-right: 8px;
   }
-  .Passwor p img {
+  .CounselSearch .Passwor p img {
     max-width: 22px;
   }
 
-  .Inquiry_details h4 {
+  .CounselSearch .Inquiry_details h4 {
     font-size: 26px;
     line-height: 40px;
   }
 
-  .Check_b button {
+  .CounselSearch .Check_b button {
     font-size: 26px;
     margin-top: 30px;
     margin-bottom: 40px;
   }
 }
-@media (min-width: 1400px) {
-  .View {
-    width: 50%;
+@media (min-width: 1500px) {
+  .CounselSearch {
+    width: 35%;
+    margin: 0 auto;
   }
 }

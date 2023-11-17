@@ -8,6 +8,7 @@ import { readComment } from "../../services/commentService";
 import SubTitle from "../../components/SubTitle/SubTitle";
 import Title from "../../components/Title/Title";
 import Text from "../../components/Text/Text";
+import "./CounselDoc.css"
 
 const CounselDoc = () => {
   const [loading, setLoading] = useState(false);
@@ -88,8 +89,9 @@ const CounselDoc = () => {
       {auth && data ? (
         <div className="Wrap">
           <Title title={data.title} />
-          <SubTitle subTitle={data.name} />
-          <SubTitle subTitle={data.phone} />
+          {/* <SubTitle subTitle={data.name} />
+          <SubTitle subTitle={data.phone} /> */}
+          <SubTitle subTitle={`${data.name} ${data.phone}`} />
           <Text text={data.desc} />
           {(user.roles === "Laywer" || user.roles === "Admin") && (
             <CommentEdit

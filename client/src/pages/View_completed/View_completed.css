@@ -2,7 +2,7 @@
   width: 80%;
   margin: 0 auto;
 }
-.Ball{
+.View_completed .Ball{
   display: block;
   width: 32px;
   height: 32px;
@@ -44,7 +44,7 @@
 }
 
 /* 문의내용 */
-.Inquiry_details h4{
+.View_completed .Inquiry_details h4{
   color: #2B2D2F;
   font-family: Pretendard;
   font-size: 20px;
@@ -52,7 +52,7 @@
   font-weight: 500;
   line-height: normal;
 }
-.Inquiry_details textarea{
+.View_completed .Inquiry_details textarea{
   width: 100%;
   margin-top: -10px;
   resize: none;
@@ -77,7 +77,7 @@ margin-top: 25px;
   .View_completed{
     width: 60%;
   }
-    .Ball{
+  .View_completed   .Ball{
     margin-top: 40px;
     margin-bottom: 10px;
   }
@@ -88,21 +88,21 @@ margin-top: 25px;
   .View_completed h4{
     font-size: 26px;
   }
-  .Phone_number input , .Passwor input{
+  .View_completed .Phone_number input ,.View_completed  .Passwor input{
     font-size: 24px;
   }
  
-  .Phone_number p img{
+  .View_completed .Phone_number p img{
     max-width: 20px;
     margin-bottom: -2px;
     margin-right: 8px;
     
   }
-   .Passwor p img{
+  .View_completed .Passwor p img{
     max-width: 22px;
  
   }
-  .Phone_number input{
+  .View_completed .Phone_number input{
     font-size: 26px;
   }
 

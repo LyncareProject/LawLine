@@ -53,7 +53,7 @@ font-weight: 600;
 line-height: normal;
 letter-spacing: -0.75px;
 }
-.Check_b button {
+.Inquiry .Check_b button {
   min-height: 70px;
   border: 0px solid #000;
   border-radius: 12px;
@@ -69,7 +69,7 @@ letter-spacing: -0.75px;
 }
 
 /* 전화번호 비번 입력 */
-.Phone_number , .Passwor{
+.Inquiry .Phone_number ,.Inquiry  .Passwor{
   margin-top: 45px;
   color: #2B2D2F;
   font-family: Pretendard;
@@ -84,17 +84,17 @@ letter-spacing: -0.75px;
   display: block;
   margin-left: 0;
 }
-.Phone_number p , .Passwor p{
+.Inquiry .Phone_number p ,.Inquiry  .Passwor p{
   margin-bottom: 10px;
 }
 
-.Phone_number img , .Passwor img{
+.Inquiry .Phone_number img ,.Inquiry  .Passwor img{
   max-width: 17px;
   margin-right: 5px;
   margin-left: 2px;
   
 }
-.Phone_number input , .Passwor input{
+.Inquiry .Phone_number input ,.Inquiry  .Passwor input{
   width: 100%;
   color: #757575;
 font-family: Pretendard;
@@ -133,12 +133,12 @@ border: 0;
 }
 
 /* 접수하기 */
-.Apply_b{
+.Inquiry .Apply_b{
   width: 100%;
  
 
 }
-.Apply_b button{
+.Inquiry .Apply_b button{
   color: #FFF;
   min-height: 70px;
   border-radius: 12px;
@@ -159,7 +159,7 @@ border: 0;
   .Inquiry{
     width: 35%;
   }
-    .Ball{
+  .Inquiry   .Ball{
     margin-top: 40px;
     margin-bottom: 10px;
   }
@@ -170,21 +170,21 @@ border: 0;
   .Inquiry h2{
     font-size: 36px;
   }
-  .Phone_number , .Passwor{
+  .Inquiry .Phone_number ,.Inquiry  .Passwor{
     font-size: 26px;
     
   }
-  .Phone_number input , .Passwor input{
+  .Inquiry .Phone_number input ,.Inquiry  .Passwor input{
     font-size: 24px;
   }
  
-  .Phone_number p img{
+  .Inquiry .Phone_number p img{
     max-width: 20px;
     margin-bottom: -2px;
     margin-right: 8px;
     
   }
-   .Passwor p img{
+  .Inquiry  .Passwor p img{
     max-width: 22px;
  
   }

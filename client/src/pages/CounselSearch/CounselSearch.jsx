@@ -26,7 +26,7 @@ const CounselSearch = () => {
     }
   };
   return (
-    <div className="View">
+    <div className="CounselSearch">
       <p className="Ball"></p>
       <h2>내 문의 조회하기</h2>
       <div></div>

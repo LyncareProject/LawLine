@@ -7,7 +7,7 @@ const CounselResult = () => {
   const { state } = useLocation();
 
   return (
-    <div className="View_completed">
+    <div className="CounselResult">
       <p className="Ball"></p>
       <h2>내 문의 조회하기</h2>
       <div></div>

@@ -1,0 +1,109 @@
+.CounselList {
+  width: 90%;
+  margin: 0 auto;
+}
+.CounselList .Ball {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-color: #d9d9d9;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+  }
+  
+.CounselList h3{
+  color: #000;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.75px;
+  margin-bottom: 16px;
+}
+.CounselList a{
+  
+  display: block;
+  justify-content: space-between;
+  width: 100%;
+  color: #2B2D2F;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 14px 9px;
+  border-bottom: 1px solid #BDBDBD;
+  box-sizing: border-box;
+  letter-spacing: -0.6px;
+  background-color: #F4F4F4;
+}
+
+.CounselList a:visited { 
+  color: #757575;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.6px;
+  background-color: #fff;
+ }
+/* ai */
+
+ .CounselList .ai {
+  width: 30%;
+ font-size: 0;
+ margin-right: auto;
+ 
+ }
+ .CounselList .ai  img{ 
+  display: block;
+  margin-top: 3px;
+  float: right;
+ width: 100%;
+  max-width: 80px;
+ 
+ }
+ /* im */
+ .CounselList .im {
+  font-size: 0;
+  margin-right: auto;
+  
+  }
+  .CounselList .im  img{ 
+   display: block;
+   margin-top: 0;
+   float: right;
+  width: 100%;
+   max-width: 88px;
+  }
+
+/* .CounselList a p:last-of-type{
+  border-bottom: 1px solid #535353;
+} */
+
+
+.CounselList hr{
+  background-color: #535353;
+  margin: 0;
+  padding: 0;
+}
+hr:nth-last-child(1){
+  margin-bottom: 40px;
+  padding-top: -30px;
+  margin-top: -0.8px;
+}
+
+@media  (min-width: 700px){
+  .CounselList{
+    width: 50%;
+  }
+}
+
+@media  (min-width: 1100px){
+  .CounselList{
+    width: 40%;
+  }
+}

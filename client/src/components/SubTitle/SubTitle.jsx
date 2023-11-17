@@ -2,7 +2,7 @@ import "./SubTitle.css";
 
 const SubTitle = (props) => {
   return (
-    <div>
+    <div className="SubTitle">
       <p className='ComponentSubTitle'>{props.subTitle}</p>
     </div>
   );

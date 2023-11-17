@@ -1,8 +1,8 @@
-.View_completed {
+.CounselResult  {
   width: 80%;
   margin: 0 auto;
 }
-.Ball {
+.CounselResult .Ball {
   display: block;
   width: 32px;
   height: 32px;
@@ -11,7 +11,7 @@
   margin-bottom: 10px;
 }
 
-.View_completed h2 {
+.CounselResult  h2 {
   color: #000;
   text-align: left;
   margin-top: 5px;
@@ -24,23 +24,28 @@
 }
 
 /* 전화번호 */
-.Phone_number {
+.CounselResult .Phone_number {
   display: table;
   width: 100%;
   text-wrap: nowrap;
 }
-.Phone_number p {
+.CounselResult .Phone_number p {
   display: table-cell;
   width: 10%;
 }
-.Phone_number input {
+.CounselResult .Phone_number input {
   display: table-cell;
   font-size: 20px;
   margin-left: 10px;
 }
 
+.CounselResult .Phone_number input,
+.CounselResult .Passwor input {
+    margin-top: 10px;
+  }
+
 /* 문의내용 */
-.Inquiry_details h4 {
+.CounselResult .Inquiry_details h4 {
   color: #2b2d2f;
   font-family: Pretendard;
   font-size: 20px;
@@ -48,7 +53,7 @@
   font-weight: 500;
   line-height: normal;
 }
-.Inquiry_details textarea {
+.CounselResult .Inquiry_details textarea {
   width: 100%;
   margin-top: -10px;
   resize: none;
@@ -57,7 +62,7 @@
   border: 1px solid #cfcfcf;
 }
 
-h5 {
+.CounselResult h5 {
   color: #00c126;
   text-align: center;
   font-family: Pretendard;
@@ -70,45 +75,46 @@ h5 {
 }
 
 @media (min-width: 1000px) {
-  .View_completed {
+  .CounselResult  {
     width: 60%;
   }
-  .Ball {
+  .CounselResult .Ball {
     margin-top: 40px;
     margin-bottom: 10px;
   }
-  .View_completed h2 {
+  .CounselResult  h2 {
     font-size: 32px;
     line-height: 32px;
   }
-  .View_completed h4 {
+  .CounselResult  h4 {
     font-size: 26px;
   }
-  .Phone_number input,
-  .Passwor input {
+  .CounselResult .Phone_number input,
+  .CounselResult .Passwor input {
     font-size: 24px;
+      margin-top: 10px;
   }
 
-  .Phone_number p img {
+  .CounselResult .Phone_number p img {
     max-width: 20px;
     margin-bottom: -2px;
     margin-right: 8px;
   }
-  .Passwor p img {
+  .CounselResult .Passwor p img {
     max-width: 22px;
   }
-  .Phone_number input {
+  .CounselResult .Phone_number input {
     font-size: 26px;
   }
 
-  .View_completed h5 {
+  .CounselResult  h5 {
     font-size: 30px;
     line-height: 40px;
   }
 }
 
 @media (min-width: 1400px) {
-  .View_completed {
+  .CounselResult  {
     width: 50%;
   }
 }

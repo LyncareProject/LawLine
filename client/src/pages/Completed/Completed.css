@@ -2,7 +2,7 @@
   width: 80%;
   margin: 0 auto;
 }
-.Ball{
+.Completed .Ball{
   display: block;
   width: 32px;
   height: 32px;
@@ -26,7 +26,7 @@ letter-spacing: -0.75px;
 }
 
 /* 문의내용 */
-.Inquiry_details h4{
+.Completed .Inquiry_details h4{
   color: #2B2D2F;
   font-family: Pretendard;
   font-size: 20px;
@@ -34,7 +34,7 @@ letter-spacing: -0.75px;
   font-weight: 500;
   line-height: normal;
 }
-.Inquiry_details textarea{
+.Completed .Inquiry_details textarea{
   width: 100%;
   margin-top: -10px;
   resize: none;
@@ -62,12 +62,12 @@ letter-spacing: -0.75px;
   .Completed{
     width: 35%;
   }
-  .Ball{
+  .Completed .Ball{
     margin-top: 40px;
     margin-bottom: 10px;
   }
   
-  .Inquiry_details h4{
+  .Completed .Inquiry_details h4{
     font-size: 26px;
     line-height: 40px;
   }

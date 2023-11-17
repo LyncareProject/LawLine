@@ -1,0 +1,37 @@
+.Wrap {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Wrap h2{
+    color: #000;
+font-family: Pretendard;
+font-size: 26px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: -0.78px;
+}
+.Warp p{
+    color: #343434;
+font-family: Pretendard;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 28px; /* 155.556% */
+letter-spacing: -0.54px;
+}
+.Warp div .ComponentSubTitle{
+    display: block;
+    color: #989898;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.42px;
+}
+data.name{
+    font-size: 0;
+   
+}

@@ -2,7 +2,7 @@
   width: 80%;
   margin: 0 auto;
 }
-.Ball{
+.View .Ball{
   display: block;
   width: 32px;
   height: 32px;
@@ -22,7 +22,7 @@
   letter-spacing: -0.75px;
   margin-top: 10px;
 }
-.Check_b button{
+.View .Check_b button{
   width: 100%;
   min-height: 70px;
   border-radius: 12px;
@@ -40,7 +40,7 @@
 }
 
 /* 전화번호 비번 입력 */
-.Phone_number , .Passwor{
+.View .Phone_number ,.View .Passwor{
   margin-top: 45px;
   color: #2B2D2F;
   font-family: Pretendard;
@@ -50,12 +50,12 @@
   line-height: normal;
   
 }
-.Phone_number img , .Passwor img{
+.View .Phone_number img ,.View .Passwor img{
   max-width: 17px;
   margin-right: 5px;
   margin-left: 2px;
 }
-.Phone_number input , .Passwor input{
+.View .Phone_number input ,.View .Passwor input{
   width: 100%;
   color: #757575;
 font-family: Pretendard;
@@ -79,7 +79,7 @@ border: 0;
   .View{
     width: 60%;
   }
-  .Ball{
+  .View .Ball{
     margin-top: 40px;
     margin-bottom: 10px;
   }
@@ -88,31 +88,31 @@ border: 0;
     line-height: 32px;
   }
   .View h2{font-size: 36px;}
-  .Phone_number , .Passwor{
+  .View .Phone_number ,.View .Passwor{
     font-size: 26px;
     
   }
-  .Phone_number input , .Passwor input{
+  .View .Phone_number input ,.View .Passwor input{
     font-size: 24px;
   }
  
-  .Phone_number p img{
+  .View .Phone_number p img{
     max-width: 20px;
     margin-bottom: -2px;
     margin-right: 8px;
     
   }
-   .Passwor p img{
+  .View .Passwor p img{
     max-width: 22px;
  
   }
 
-  .Inquiry_details h4{
+  .View .Inquiry_details h4{
     font-size: 26px;
     line-height: 40px;
   }
 
-  .Check_b button{
+  .View .Check_b button{
     font-size: 26px;
     margin-top: 30px;
     margin-bottom: 40px;
