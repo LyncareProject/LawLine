@@ -9,14 +9,13 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../redux/userSlice";
 import { toast } from "react-toastify";
 import NoUser from "../../assets/images/NoUser.png";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   const [userControl, setUserControl] = useState(false);
-
   const logoutBtn = () => {
     dispatch(logout());
     setUserControl(false);
@@ -27,6 +26,7 @@ const Header = () => {
     });
     navigate("/");
   };
+
   return (
     <div className="Header">
       <img
@@ -42,11 +42,11 @@ const Header = () => {
           </a>
 
           <div className="Menu">
-            {/* <Link to="/">홈</Link> */}
-            {/* <Link to="/lawyers">변호사</Link> */}
             <Link to="/counsel/list">상담 사례</Link>
             <Link to="/counsel">상담 신청</Link>
-            <Link to="/counsel/search">상담 조회</Link>
+            <Link to={!user.isLogined ? "/counsel/search" : "/mypage/counsel"}>
+              상담 조회
+            </Link>
           </div>
         </div>
         <div className="RightNav">
@@ -86,7 +86,7 @@ const UserControl = (props) => {
       </div>
       <Link
         className="UserControlMenu"
-        to={`/counsel/list?phone=${props.userPhone}`}
+        to={"/mypage/counsel"}
         onClick={() => {
           props.setUserControl(false);
         }}

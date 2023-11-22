@@ -13,7 +13,7 @@ const CounselUser = () => {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const phone = queryParams.get("phone");
-  let limit = 10
+  let limit = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -26,16 +26,18 @@ const CounselUser = () => {
         const auth = await getAuth();
         const response = await findUserCounsel({ userId: auth.id });
         let dataToSet = response.data;
-        if(dataToSet.length === 0){
+        if (dataToSet.length === 0) {
           toast.error(<h1>상담 사례가 없습니다.</h1>, {
             position: "top-center",
             autoClose: 2000,
           });
-          navigate('/mypage')
-          return
+          navigate("/mypage");
+          return;
         }
         setData(dataToSet);
-        setPost(dataToSet.slice((currentPage - 1) * limit, (currentPage) * limit));
+        setPost(
+          dataToSet.slice((currentPage - 1) * limit, currentPage * limit)
+        );
       } catch (error) {
         console.error(error);
       } finally {
@@ -69,12 +71,8 @@ const CounselUser = () => {
         <div className="CounselTable">
           {!loading &&
             post.map((action, index) => (
-              <div className="CounselList">
-                <a
-                  className="CounselTitle"
-                  href={`/counsel/${action._id}`}
-                  key={index}
-                >
+              <div className="CounselList" key={index}>
+                <a className="CounselTitle" href={`/counsel/${action._id}`}>
                   <p>{action.title}</p>
                 </a>
                 <div>

@@ -8,11 +8,15 @@ import { useNavigate } from "react-router-dom";
 import { createAIComment } from "../../services/commentService";
 import Button from "../../components/Button/Button";
 import Text from "../../components/Text/Text";
+import { findUser } from "../../services/userService";
 
 const Counsel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  const [isLogined, setIsLogined] = useState(false);
   const [inputs, setInputs] = useState({
+    userId: "",
     title: "",
     name: "",
     phone: "",
@@ -20,7 +24,7 @@ const Counsel = () => {
     desc: "",
   });
 
-  const { title, name, phone, password, desc } = inputs;
+  const { userId, title, name, phone, password, desc } = inputs;
 
   const handleInputs = (e) => {
     setInputs({
@@ -36,8 +40,10 @@ const Counsel = () => {
         name,
         phone,
         password,
+        userId,
         desc,
       });
+
       if (response.data.message === "Success") {
         createAIComment({
           content: desc,
@@ -62,21 +68,29 @@ const Counsel = () => {
       const Tokens = JSON.parse(localStorage.getItem("Tokens"));
       if (Tokens) {
         const verifyAuth = async () => {
-          await getAuth();
-          const response = await getAuth();
-          if (response.message === "No authorized! 다시 로그인해주세요.") {
-            dispatch(logout());
-            localStorage.removeItem("Tokens");
-            return;
-          }
+          const auth = await getAuth();
+          const userData = await findUser({ id: auth.id });
+          setInputs({
+            ...inputs,
+            userId: userData.data._id,
+            name: userData.data.username,
+            phone: userData.data.phone,
+          });
+          setIsLogined(true);
         };
         verifyAuth();
       }
     } catch (error) {
       dispatch(logout());
       localStorage.removeItem("Tokens");
+    } finally {
+      setLoading(false);
     }
   }, []);
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="Page">
@@ -136,20 +150,22 @@ const Counsel = () => {
             onChange={handleInputs}
           />
         </div>
-        <div className="Block">
-          <h2 className="Title">
-            비밀번호 <span className="Gray">{"(숫자 4자리)"}</span>{" "}
-            <span className="Red">*</span>
-          </h2>
-          <input
-            className="Input"
-            type="text"
-            name="password"
-            value={password}
-            placeholder="비밀번호를 입력해주세요."
-            onChange={handleInputs}
-          />
-        </div>
+        {!isLogined && (
+          <div className="Block">
+            <h2 className="Title">
+              비밀번호 <span className="Gray">{"(숫자 4자리)"}</span>{" "}
+              <span className="Red">*</span>
+            </h2>
+            <input
+              className="Input"
+              type="text"
+              name="password"
+              value={password}
+              placeholder="비밀번호를 입력해주세요."
+              onChange={handleInputs}
+            />
+          </div>
+        )}
         <div className="Block">
           <h2 className="Title">
             문의 내용 <span className="Red">*</span>

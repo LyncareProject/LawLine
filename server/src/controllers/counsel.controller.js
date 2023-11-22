@@ -7,8 +7,8 @@ const { counsel: Counsel } = db;
 
 exports.createCounsel = async (req, res) => {
   try {
-    const { title, name, phone, password, desc } = req.body;
-    const newCounsel = new Counsel({ title, name, phone, password, desc });
+    const { title, name, phone, password, userId, desc } = req.body;
+    const newCounsel = new Counsel({ title, name, phone, password, userId, desc });
     await newCounsel.save();
     res.status(200).json({ message: "Success", newCounsel });
   } catch (error) {

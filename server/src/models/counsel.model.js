@@ -6,6 +6,10 @@ const counselSchema = new mongoose.Schema({
   name: { type: String, required: true },
   phone: { type: String },
   password: { type: String },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   desc: { type: String },
   createdAt: {
     type: String,

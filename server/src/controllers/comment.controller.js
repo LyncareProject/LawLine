@@ -1,6 +1,6 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
-const moment = require("moment");
+const moment = require("moment-timezone");
 const { OpenAI } = require("openai");
 const { OPENAI_KEY } = require("../common");
 const mongoose = require("mongoose");

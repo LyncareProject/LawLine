@@ -13,7 +13,7 @@ const CounselList = () => {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const phone = queryParams.get("phone");
-  let limit = 10
+  let limit = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -38,7 +38,9 @@ const CounselList = () => {
           dataToSet = filteredData;
         }
         setData(dataToSet);
-        setPost(dataToSet.slice((currentPage - 1) * limit, (currentPage) * limit));
+        setPost(
+          dataToSet.slice((currentPage - 1) * limit, currentPage * limit)
+        );
       } catch (error) {
         console.error(error);
       } finally {
@@ -72,12 +74,8 @@ const CounselList = () => {
         <div className="CounselTable">
           {!loading &&
             post.map((action, index) => (
-              <div className="CounselList">
-                <a
-                  className="CounselTitle"
-                  href={`/counsel/${action._id}`}
-                  key={index}
-                >
+              <div className="CounselList" key={index}>
+                <a className="CounselTitle" href={`/counsel/${action._id}`}>
                   <p>{action.title}</p>
                 </a>
                 <div>

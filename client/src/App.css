@@ -93,7 +93,7 @@ a {
 }
 .Page {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 500px);
 }
 .Wrap {
   width: 100%;

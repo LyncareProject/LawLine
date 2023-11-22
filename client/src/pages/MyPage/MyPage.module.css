@@ -47,6 +47,25 @@
 .Info > div > p:last-child {
   font-weight: 700;
 }
+.Input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.Input > input {
+  padding: 7px 10px;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.Input > button {
+  padding: 7px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #00C126;
+  color: #FFF;
+}
 .Title {
   font-size: 18px;
   font-weight: 600;

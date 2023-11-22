@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import "./CounselDoc.css";
 
 const CounselDoc = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
   const { counselId } = useParams();
   const [auth, setAuth] = useState(false);
@@ -24,7 +24,7 @@ const CounselDoc = () => {
   });
   const [password, setPassword] = useState("");
   const [comments, setComments] = useState([]);
-  console.log(comments)
+
   const navigate = useNavigate();
 
   const handlePassword = (e) => {
@@ -54,30 +54,21 @@ const CounselDoc = () => {
       return setAuth(true);
     }
   };
+
   useEffect(() => {
     try {
-      setLoading(true);
       const fetchData = async () => {
         const response = await readCounsel({ counselId });
         const commentResponse = await readComment({ commentId: counselId });
-        // const verityAuth = await getAuth();
-        // await setUser(verityAuth.data);
         await setData(response.data);
         await setComments(commentResponse.data);
-        // Token이 있을 때 검증
         const Tokens = JSON.parse(localStorage.getItem("Tokens"));
         if (Tokens) {
-          const authResponse = await getAuth();
-          console.log(authResponse);
-          setUser({
-            username: authResponse.name,
-            id: authResponse.id,
-            roles: authResponse.roles,
-          });
-          if (
-            authResponse.roles === "Laywer" ||
-            authResponse.roles === "Admin"
-          ) {
+          const authInfo = await getAuth();
+          if (response.data.userId === authInfo.id) {
+            setAuth(true);
+          }
+          if (authInfo.roles === "Laywer" || authInfo.roles === "Admin") {
             setAuth(true);
           }
         }
@@ -97,7 +88,7 @@ const CounselDoc = () => {
     <>
       {auth && data ? (
         <div className="Wrap">
-          <Title title={data.title} margin={"20px 0"}/>
+          <Title title={data.title} margin={"20px 0"} />
           <Text text={data.desc} />
           <div className="CounselInfo">
             <p className="CounselInfoPhone">
@@ -107,7 +98,13 @@ const CounselDoc = () => {
               작성일 : <span>{data.createdAt}</span>
             </p>
           </div>
-          <hr style={{ border: "none", height: "2px", backgroundColor: "#CFCFCF" }} />
+          <hr
+            style={{
+              border: "none",
+              height: "2px",
+              backgroundColor: "#CFCFCF",
+            }}
+          />
           {(user.roles === "Laywer" || user.roles === "Admin") && (
             <CommentEdit
               username={user.username}
@@ -149,40 +146,42 @@ const CounselDoc = () => {
 
 const VerifyPassword = (props) => {
   return (
-    <div className="Wrap">
-      <Text
-        textAlign={"left"}
-        fontSize={25}
-        fontWeight={600}
-        fontColor={"#000"}
-        margin={"35px 0px"}
-        text={props.title}
-      />
-      <Text
-        textAlign={"left"}
-        fontSize={18}
-        fontWeight={800}
-        fontColor={"#03C126"}
-        margin={"0px 0px 35px 0px"}
-        text={"비밀번호 확인 후 게시물 열람이 가능합니다"}
-      />
-      <InputWrap
-        id={"password"}
-        label={"비밀번호"}
-        placeholder={"비밀번호를 입력해주세요"}
-        onChange={props.handlePassword}
-        maxLength={4}
-        value={props.password}
-        icon={"IconKey"}
-        onKeyUp={(e) => {
-          if (e.key === "Enter") {
-            return props.authBtn();
-          }
-          if (e.target.value.length === 4) {
-            return props.authBtn();
-          }
-        }}
-      />
+    <div className="Page">
+      <div className="Wrap">
+        <Text
+          textAlign={"left"}
+          fontSize={25}
+          fontWeight={600}
+          fontColor={"#000"}
+          margin={"35px 0px"}
+          text={props.title}
+        />
+        <Text
+          textAlign={"left"}
+          fontSize={18}
+          fontWeight={800}
+          fontColor={"#03C126"}
+          margin={"0px 0px 35px 0px"}
+          text={"비밀번호 확인 후 게시물 열람이 가능합니다"}
+        />
+        <InputWrap
+          id={"password"}
+          label={"비밀번호"}
+          placeholder={"비밀번호를 입력해주세요"}
+          onChange={props.handlePassword}
+          maxLength={4}
+          value={props.password}
+          icon={"IconKey"}
+          onKeyUp={(e) => {
+            if (e.key === "Enter") {
+              return props.authBtn();
+            }
+            if (e.target.value.length === 4) {
+              return props.authBtn();
+            }
+          }}
+        />
+      </div>
     </div>
   );
 };

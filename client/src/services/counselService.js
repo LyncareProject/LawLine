@@ -1,12 +1,20 @@
 import axios from "axios";
 import API_URL from "./apiConfig";
 
-export const createCounsel = ({ title, name, phone, password, desc }) => {
+export const createCounsel = ({
+  title,
+  name,
+  phone,
+  password,
+  userId,
+  desc,
+}) => {
   return axios.post(API_URL + "counsel", {
     title,
     name,
     phone,
     password,
+    userId,
     desc,
   });
 };

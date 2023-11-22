@@ -1,5 +1,6 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
+const moment = require("moment-timezone");
 
 const { user: User } = db;
 const { role: Role } = db;
@@ -38,9 +39,31 @@ exports.findUser = async (req, res) => {
   const resultUser = await User.findOne({ _id: id });
   res.json(resultUser);
 };
+
 exports.updateUser = async (req, res) => {
-  console.log(req.body);
+  try {
+    req.body.updatedAt = moment()
+      .tz("Asia/Seoul")
+      .format("YYYY-MM-DD HH:mm:ss");
+    const { phone, updatedAt } = req.body;
+    console.log(req.params.id)
+    console.log(typeof phone)
+    console.log(typeof updatedAt)
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: { phone, updatedAt } },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json({ message: "Updated", user: updatedUser });
+  } catch (error) {
+    console.error("Error during signup:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 };
+
 exports.deleteUser = async (req, res) => {
   const id = req.params.id;
   console.log(id);
