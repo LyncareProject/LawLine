@@ -35,7 +35,8 @@ exports.createUser = async (req, res) => {
 
 exports.findUser = async (req, res) => {
   const id = req.params.id;
-  res.json({ message: "Success" });
+  const resultUser = await User.findOne({ _id: id });
+  res.json(resultUser);
 };
 exports.updateUser = async (req, res) => {
   console.log(req.body);

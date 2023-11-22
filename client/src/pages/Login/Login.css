@@ -3,6 +3,7 @@
   width: 100%;
   max-width: 360px;
   margin: auto;
+  min-height: calc(100vh - 500px);
 }
 .CategoryWrap {
   display: flex;

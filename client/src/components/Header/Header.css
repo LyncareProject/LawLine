@@ -49,8 +49,49 @@
   opacity: 0.7;
 }
 
-.hamburger_icon , .x_icon{
+.hamburger_icon,
+.x_icon {
   display: none;
+}
+.Header .ProfileImg {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.Header .ProfileImg img {
+  width: 100%;
+}
+.RightNav {
+  position: relative;
+}
+.Header .UserControl {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 150px;
+  border: 1px solid #e2e4e5;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.UserControlHead {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e2e4e5;
+  font-size: 18px;
+  font-weight: 700;
+}
+.Header .UserControlMenu {
+  text-align: center;
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px;
+  border-bottom: 1px solid #ededed;
 }
 
 /* @media (max-width:650px) {

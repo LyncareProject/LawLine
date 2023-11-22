@@ -1,0 +1,83 @@
+.Page {
+  width: 100%;
+  min-height: calc(100vh - 500px);
+  padding: 80px 0;
+}
+.Wrap {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.Head {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 8px solid #ededed;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+.Head img {
+  width: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.Head p {
+  font-size: 20px;
+  font-weight: 800;
+}
+.Info {
+  width: 100%;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ededed;
+}
+.Info > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  font-size: 18px;
+}
+
+.Info > div > p:first-child {
+  font-weight: 500;
+}
+.Info > div > p:last-child {
+  font-weight: 700;
+}
+.Title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #6f6f6f;
+  margin-bottom: 30px;
+}
+.Service {
+  width: 100%;
+  padding: 30px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ededed;
+}
+.Service > div {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 18px;
+}
+.Service > div:hover {
+  transition: all 0.3;
+  background-color: #f6f6f6;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.Service > div > p:first-child {
+  font-weight: 500;
+}
+.Service > div > p:last-child {
+  font-weight: 700;
+}

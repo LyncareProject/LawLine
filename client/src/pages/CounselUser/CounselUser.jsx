@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
-import { findAllCounsel } from "../../services/counselService";
+import { findAllCounsel, findUserCounsel } from "../../services/counselService";
 import { useLocation, useNavigate } from "react-router-dom";
 import Text from "../../components/Text/Text";
-import "./CounselList.css";
 import IconAI from "../../assets/images/IconAI.png";
 import IconLawyer from "../../assets/images/IconLawyer.png";
 import { toast } from "react-toastify";
 import Pagination from "../../components/Pagination/Pagination";
+import { getAuth } from "../../services/authService";
 
-const CounselList = () => {
+const CounselUser = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const phone = queryParams.get("phone");
   let limit = 10
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [post, setPost] = useState([]);
 
@@ -23,19 +23,16 @@ const CounselList = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await findAllCounsel();
+        const auth = await getAuth();
+        const response = await findUserCounsel({ userId: auth.id });
         let dataToSet = response.data;
-        if (phone) {
-          const filteredData = dataToSet.filter((data) => data.phone === phone);
-          if (filteredData.length === 0) {
-            toast.error(<h1>해당 전화번호로 신청된 상담 사례가 없습니다.</h1>, {
-              position: "top-center",
-              autoClose: 2000,
-            });
-            navigate("/counsel/search");
-            return;
-          }
-          dataToSet = filteredData;
+        if(dataToSet.length === 0){
+          toast.error(<h1>상담 사례가 없습니다.</h1>, {
+            position: "top-center",
+            autoClose: 2000,
+          });
+          navigate('/mypage')
+          return
         }
         setData(dataToSet);
         setPost(dataToSet.slice((currentPage - 1) * limit, (currentPage) * limit));
@@ -58,7 +55,7 @@ const CounselList = () => {
             fontWeight={600}
             fontColor={"#000"}
             margin={"35px 0"}
-            text={"상담사례"}
+            text={"내 상담 사례"}
           />
           <Text
             textAlign={"left"}
@@ -122,4 +119,4 @@ const CounselList = () => {
     </div>
   );
 };
-export default CounselList;
+export default CounselUser;

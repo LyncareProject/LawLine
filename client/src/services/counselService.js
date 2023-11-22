@@ -36,5 +36,9 @@ export const updateCounsel = ({
   });
 };
 export const deleteCounsel = ({ counselId }) => {
-  return axios.delete(API_URL + `counsel/${ counselId }`);
+  return axios.delete(API_URL + `counsel/${counselId}`);
+};
+
+export const findUserCounsel = ({ userId }) => {
+  return axios.get(API_URL + `counsel/user/${userId}`);
 };

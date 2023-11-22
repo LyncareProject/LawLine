@@ -23,6 +23,11 @@ import NotFound from "./pages/NotFound/NotFound";
 import LawyerRegist from "./pages/LawyerRegist/LawyerRegist";
 import MobileHeader from "./components/MobileHeader/MoblieHeader";
 import ChatRoom from "./pages/ChatRoom/ChatRoom";
+import Footer from "./components/Footer/Footer";
+import Provision from "./pages/Provision/Provision";
+import Privacy from "./pages/Privacy/Privacy";
+import CounselUser from "./pages/CounselUser/CounselUser";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -81,10 +86,15 @@ function App() {
         <Route path="/regist" element={<Regist />} />
         <Route path="/regist/lawyer" element={<LawyerRegist />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/counsel" element={<CounselUser />} />
+        <Route path="/mypage/password" element={<ChangePassword />} />
+        <Route path="/provison" element={<Provision />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="/not-found" element={<NotFound />} />
 
         <Route path="/:path" element={<ForwardingLink />} />
       </Routes>
+      <Footer /> 
     </div>
   );
 }

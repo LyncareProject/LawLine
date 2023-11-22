@@ -97,8 +97,8 @@ a {
 }
 .Wrap {
   width: 100%;
-  max-width: 720px;
-  margin: auto;
+  max-width: 1180px;
+  margin: 0 auto;
 }
 .Title {
   font-size: 20px;

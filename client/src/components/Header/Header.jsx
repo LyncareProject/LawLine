@@ -8,14 +8,18 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/userSlice";
 import { toast } from "react-toastify";
+import NoUser from "../../assets/images/NoUser.png";
+import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
+  const [userControl, setUserControl] = useState(false);
 
   const logoutBtn = () => {
     dispatch(logout());
+    setUserControl(false);
     localStorage.removeItem("Tokens");
     toast.success(<h3>로그아웃 되었습니다.</h3>, {
       position: "top-center",
@@ -45,18 +49,63 @@ const Header = () => {
             <Link to="/counsel/search">상담 조회</Link>
           </div>
         </div>
-        {user.isLogined ? (
-          <div className="LoginBtn" onClick={logoutBtn}>
-            로그아웃
-          </div>
-        ) : (
-          <Link className="LoginBtn" to="login">
-            로그인
-          </Link>
-        )}
+        <div className="RightNav">
+          {user.isLogined ? (
+            <div
+              className="ProfileImg"
+              onClick={() => {
+                setUserControl(!userControl);
+              }}
+            >
+              <img src={user.profileImg || NoUser} alt="profileImg" />
+            </div>
+          ) : (
+            <Link className="LoginBtn" to="login">
+              로그인
+            </Link>
+          )}
+          {userControl && (
+            <UserControl
+              userName={user.username}
+              userPhone={user.phone}
+              logoutBtn={logoutBtn}
+              setUserControl={setUserControl}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
+const UserControl = (props) => {
+  return (
+    <div className="UserControl">
+      <div className="UserControlHead">
+        <p>{props.userName} 님</p>
+      </div>
+      <Link
+        className="UserControlMenu"
+        to={`/counsel/list?phone=${props.userPhone}`}
+        onClick={() => {
+          props.setUserControl(false);
+        }}
+      >
+        상담 내역
+      </Link>
+      <Link
+        className="UserControlMenu"
+        to="/mypage"
+        onClick={() => {
+          props.setUserControl(false);
+        }}
+      >
+        마이페이지
+      </Link>
+      <div className="UserControlMenu" onClick={props.logoutBtn}>
+        로그아웃
+      </div>
+    </div>
+  );
+};
 export default Header;
