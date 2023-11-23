@@ -16,7 +16,7 @@ const Counsel = () => {
   const [loading, setLoading] = useState(true);
   const [isLogined, setIsLogined] = useState(false);
   const [inputs, setInputs] = useState({
-    userId: "",
+    userId: null,
     title: "",
     name: "",
     phone: "",
@@ -35,6 +35,7 @@ const Counsel = () => {
 
   const sendBtn = async () => {
     try {
+      console.log(title, name, phone, password, userId, desc);
       const response = await createCounsel({
         title,
         name,
