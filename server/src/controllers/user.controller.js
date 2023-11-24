@@ -45,15 +45,16 @@ exports.updateUser = async (req, res) => {
     req.body.updatedAt = moment()
       .tz("Asia/Seoul")
       .format("YYYY-MM-DD HH:mm:ss");
-    const { phone, updatedAt } = req.body;
-    console.log(req.params.id)
-    console.log(typeof phone)
-    console.log(typeof updatedAt)
+    let { phone, updatedAt, password } = req.body;
+    if (password) {
+      password = await bcrypt.hash(password, 10);
+    }
     const updatedUser = await User.findOneAndUpdate(
       { _id: req.params.id },
-      { $set: { phone, updatedAt } },
+      { $set: { phone, updatedAt, password } },
       { new: true }
     );
+
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });
     }
