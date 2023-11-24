@@ -12,23 +12,21 @@ const SocialKakao = () => {
   const dispatch = useDispatch();
   const kakaoOnSuccess = async (data) => {
     try {
-      console.log(data)
-      // const response = await KakaoAuth(data);
-      // console.log(response)
-      // dispatch(
-      //   login({
-      //     isLogined: true,
-      //     email: response.email,
-      //     username: response.username,
-      //     profileImg: response.profileImg,
-      //     role: response.role,
-      //   })
-      // );
-      // toast.success(<h3>{response.username}님 반갑습니다</h3>, {
-      //   position: "top-center",
-      //   autoClose: 2000,
-      // });
-      // navigate("/");
+      const response = await KakaoAuth(data);
+      dispatch(
+        login({
+          isLogined: true,
+          email: response.email,
+          username: response.username,
+          profileImg: response.profileImg,
+          role: response.role,
+        })
+      );
+      toast.success(<h3>{response.username}님 반갑습니다</h3>, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      navigate("/");
     } catch (error) {
       toast.error(error.response.data.message, {
         position: "top-center",

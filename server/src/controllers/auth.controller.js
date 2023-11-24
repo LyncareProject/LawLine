@@ -54,7 +54,7 @@ exports.signIn = async (req, res) => {
 
 exports.getAuth = async (req, res) => {
   try {
-    console.log("getAuth")
+    console.log("getAuth");
     const { id, roles } = req.decoded;
     const refreshToken = req.refreshToken;
 
@@ -79,19 +79,30 @@ exports.getAuth = async (req, res) => {
     res.send("Unauthorized"); // 401 Unauthorized 응답 전송
   }
 };
+
 exports.Kakao = async (req, res) => {
   try {
-    const { properties, kakao_account } = req.body.data.profile;
+    const { kakao_account } = req.body.data.profile;
+    const { profile_image_url } = req.body.data.profile.kakao_account.profile;
+
+    const formatPhone = (phoneNumber) => {
+      phoneNumber = phoneNumber.replace("+82 ", "0");
+      phoneNumber = phoneNumber.replace(/-/g, "");
+      return phoneNumber;
+    };
     const existingUser = await User.findOne({ email: kakao_account.email });
     if (!existingUser) {
       const userRole = await Role.findOne({ name: "User" });
       const newUser = new User({
         email: kakao_account.email,
-        username: properties.nickname,
-        profileImg: properties.profile_image,
+        username: kakao_account.name,
+        phone: formatPhone(kakao_account.phone_number),
+        profileImg: profile_image_url,
         roles: [userRole._id],
       });
+
       await newUser.save();
+
       const user = await User.findOne({ email: kakao_account.email });
       accessToken = await makeAccessToken({
         id: user._id,
@@ -109,16 +120,19 @@ exports.Kakao = async (req, res) => {
       });
       return;
     }
+
     accessToken = await makeAccessToken({
       id: existingUser._id,
       roles: existingUser.roles,
     });
+
     refreshToken = await makeRefreshToken({ id: existingUser._id });
+
     res.status(200).json({
       message: "Success",
       accessToken,
       refreshToken,
-      profileImg: existingUser.profileImg,
+      profileImg: profile_image_url,
       email: existingUser.email,
       username: existingUser.username,
       roles: existingUser.roles,

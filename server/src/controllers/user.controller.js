@@ -65,6 +65,11 @@ exports.updateUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
+  try {
+    await User.deleteOne({ _id: req.params.id });
+    res.status(200).json({ message: "Deleted" });
+  } catch (error) {
+    console.error("Error during signup:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 };

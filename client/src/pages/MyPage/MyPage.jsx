@@ -3,8 +3,10 @@ import { getAuth } from "../../services/authService";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import NoUser from "../../assets/images/NoUser.png";
-import { findUser, updateUser } from "../../services/userService";
+import { useDispatch } from "react-redux";
+import { deleteUser, findUser, updateUser } from "../../services/userService";
 import styles from "./MyPage.module.css";
+import { logout } from "../../redux/userSlice";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ const MyPage = () => {
   const [userInfo, setUserInfo] = useState({});
   const [phone, setPhone] = useState("");
   const [phoneChange, setPhoneChange] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const varityAuth = async () => {
@@ -33,19 +36,33 @@ const MyPage = () => {
   }, [navigate]);
 
   const changePhoneBtn = (item) => {
-    setPhoneChange(true)
-    setPhone(item)
+    setPhoneChange(true);
+    setPhone(item);
   };
 
-  const deleteUser = () => {
+  const deleteUserBtn = async () => {
     if (
       window.confirm(
         "회원 탈퇴를 하시겠습니까? 모든 상담 내역 및 회원 정보가 삭제됩니다."
       )
     ) {
-      alert("회원 탈퇴 완료");
+      await deleteUser({ id: userInfo._id })
+        .then(() => {
+          toast.success(<h3>회원탈퇴가 완료되었습니다.</h3>, {
+            position: "top-center",
+            autoClose: 2000,
+          });
+          dispatch(logout());
+          localStorage.removeItem("Tokens");
+          navigate("/");
+        })
+        .catch((error) => {
+          toast.error(<h3>회원 탈퇴 요청에 실패했습니다.</h3>, {
+            position: "top-center",
+            autoClose: 2000,
+          });
+        });
     } else {
-      alert("회원 탈퇴 취소");
     }
   };
 
@@ -62,7 +79,7 @@ const MyPage = () => {
         position: "top-center",
         autoClose: 2000,
       });
-      setPhoneChange(false)
+      setPhoneChange(false);
     } catch (error) {
       toast.error(<h3>전화번호 수정을 실패했습니다.</h3>, {
         position: "top-center",
@@ -90,19 +107,25 @@ const MyPage = () => {
           </div>
           <div>
             <p>휴대전화번호</p>
-            {(userInfo.phone && userInfo.phone.length === 11 && !phoneChange) && (
+            {userInfo.phone && userInfo.phone.length === 11 && !phoneChange && (
               <div className={styles.PhoneWrap}>
                 <p>
                   {userInfo.phone.slice(0, 3)}-{userInfo.phone.slice(3, 7)}-
                   {userInfo.phone.slice(7, 11)}
                 </p>
-                <button onClick={()=>{
-                  changePhoneBtn(userInfo.phone)
-                }}>수정</button>
+                <button
+                  onClick={() => {
+                    changePhoneBtn(userInfo.phone);
+                  }}
+                >
+                  수정
+                </button>
               </div>
             )}
-            
-            {(!userInfo.phone || userInfo.phone.length !== 11 || phoneChange) && (
+
+            {(!userInfo.phone ||
+              userInfo.phone.length !== 11 ||
+              phoneChange) && (
               <div className={styles.Input}>
                 <input
                   type="text"
@@ -138,7 +161,7 @@ const MyPage = () => {
             <p>비밀번호 변경</p>
             <p>{">"}</p>
           </div>
-          <div onClick={deleteUser}>
+          <div onClick={deleteUserBtn}>
             <p>회원 탈퇴</p>
             <p>{">"}</p>
           </div>

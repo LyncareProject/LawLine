@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { findAllCounsel, findUserCounsel } from "../../services/counselService";
-import { useLocation, useNavigate } from "react-router-dom";
+import { findUserCounsel } from "../../services/counselService";
+import { useNavigate } from "react-router-dom";
 import Text from "../../components/Text/Text";
 import IconAI from "../../assets/images/IconAI.png";
 import IconLawyer from "../../assets/images/IconLawyer.png";
@@ -9,10 +9,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { getAuth } from "../../services/authService";
 
 const CounselUser = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const queryParams = new URLSearchParams(location.search);
-  const phone = queryParams.get("phone");
   let limit = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -45,7 +42,7 @@ const CounselUser = () => {
       }
     };
     fetchData();
-  }, [phone, navigate, currentPage, limit]);
+  }, [navigate, currentPage, limit]);
 
   return (
     <div className="Page">
@@ -117,4 +114,5 @@ const CounselUser = () => {
     </div>
   );
 };
+
 export default CounselUser;

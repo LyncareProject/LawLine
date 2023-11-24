@@ -82,8 +82,9 @@ exports.deleteCounsel = async (req, res) => {
 exports.findUserCounsel = async (req, res) => {
   try {
     const _id = req.params.user_id;
-    const user = await User.findOne({ _id });
-    const result = await Counsel.find({ phone : user.phone }).sort({ createdAt: -1 });
+    const result = await Counsel.find({ userId : _id }).sort({ createdAt: -1 })
+    // const user = await User.findOne({ _id });
+    // const result = await Counsel.find({ phone : user.phone }).sort({ createdAt: -1 });
     res.status(200).json(result);
   } catch (error) {
     console.error("Error during signup:", error);

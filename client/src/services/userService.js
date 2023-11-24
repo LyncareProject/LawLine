@@ -11,6 +11,6 @@ export const findUser = ({ id }) => {
 export const updateUser = ({ id, phone }) => {
     return axios.put(API_URL + `user/${id}`, {phone});
 };
-export const deleteUser = (id) => {
+export const deleteUser = ({id}) => {
     return axios.delete(API_URL + `user/${id}`);
 };

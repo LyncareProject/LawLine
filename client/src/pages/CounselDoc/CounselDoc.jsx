@@ -65,6 +65,12 @@ const CounselDoc = () => {
         const Tokens = JSON.parse(localStorage.getItem("Tokens"));
         if (Tokens) {
           const authInfo = await getAuth();
+          setUser({
+            username: authInfo.name,
+            id: authInfo.id,
+            roles: authInfo.roles,
+          })
+          console.log(authInfo)
           if (response.data.userId === authInfo.id) {
             setAuth(true);
           }
