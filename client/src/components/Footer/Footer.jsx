@@ -6,7 +6,7 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.wrap}>
         <div className={styles.head}>
-          <a href="/provision">서비스 이용약관</a>
+          <a href="/provison">서비스 이용약관</a>
           <span>|</span>
           <a href="/privacy">개인정보처리방침안내</a>
         </div>
