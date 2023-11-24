@@ -11,7 +11,8 @@ const MyPage = () => {
   const [loading, setLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
   const [phone, setPhone] = useState("");
-  
+  const [phoneChange, setPhoneChange] = useState(false);
+
   useEffect(() => {
     const varityAuth = async () => {
       try {
@@ -30,6 +31,11 @@ const MyPage = () => {
     };
     varityAuth();
   }, [navigate]);
+
+  const changePhoneBtn = (item) => {
+    setPhoneChange(true)
+    setPhone(item)
+  };
 
   const deleteUser = () => {
     if (
@@ -51,18 +57,20 @@ const MyPage = () => {
   const updatePhoneBtn = async () => {
     try {
       const response = await updateUser({ id: userInfo._id, phone });
-      setUserInfo(response.data.user)
+      setUserInfo(response.data.user);
       toast.success(<h3>전화번호 수정이 완료되었습니다.</h3>, {
         position: "top-center",
         autoClose: 2000,
       });
-    } catch(error){
+      setPhoneChange(false)
+    } catch (error) {
       toast.error(<h3>전화번호 수정을 실패했습니다.</h3>, {
         position: "top-center",
         autoClose: 2000,
       });
     }
   };
+
   if (loading) {
     return <h1>Loading...</h1>;
   }
@@ -82,12 +90,19 @@ const MyPage = () => {
           </div>
           <div>
             <p>휴대전화번호</p>
-            {userInfo.phone && userInfo.phone.length === 11 ? (
-              <p>
-                {userInfo.phone.slice(0, 3)}-{userInfo.phone.slice(3, 7)}-
-                {userInfo.phone.slice(7, 11)}
-              </p>
-            ) : (
+            {(userInfo.phone && userInfo.phone.length === 11 && !phoneChange) && (
+              <div className={styles.PhoneWrap}>
+                <p>
+                  {userInfo.phone.slice(0, 3)}-{userInfo.phone.slice(3, 7)}-
+                  {userInfo.phone.slice(7, 11)}
+                </p>
+                <button onClick={()=>{
+                  changePhoneBtn(userInfo.phone)
+                }}>수정</button>
+              </div>
+            )}
+            
+            {(!userInfo.phone || userInfo.phone.length !== 11 || phoneChange) && (
               <div className={styles.Input}>
                 <input
                   type="text"

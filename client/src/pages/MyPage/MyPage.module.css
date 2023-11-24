@@ -47,6 +47,25 @@
 .Info > div > p:last-child {
   font-weight: 700;
 }
+.PhoneWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.PhoneWrap > p {
+  padding: 7px 10px;
+  margin-right: 10px;
+  font-weight: 700;
+
+}
+.PhoneWrap > button {
+  padding: 7px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #00C126;
+  color: #FFF;
+}
 .Input {
   display: flex;
   flex-direction: row;
