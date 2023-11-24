@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { deleteUser, findUser, updateUser } from "../../services/userService";
 import styles from "./MyPage.module.css";
 import { logout } from "../../redux/userSlice";
+import Button from "../../components/Button/Button";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const MyPage = () => {
   const [phone, setPhone] = useState("");
   const [phoneChange, setPhoneChange] = useState(false);
   const dispatch = useDispatch();
-
+  console.log(userInfo);
   useEffect(() => {
     const varityAuth = async () => {
       try {
@@ -87,7 +88,15 @@ const MyPage = () => {
       });
     }
   };
-
+  const logoutBtn = () => {
+    dispatch(logout());
+    localStorage.removeItem("Tokens");
+    toast.success(<h3>로그아웃 되었습니다.</h3>, {
+      position: "top-center",
+      autoClose: 2000,
+    });
+    navigate("/");
+  };
   if (loading) {
     return <h1>Loading...</h1>;
   }
@@ -155,7 +164,7 @@ const MyPage = () => {
           </div>
           <div
             onClick={() => {
-              navigate("/mypage/password");
+              navigate("/mypage/password", { state: userInfo._id });
             }}
           >
             <p>비밀번호 변경</p>
@@ -165,6 +174,7 @@ const MyPage = () => {
             <p>회원 탈퇴</p>
             <p>{">"}</p>
           </div>
+          <button className={styles.LogoutBtn} onClick={logoutBtn}>로그아웃</button>
         </div>
       </div>
     </div>

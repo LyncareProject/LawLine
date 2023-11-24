@@ -27,6 +27,7 @@ import Provision from "./pages/Provision/Provision";
 import Privacy from "./pages/Privacy/Privacy";
 import CounselUser from "./pages/CounselUser/CounselUser";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import ChatRoom from "./pages/ChatRoom/ChatRoom";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -86,6 +87,7 @@ function App() {
         <Route path="/mypage/password" element={<ChangePassword />} />
         <Route path="/provison" element={<Provision />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/lawbot/chat" element={<ChatRoom />} />
         <Route path="/not-found" element={<NotFound />} />
 
         <Route path="/:path" element={<ForwardingLink />} />

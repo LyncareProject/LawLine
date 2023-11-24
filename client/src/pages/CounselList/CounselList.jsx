@@ -78,35 +78,45 @@ const CounselList = () => {
                 <a className="CounselTitle" href={`/counsel/${action._id}`}>
                   <p>{action.title}</p>
                 </a>
-                <div>
-                  {!action.comment && <p>접수 완료</p>}
-                  {action.comment === "AIComment" && (
-                    <div className="CommentStatus">
-                      <img src={IconAI} alt="IconAI" />
-                      <Text
-                        textAlign={"left"}
-                        fontSize={14}
-                        fontWeight={700}
-                        fontColor={"#00C126"}
-                        margin={"0"}
-                        text={"답변완료"}
-                      />
-                    </div>
-                  )}
-                  {action.comment === "LawyerComment" && (
-                    <div className="CommentStatus">
-                      <img src={IconLawyer} alt="IconLawyer" />
-                      <Text
-                        textAlign={"left"}
-                        fontSize={14}
-                        fontWeight={700}
-                        fontColor={"#000"}
-                        margin={"0"}
-                        text={"답변완료"}
-                      />
-                    </div>
-                  )}
-                </div>
+
+                {!action.comment && (
+                  <div className="CommentStatus">
+                    <Text
+                      textAlign={"left"}
+                      fontSize={14}
+                      fontWeight={700}
+                      fontColor={"#777"}
+                      margin={"0"}
+                      text={"접수완료"}
+                    />
+                  </div>
+                )}
+                {action.comment === "AIComment" && (
+                  <div className="CommentStatus">
+                    <img src={IconAI} alt="IconAI" />
+                    <Text
+                      textAlign={"left"}
+                      fontSize={14}
+                      fontWeight={700}
+                      fontColor={"#00C126"}
+                      margin={"0"}
+                      text={"AI 답변완료"}
+                    />
+                  </div>
+                )}
+                {action.comment === "LawyerComment" && (
+                  <div className="CommentStatus">
+                    <img src={IconLawyer} alt="IconLawyer" />
+                    <Text
+                      textAlign={"left"}
+                      fontSize={14}
+                      fontWeight={700}
+                      fontColor={"#000"}
+                      margin={"0"}
+                      text={"변호사 답변완료"}
+                    />
+                  </div>
+                )}
               </div>
             ))}
         </div>

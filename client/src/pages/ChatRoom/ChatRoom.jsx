@@ -1,20 +1,14 @@
 import Text from '../../components/Text/Text'
-import './ChatRoom.css'
+import styles from './ChatRoom.module.css'
 
 const ChatRoom = ()=>{
   return(
-    <div className="ChatRoom">
-      <div className="ChatRoomHead">
-        <Text 
-        textAlign={"center"}
-        fontSize={"24px"}
-        fontWeight={700}
-        fontColor={"#000"}
-        text={"LawLine 상담 신청"}
-        />
+    <div className={styles.ChatRoom}>
+      <div className={styles.ChatRoomBody}></div>
+      <div className={styles.ChatRoomInput}>
+        <input type="text" placeholder='메세지를 입력해주세요' />
+        <button>전송</button>
       </div>
-      <div className="ChatRoomBody"></div>
-      <div className="ChatRoomBottom"></div>
     </div>
   )
 }

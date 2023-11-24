@@ -8,6 +8,14 @@ import { toast } from "react-toastify";
 import IconComponent from "../IconComponent/IconComponent";
 import { useState } from "react";
 import Text from "../Text/Text";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faRightFromBracket,
+  faRightToBracket,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import NoUser from "../../assets/images/NoUser.png";
 
 const MobileHeader = () => {
   const navigate = useNavigate();
@@ -28,29 +36,34 @@ const MobileHeader = () => {
   return (
     <>
       <div className="MobileHeader">
-        <IconComponent
-          icon={"iconHamburger"}
+        <FontAwesomeIcon
+          className="Icon"
+          icon={faBars}
           onClick={() => {
             setSidebar(!sidebar);
           }}
         />
-        <a href="/">
+
+        <a className="LogoWrap" href="/">
           <img className="Logo" src={Logo} alt="Logo" />
         </a>
         {!user.isLogined ? (
-          <IconComponent
-            icon={"iconLogin"}
-            width={"25px"}
+          <FontAwesomeIcon
+            className="Icon"
+            icon={faRightToBracket}
             onClick={() => {
               navigate("/login");
             }}
           />
         ) : (
-          <IconComponent
-            icon={"iconLogout"}
-            width={"25px"}
-            onClick={logoutBtn}
-          />
+
+            <FontAwesomeIcon
+              className="Icon"
+              icon={faUser}
+              onClick={() => {
+                navigate('/mypage')
+              }}
+            />
         )}
       </div>
       <Sidebar marginTop={sidebar ? "0" : "-300px"} />

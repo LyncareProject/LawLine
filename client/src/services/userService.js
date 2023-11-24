@@ -8,8 +8,8 @@ export const createUser = ({ email, username, password, phone, callNumber, regis
 export const findUser = ({ id }) => {
     return axios.get(API_URL + `user/${id}`);
 };
-export const updateUser = ({ id, phone }) => {
-    return axios.put(API_URL + `user/${id}`, {phone});
+export const updateUser = ({ id, phone, password }) => {
+    return axios.put(API_URL + `user/${id}`, {phone, password});
 };
 export const deleteUser = ({id}) => {
     return axios.delete(API_URL + `user/${id}`);

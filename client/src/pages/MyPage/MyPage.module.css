@@ -56,15 +56,14 @@
   padding: 7px 10px;
   margin-right: 10px;
   font-weight: 700;
-
 }
 .PhoneWrap > button {
   padding: 7px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #00C126;
-  color: #FFF;
+  background-color: #00c126;
+  color: #fff;
 }
 .Input {
   display: flex;
@@ -82,8 +81,8 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #00C126;
-  color: #FFF;
+  background-color: #00c126;
+  color: #fff;
 }
 .Title {
   font-size: 18px;
@@ -118,4 +117,29 @@
 }
 .Service > div > p:last-child {
   font-weight: 700;
+}
+.LogoutBtn {
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 50px;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 800;
+  cursor: pointer;
+  background-color: #00c126;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .Page {
+    width: 100%;
+    min-height: calc(100vh - 500px);
+    padding: 0 0 50px 0;
+  }
+  .Service {
+    padding: 30px 20px;
+  }
+  .Service > div {
+    padding: 20px 0;
+  }
 }

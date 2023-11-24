@@ -6,9 +6,14 @@ const ForwardingLink = () => {
   const { path } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-    if(path === '유튜브맨' || path === '여의도정보맨' || path === '앤젤천사'){
+    if(path === 'counsel.cafe' || path === 'counsel.you' ){
       const forwarding = async () => {
-        await forwardPath({ path });
+        await forwardPath({ path })
+        // const response = await forwardPath({ path });
+        // if(response.data.pathToken){
+        //   console.log("response.data.pathToken", response.data.pathToken)
+        //   localStorage.setItem('pathToken', response.data.pathToken);
+        // }
       };
       forwarding();
       navigate("/");
