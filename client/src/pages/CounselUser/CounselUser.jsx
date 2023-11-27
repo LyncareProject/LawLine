@@ -24,7 +24,7 @@ const CounselUser = () => {
         const response = await findUserCounsel({ userId: auth.id });
         let dataToSet = response.data;
         if (dataToSet.length === 0) {
-          toast.error(<h1>상담 사례가 없습니다.</h1>, {
+          toast.error(<h1>상담 신청 내역이 없습니다.</h1>, {
             position: "top-center",
             autoClose: 2000,
           });

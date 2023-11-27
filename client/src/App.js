@@ -28,6 +28,7 @@ import Privacy from "./pages/Privacy/Privacy";
 import CounselUser from "./pages/CounselUser/CounselUser";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import ChatRoom from "./pages/ChatRoom/ChatRoom";
+import MobileFooter from "./components/MobileFooter/MoblieFooter";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -92,7 +93,7 @@ function App() {
 
         <Route path="/:path" element={<ForwardingLink />} />
       </Routes>
-      <Footer /> 
+      {windowWidth >= 768 ? <Footer /> : <MobileFooter />}
     </div>
   );
 }

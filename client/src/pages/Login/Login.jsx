@@ -48,6 +48,7 @@ const UserLogin = () => {
   const sendBtn = async () => {
     try {
       const response = await signIn({ email, password, isAutoLogin });
+      console.log(response);
       dispatch(
         login({
           isLogined: true,
@@ -104,6 +105,11 @@ const UserLogin = () => {
                 [e.target.name]: e.target.value,
               });
             }}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                return sendBtn();
+              }
+            }}
           />
         </div>
       </form>
@@ -144,16 +150,65 @@ const UserLogin = () => {
 };
 
 const LawyerLogin = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isAutoLogin, setisAutoLogin] = useState(false);
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = inputs;
+  const sendBtn = async () => {
+    try {
+      const response = await signIn({ email, password, isAutoLogin });
+      if (response.roles === "654c5c890907ba343cdcf2ee") {
+        dispatch(
+          login({
+            isLogined: true,
+            isAutoLogin,
+            email: response.email,
+            username: response.username,
+            profileImg: response.profileImg,
+            roles: response.roles,
+          })
+        );
+        toast.success(<h3>{response.username} 변호사님 반갑습니다</h3>, {
+          position: "top-center",
+          autoClose: 2000,
+        });
+        navigate("/");
+      } else {
+        toast.error(
+          <h3>변호사 회원이 아니거나, 아직 승인 대기 중에 있습니다.</h3>,
+          {
+            position: "top-center",
+            autoClose: 2000,
+          }
+        );
+      }
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+    }
+  };
   return (
     <>
       <div className="LoginInput">
-        <label htmlFor="id">아이디</label>
+        <label htmlFor="email">이메일</label>
         <input
           type="text"
-          name="id"
-          id="id"
+          name="email"
+          id="email"
           placeholder="아이디를 입력해주세요."
+          value={email}
+          onChange={(e) => {
+            setInputs({
+              ...inputs,
+              [e.target.name]: e.target.value,
+            });
+          }}
         />
       </div>
       <div className="LoginInput">
@@ -163,6 +218,19 @@ const LawyerLogin = () => {
           name="password"
           id="password"
           placeholder="비밀번호를 입력해주세요."
+          value={password}
+          autoComplete="off"
+          onChange={(e) => {
+            setInputs({
+              ...inputs,
+              [e.target.name]: e.target.value,
+            });
+          }}
+          onKeyUp={(e) => {
+            if (e.key === "Enter") {
+              return sendBtn();
+            }
+          }}
         />
       </div>
       <div className="CheckFindWrap">
@@ -184,7 +252,9 @@ const LawyerLogin = () => {
           아이디/비밀번호 찾기
         </a>
       </div>
-      <button className="FetchBtn">로그인</button>
+      <button className="FetchBtn" onClick={sendBtn}>
+        로그인
+      </button>
       <div className="CheckFindWrap MT-30">
         <p className="RegistWord">변호사님 아직 가입 안하셨나요?</p>
         <a className="RegistBtn" href="/regist/lawyer">

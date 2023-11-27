@@ -1,4 +1,4 @@
-import FooterLogo from '../../assets/images/FooterLogo.png'
+import FooterLogo from "../../assets/images/FooterLogo.png";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -13,12 +13,17 @@ const Footer = () => {
         <div className={styles.body}>
           <div className={styles.left}>
             <p>
-              위바이브 주식회사는 법률상담 및 소송 수행의 주체가 아니며,
-              이용자와 변호사간 법률상담 여부 및 내용, 수임여부, 비용 등에 일체
-              관여하지 않습니다.
+              본 웹사이트는 일반적인 정보 제공의 목적으로 제작된 것으로 법률적
+              자문이나 해석을 위하여 제공되는 것이 아닙니다. 본 웹사이트에서
+              취득한 정보로 인해 문제가 발생하여 직·간접적인 손해를 입었다
+              하더라도 위바이브(주)는 어떠한 법적 책임을 지지 않습니다. 본
+              웹사이트에서 취득한 정보를 바탕으로 하여 어떠한 조치를 취하시기에
+              앞서 반드시 법률전문가와 충분한 상담을 진행하시기 바랍니다.
               <br />
-              따라서, 변호사회원이 이용자에게 제공하는 서비스의 내용에 대하여
-              어떠한 법적 책임도 부담하지 않습니다.
+              모든 법률상담은 로라인에 가입한 변호사 회원이 직접 진행합니다.
+              위바이브(주)에 표시된 변호사 회원의 정보는 해당 변호사 회원이 직접
+              제공한 것이며, 모든 변호사 회원은 소속 법률사무소에서 독립적으로
+              업무를 수행합니다.
             </p>
             <p>CEO | 김종식, 김수은</p>
             <p>사업자번호 | 477-87-01651</p>
@@ -32,6 +37,7 @@ const Footer = () => {
               위바이브 주식회사는 법률상담의 주체가 아니므로, 법률상담은
               홈페이지의 상담 신청을 통해 진행해 주시기 바랍니다.
             </p>
+            <p>(C) wevibe Inc. All Rights Reserved</p>
           </div>
           <div className={styles.right}>
             <img src={FooterLogo} alt="FooterLogo" />

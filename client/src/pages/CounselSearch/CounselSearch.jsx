@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import Title from "../../components/Title/Title";
 import InputWrap from "../../components/InputWrap/InputWrap";
 import Button from "../../components/Button/Button";
+import Layout from "../../components/Layout/Layout";
 
 const CounselSearch = () => {
   const [phone, setPhone] = useState("");
@@ -23,43 +24,33 @@ const CounselSearch = () => {
     }
   };
   return (
-    <div className="Page">
-      <div className="Wrap">
-        <Title title={"내 문의 조회하기"} margin={"50px 0"} />
-        <InputWrap
-          icon={"IconPhone"}
-          id={"phone"}
-          label={"전화번호"}
-          value={phone}
-          placeholder={"전화번호를 입력해주세요."}
-          onChange={(e) => {
-            setPhone(e.target.value);
-          }}
-          margin={"30px 0"}
-          maxLength={11}
-        />
-        {/* <InputWrap
-        icon={"IconKey"}
-        id={"password"}
-        type={"password"}
-        label={"비밀번호"}
-        value={password}
-        placeholder={"비밀번호를 입력해주세요."}
-        margin={"30px 0"}
+    <Layout>
+      <Title title={"내 문의 조회하기"} margin={"50px 0"} />
+      <InputWrap
+        icon={"IconPhone"}
+        id={"phone"}
+        label={"전화번호"}
+        value={phone}
+        placeholder={"전화번호를 입력해주세요."}
         onChange={(e) => {
-          setPassword(e.target.value);
+          setPhone(e.target.value);
         }}
-        maxLength={4}
-      /> */}
-        <Button
-          pressButton={searchBtn}
-          buttonColor={"#00c126"}
-          buttonTextColor={"#FFF"}
-          buttonMargin={"30px 0"}
-          buttonName={"조회하기"}
-        />
-      </div>
-    </div>
+        onKeyUp={(e) => {
+          if (e.key === "Enter") {
+            return searchBtn();
+          }
+        }}
+        margin={"30px 0"}
+        maxLength={11}
+      />
+      <Button
+        pressButton={searchBtn}
+        buttonColor={"#00c126"}
+        buttonTextColor={"#FFF"}
+        buttonMargin={"30px 0"}
+        buttonName={"조회하기"}
+      />
+    </Layout>
   );
 };
 export default CounselSearch;

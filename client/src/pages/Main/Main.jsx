@@ -3,8 +3,11 @@ import Group7 from "./../../components/images/Group7.png";
 import Group8 from "./../../components/images/Group8.png";
 import Group9 from "./../../components/images/Group9.png";
 import KO_MEMBER from "./../../components/images/KO_MEMBER.png";
+import { useSelector } from "react-redux";
 
 const Main = () => {
+  const isLogined = useSelector((state) => state.user.value.isLogined);
+
   return (
     <div className="Main">
       <h3>
@@ -22,7 +25,7 @@ const Main = () => {
               </a>
             </p>
             <p>
-              <a href="/counsel/search">
+              <a href={!isLogined ? "/counsel/search" : "/mypage/counsel"}>
                 <img src={Group8} alt="조회하기" />
                 조회하기
               </a>
