@@ -7,8 +7,8 @@ const { makeToken, refreshVerify, verify } = require("../utils/token.utils");
 exports.verifyToken = async (req, res, next) => {
   try {
     const accessToken = req.headers["x-access-token"];
-    console.log("VerifyToken Middleware");
-    console.log("accessToken : ", accessToken);
+    // console.log("VerifyToken Middleware");
+    // console.log("accessToken : ", accessToken);
     if (!accessToken) {
       console.log("Access token missing");
       return res.json({ message: "Access token missing" });

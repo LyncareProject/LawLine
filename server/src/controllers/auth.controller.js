@@ -54,16 +54,16 @@ exports.signIn = async (req, res) => {
 
 exports.getAuth = async (req, res) => {
   try {
-    console.log("getAuth");
+    // console.log("getAuth");
     const { id, roles } = req.decoded;
     const refreshToken = req.refreshToken;
 
     const newAccessToken = await makeAccessToken({ id, roles });
     const userData = await User.findOne({ _id: id });
-    console.log("userData", userData);
+    // console.log("userData", userData);
     // DB에서 모든 역할 찾기
     const rolesData = await Role.findOne({ _id: { $in: roles } });
-    console.log("rolesData : ", rolesData);
+    // console.log("rolesData : ", rolesData);
     // 클라이언트에 전송할 역할 데이터 생성
     // const clientRoles = rolesData.map((role) => role.name); // role 객체의 'name' 속성을 사용하여 배열 생성
     // console.log("clientRoles : ", clientRoles);
