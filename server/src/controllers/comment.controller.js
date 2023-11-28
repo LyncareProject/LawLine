@@ -13,7 +13,6 @@ const openai = new OpenAI({
   apiKey: OPENAI_KEY,
 });
 
-
 exports.createAIComment = async (req, res) => {
   try {
     let conversationHistory = [
@@ -23,11 +22,13 @@ exports.createAIComment = async (req, res) => {
           "This response begins with '이 답변은 당사 데이터를 기반으로 LawLine AI를 통해 작성된 글입니다.\n\n' and ends with '\n\nAI를 통해 작성된 글로 자세한 상담은 변호사 상담을 이용해주세요.'. The content should be in Korean. Respond in Korean as a specialist in Korean law. Answer the following content using your expertise in Korean legal matters.",
       },
     ];
-    console.log("createAIComment Start");
-    const { content, counselId } = req.body;
+    const { title, content, counselId } = req.body;
+    console.log(req.body)
+    const doc = `Title : ${title}, Content : ${content}`
+    console.log(doc)
     conversationHistory.push({
       role: "user",
-      content: content,
+      content: doc,
     });
     const chatCompletion = await openai.chat.completions.create({
       messages: conversationHistory,
@@ -105,7 +106,9 @@ exports.readComment = async (req, res) => {
 };
 exports.updateComment = async (req, res) => {
   try {
-    req.body.updatedAt = moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
+    req.body.updatedAt = moment()
+      .tz("Asia/Seoul")
+      .format("YYYY-MM-DD HH:mm:ss");
     await Comment.findOneAndUpdate({ _id: req.params.comment_id }, req.body);
     res.json({ message: "Updated" });
   } catch (error) {

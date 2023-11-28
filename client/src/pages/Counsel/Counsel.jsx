@@ -25,7 +25,7 @@ const Counsel = () => {
   });
 
   const { userId, title, name, phone, password, desc } = inputs;
-
+  console.log(inputs)
   const handleInputs = (e) => {
     setInputs({
       ...inputs,
@@ -47,6 +47,7 @@ const Counsel = () => {
 
       if (response.data.message === "Success") {
         createAIComment({
+          title,
           content: desc,
           counselId: response.data.newCounsel._id,
         });

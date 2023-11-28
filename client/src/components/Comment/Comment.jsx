@@ -3,6 +3,7 @@ import "./Comment.css";
 import { deleteComment, updateComment } from "../../services/commentService";
 import { toast } from "react-toastify";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import Button from "../Button/Button";
 
 const Comment = (props) => {
   const [mode, setMode] = useState(false);
@@ -69,9 +70,15 @@ const Comment = (props) => {
             : { backgroundColor: "#F4F4F4" }
         }
       >
-        <p>{props.name} {props.userRole === "Admin" && "관리자"} {props.userRole === "Lawyer" && "변호사"}</p>
-        <p>{props.createdAt}</p>
-        {/* {props.updatedAt && <p>{props.updatedAt}</p>} */}
+        <p>
+          {props.name} {props.userRole === "Admin" && "관리자"}{" "}
+          {props.userRole === "Lawyer" && "변호사"}
+        </p>
+        {!props.updatedAt ? (
+          <p>작성일 : {props.createdAt}</p>
+        ) : (
+          <p>수정일 : {props.updatedAt}</p>
+        )}
       </div>
 
       {props.userId === props.currentUser.id && (
@@ -117,6 +124,15 @@ const Comment = (props) => {
             >
               {props.content}
             </p>
+            {props.name === "로라인 AI" && (
+              <Button
+                pressButton={() => {}}
+                buttonColor={"#00C126"}
+                buttonTextColor={"#FFF"}
+                buttonMargin={"30px 0"}
+                buttonName={"변호사 상담 신청"}
+              />
+            )}
           </div>
         )}
       </div>

@@ -1,8 +1,9 @@
 import axios from "axios";
 import API_URL from "./apiConfig";
 
-export const createAIComment = ({ content, counselId }) => {
+export const createAIComment = ({ title, content, counselId }) => {
   return axios.post(API_URL + "comment/ai", {
+    title,
     content,
     counselId,
   });
