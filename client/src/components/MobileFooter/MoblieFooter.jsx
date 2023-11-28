@@ -14,7 +14,7 @@ const MobileFooter = () => {
           setToggle(!toggle);
         }}
       >
-        <p>(C) WeVibe Co., Ltd. ALL RIGHTS RESERVED.</p>
+        <p>(C) WEVIBE Inc. ALL RIGHTS RESERVED.</p>
         {toggle ? (
           <FontAwesomeIcon className={styles.toggleBtn} icon={faChevronUp} />
         ) : (
