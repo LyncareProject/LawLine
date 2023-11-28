@@ -564,7 +564,7 @@ const Privacy = () => {
 
       <h3 className={styles.SubTitle}>제15조 (개인정보 처리방침 변경)</h3>
       <p className={styles.Desc}>
-      ① 이 개인정보 처리방침은 2022. 11. 22.부터 적용됩니다.
+      ① 이 개인정보 처리방침은 2023. 11. 22.부터 적용됩니다.
       </p>
       <p className={styles.Desc}>
       ② 이전의 개인정보 처리방침은 아래에서 확인하실 수 있습니다.
