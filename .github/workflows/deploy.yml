@@ -24,16 +24,28 @@ jobs:
             cd /home/ubuntu/LawLine/server
             echo "PORT=${{ secrets.PORT }}" >> .env
             echo "WSPORT=${{ secrets.WSPORT }}" >> .env
+
             echo "MONGO_USER=${{ secrets.MONGO_USER }}" >> .env
             echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
             echo "MONGO_CLUSTER=${{ secrets.MONGO_CLUSTER }}" >> .env
             echo "MONGO_DBNAME=${{ secrets.MONGO_DBNAME }}" >> .env
+
             echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> .env
+
             echo "ACCESS_KEY=${{ secrets.ACCESS_KEY }}" >> .env
             echo "SECRET_ACCESS_KEY=${{ secrets.SECRET_ACCESS_KEY }}" >> .env
+            
             echo "REGION=${{ secrets.REGION }}" >> .env
             echo "S3_BUCKET=${{ secrets.S3_BUCKET }}" >> .env
+            echo "S3_ACCESS_KEY=${{ secrets.S3_ACCESS_KEY }}" >> .env
+            echo "S3_SECRET_ACCESS_KEY=${{ secrets.S3_SECRET_ACCESS_KEY }}" >> .env
+            
+            echo "EMAIL_SERVICE=${{ secrets.EMAIL_SERVICE }}" >> .env
+            echo "EMAIL_USER=${{ secrets.EMAIL_USER }}" >> .env
+            echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> .env
+
             echo "OPENAI_KEY=${{ secrets.OPENAI_KEY }}" >> .env
+            
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             npm install 
