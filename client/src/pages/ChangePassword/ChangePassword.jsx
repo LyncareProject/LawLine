@@ -3,6 +3,7 @@ import { updateUser } from "../../services/userService";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Formik } from "formik";
+import { useEffect } from "react";
 
 const ChangePassword = ()=>{
   const { state } = useLocation();
@@ -31,7 +32,7 @@ const ChangePassword = ()=>{
           autoClose: 2000,
         });
         setTimeout(() => {
-          navigate("/mypage");
+          navigate("/");
         }, 2000);
       })
       .catch((err) =>
@@ -40,6 +41,11 @@ const ChangePassword = ()=>{
         })
       );
   };
+  useEffect(()=>{
+    if(!state){
+      navigate(-1)
+    }
+  },[state, navigate])
   return(
       <Formik
       initialValues={{

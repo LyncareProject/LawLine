@@ -13,6 +13,7 @@ import { findUser } from "../../services/userService";
 const Counsel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(true);
   const [isLogined, setIsLogined] = useState(false);
   const [inputs, setInputs] = useState({
@@ -25,7 +26,7 @@ const Counsel = () => {
   });
 
   const { userId, title, name, phone, password, desc } = inputs;
-  console.log(inputs)
+
   const handleInputs = (e) => {
     setInputs({
       ...inputs,
@@ -64,31 +65,30 @@ const Counsel = () => {
       });
     }
   };
-
   useEffect(() => {
-    try {
-      const Tokens = JSON.parse(localStorage.getItem("Tokens"));
-      if (Tokens) {
-        const verifyAuth = async () => {
+    const verifyAuth = async () => {
+      try {
+        const Tokens = JSON.parse(localStorage.getItem("Tokens"));
+        if (Tokens) {
           const auth = await getAuth();
           const userData = await findUser({ id: auth.id });
-          setInputs({
-            ...inputs,
+          setInputs(prevInputs => ({
+            ...prevInputs,
             userId: userData.data._id,
             name: userData.data.username,
             phone: userData.data.phone,
-          });
+          }));
           setIsLogined(true);
-        };
-        verifyAuth();
+        }
+      } catch (error) {
+        dispatch(logout());
+        localStorage.removeItem("Tokens");
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      dispatch(logout());
-      localStorage.removeItem("Tokens");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    };
+    verifyAuth();
+  }, [dispatch, setInputs, setIsLogined, setLoading]);
 
   if (loading) {
     return <h1>Loading...</h1>;

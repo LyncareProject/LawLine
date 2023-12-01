@@ -41,6 +41,8 @@ const LawyerRegist = () => {
       phone,
       callNumber,
       registNumber,
+      roles: "Lawyer",
+      signUpPath: "LawLine",
     })
       .then(() => {
         toast.success(<h3>변호사 회원가입 신청이 완료되었습니다. 변호사 권한 심사는 영업일 기준 1~3일 정도 소요됩니다.</h3>, {
@@ -78,7 +80,7 @@ const LawyerRegist = () => {
           <h2 className="Title">회원가입</h2>
           <form onSubmit={handleSubmit} autoComplete="off">
             <div className="LoginInput">
-              <label htmlFor="">
+              <label htmlFor="email">
                 이메일 <span className="Red">*</span>
               </label>
               <input

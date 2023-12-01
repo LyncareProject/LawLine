@@ -29,6 +29,8 @@ import CounselUser from "./pages/CounselUser/CounselUser";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import ChatRoom from "./pages/ChatRoom/ChatRoom";
 import MobileFooter from "./components/MobileFooter/MoblieFooter";
+import ScrollToTop from "./utils/ScrollToTop/ScrollToTop";
+import FindPassword from "./pages/FindPassword/FindPassword";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -47,54 +49,54 @@ function App() {
 
   // 유저 권한
   useEffect(() => {
-    try {
-      const Tokens = JSON.parse(localStorage.getItem("Tokens"));
-      if (Tokens) {
-        const verifyAuth = async () => {
+    const Tokens = JSON.parse(localStorage.getItem("Tokens"));
+    if (Tokens) {
+      const verifyAuth = async () => {
+        try {
           await getAuth();
-          const response = await getAuth();
-          if (response.message === "No authorized! 다시 로그인해주세요.") {
-            dispatch(logout());
-            localStorage.removeItem("Tokens");
-            return;
-          }
-        };
-        verifyAuth();
-      }
-    } catch (error) {
-      dispatch(logout());
-      localStorage.removeItem("Tokens");
+          // 여기서 별도의 로그아웃 처리는 필요하지 않음
+        } catch (error) {
+          // getAuth에서 예외 발생 시 로그아웃 처리
+          dispatch(logout());
+          localStorage.removeItem("Tokens");
+        }
+      };
+      verifyAuth();
     }
   }, [dispatch]);
+  
 
   return (
-    <div className="App">
-      <ToastContainer />
-      {windowWidth >= 768 ? <Header /> : <MobileHeader />}
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/Inquiry" element={<Inquiry />} />
-        <Route path="/counsel" element={<Counsel />} />
-        <Route path="/counsel/confirm" element={<CounselConfirm />} />
-        <Route path="/counsel/search" element={<CounselSearch />} />
-        <Route path="/counsel/result" element={<CounselResult />} />
-        <Route path="/counsel/list" element={<CounselList />} />
-        <Route path="/counsel/:counselId" element={<CounselDoc />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/regist" element={<Regist />} />
-        <Route path="/regist/lawyer" element={<LawyerRegist />} />
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/mypage/counsel" element={<CounselUser />} />
-        <Route path="/mypage/password" element={<ChangePassword />} />
-        <Route path="/provison" element={<Provision />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/lawbot/chat" element={<ChatRoom />} />
-        <Route path="/not-found" element={<NotFound />} />
+    <ScrollToTop>
+      <div className="App">
+        <ToastContainer />
+        {windowWidth >= 768 ? <Header /> : <MobileHeader />}
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/Inquiry" element={<Inquiry />} />
+          <Route path="/counsel" element={<Counsel />} />
+          <Route path="/counsel/confirm" element={<CounselConfirm />} />
+          <Route path="/counsel/search" element={<CounselSearch />} />
+          <Route path="/counsel/result" element={<CounselResult />} />
+          <Route path="/counsel/list" element={<CounselList />} />
+          <Route path="/counsel/:counselId" element={<CounselDoc />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/regist" element={<Regist />} />
+          <Route path="/regist/lawyer" element={<LawyerRegist />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/mypage/counsel" element={<CounselUser />} />
+          <Route path="/mypage/password" element={<ChangePassword />} />
+          <Route path="/provison" element={<Provision />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/lawbot/chat" element={<ChatRoom />} />
+          <Route path="/findpassword" element={<FindPassword />} />
+          <Route path="/not-found" element={<NotFound />} />
 
-        <Route path="/:path" element={<ForwardingLink />} />
-      </Routes>
-      {windowWidth >= 768 ? <Footer /> : <MobileFooter />}
-    </div>
+          <Route path="/:path" element={<ForwardingLink />} />
+        </Routes>
+        {windowWidth >= 768 ? <Footer /> : <MobileFooter />}
+      </div>
+    </ScrollToTop>
   );
 }
 

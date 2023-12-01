@@ -6,6 +6,7 @@ const initialStateValue = {
     email : null,
     username : null,
     profileImg : null,
+    signUpPath : null,
     roles : null
 }
 

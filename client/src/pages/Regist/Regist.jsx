@@ -13,8 +13,8 @@ const Regist = () => {
       .required("이메일을 입력하세요!"),
     username: Yup.string().required("닉네임을 입력하세요!"),
     phone: Yup.string()
-    .matches(/^\d+$/, "숫자만 입력해주세요!")
-    .required("전화번호를 입력해주세요!"),
+      .matches(/^\d+$/, "숫자만 입력해주세요!")
+      .required("전화번호를 입력해주세요!"),
     password: Yup.string()
       .min(8, "비밀번호는 최소 8자리 이상입니다")
       .max(16, "비밀번호는 최대 16자리입니다!")
@@ -30,7 +30,14 @@ const Regist = () => {
 
   const submit = async (values) => {
     const { email, username, phone, password } = values;
-    await createUser({ email, username, phone, password })
+    await createUser({
+      email,
+      username,
+      phone,
+      password,
+      roles: "User",
+      signUpPath: "LawLine",
+    })
       .then(() => {
         toast.success(<h3>회원가입이 완료되었습니다.</h3>, {
           position: "top-center",
@@ -65,7 +72,9 @@ const Regist = () => {
           <h2 className="Title">회원가입</h2>
           <form onSubmit={handleSubmit} autoComplete="off">
             <div className="LoginInput">
-              <label htmlFor="">이메일 <span className="Red">*</span></label>
+              <label htmlFor="">
+                이메일 <span className="Red">*</span>
+              </label>
               <input
                 type="text"
                 name="email"
@@ -77,7 +86,9 @@ const Regist = () => {
               </div>
             </div>
             <div className="LoginInput">
-              <label htmlFor="username">이름 <span className="Red">*</span></label>
+              <label htmlFor="username">
+                이름 <span className="Red">*</span>
+              </label>
               <input
                 type="text"
                 name="username"
@@ -89,7 +100,9 @@ const Regist = () => {
               </div>
             </div>
             <div className="LoginInput">
-              <label htmlFor="phone">전화번호 <span className="Red">*</span></label>
+              <label htmlFor="phone">
+                전화번호 <span className="Red">*</span>
+              </label>
               <input
                 type="text"
                 name="phone"
@@ -101,7 +114,9 @@ const Regist = () => {
               </div>
             </div>
             <div className="LoginInput">
-              <label htmlFor="">비밀번호 <span className="Red">*</span></label>
+              <label htmlFor="">
+                비밀번호 <span className="Red">*</span>
+              </label>
               <input
                 type="password"
                 name="password"
@@ -114,7 +129,9 @@ const Regist = () => {
               </div>
             </div>
             <div className="LoginInput">
-              <label htmlFor="">비밀번호 확인 <span className="Red">*</span></label>
+              <label htmlFor="">
+                비밀번호 확인 <span className="Red">*</span>
+              </label>
               <input
                 type="password"
                 name="password2"

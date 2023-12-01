@@ -28,7 +28,7 @@ const CounselUser = () => {
             position: "top-center",
             autoClose: 2000,
           });
-          navigate("/mypage");
+          navigate(-1);
           return;
         }
         setData(dataToSet);

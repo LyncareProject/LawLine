@@ -4,27 +4,22 @@ import Logo from "../../assets/images/Logo.png";
 import hamburger_icon from "../../components/images/hamburger_icon.png";
 import x_icon from "../../components/images/x_icon.png";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "../../redux/userSlice";
 import { toast } from "react-toastify";
 import NoUser from "../../assets/images/NoUser.png";
 import { useState } from "react";
+import useLogout from "../../utils/Logout";
 
 const Header = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const logout = useLogout();
   const user = useSelector((state) => state.user.value);
   const [userControl, setUserControl] = useState(false);
-  const logoutBtn = () => {
-    dispatch(logout());
+  const logoutBtn = async () => {
+    await logout(user.signUpPath);
     setUserControl(false);
-    localStorage.removeItem("Tokens");
     toast.success(<h3>로그아웃 되었습니다.</h3>, {
       position: "top-center",
       autoClose: 2000,
     });
-    navigate("/");
   };
 
   return (

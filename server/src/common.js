@@ -10,7 +10,12 @@ const ACCESS_KEY = process.env.ACCESS_KEY;
 const SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY;
 const REGION = process.env.REGION;
 const S3_BUCKET = process.env.S3_BUCKET;
+const S3_ACCESS_KEY = process.env.S3_ACCESS_KEY;
+const S3_SECRET_ACCESS_KEY = process.env.S3_SECRET_ACCESS_KEY;
 const OPENAI_KEY = process.env.OPENAI_KEY;
+const EMAIL_SERVICE = process.env.EMAIL_SERVICE;
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 
 const APP_CONFIG_JSON = JSON.stringify({
   PORT,
@@ -24,7 +29,12 @@ const APP_CONFIG_JSON = JSON.stringify({
   SECRET_ACCESS_KEY,
   REGION,
   S3_BUCKET,
+  S3_ACCESS_KEY,
+  S3_SECRET_ACCESS_KEY,
   OPENAI_KEY,
+  EMAIL_SERVICE,
+  EMAIL_USER,
+  EMAIL_PASSWORD,
 }).replace(/"/g, '\\"');
 
 module.exports = {
@@ -40,5 +50,10 @@ module.exports = {
   SECRET_ACCESS_KEY,
   REGION,
   S3_BUCKET,
+  S3_ACCESS_KEY,
+  S3_SECRET_ACCESS_KEY,
   OPENAI_KEY,
+  EMAIL_SERVICE,
+  EMAIL_USER,
+  EMAIL_PASSWORD,
 };

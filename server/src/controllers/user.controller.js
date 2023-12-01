@@ -7,8 +7,16 @@ const { role: Role } = db;
 
 exports.createUser = async (req, res) => {
   try {
-    const { email, username, password, phone, callNumber, registNumber } =
-      req.body;
+    const {
+      email,
+      username,
+      password,
+      phone,
+      callNumber,
+      registNumber,
+      roles,
+      signUpPath,
+    } = req.body;
 
     // 해당 이메일로 가입한 유저가 있는지 확인
     const existingUser = await User.findOne({ email });
@@ -16,13 +24,14 @@ exports.createUser = async (req, res) => {
       return res.status(400).json({ message: "이미 존재하는 이메일입니다." });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const userRole = await Role.findOne({ name: "User" });
+    const userRole = await Role.findOne({ name: roles });
     const newUser = new User({
       email,
       username,
       phone,
       callNumber,
       registNumber,
+      signUpPath,
       password: hashedPassword,
       roles: userRole._id,
     });

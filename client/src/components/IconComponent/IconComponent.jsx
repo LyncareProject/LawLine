@@ -1,6 +1,7 @@
 import iconHamburger from '../../assets/images/IconHamburger.png'
 import iconLogin from '../../assets/images/IconLogin.png'
 import iconLogout from '../../assets/images/IconLogout.png'
+import iconPhone from '../../assets/images/IconPhone.png'
 
 const IconComponent = (props) => {
   const handleIcon = () => {
@@ -12,6 +13,9 @@ const IconComponent = (props) => {
     }
     if (props.icon === "iconLogout") {
       return iconLogout
+    }
+    if (props.icon === "iconPhone") {
+      return iconPhone
     }
   };
   return <img onClick={props.onClick} src={handleIcon()} alt="Icon" style={{ width: props.width || "50px" }} />;

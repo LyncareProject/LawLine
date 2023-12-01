@@ -4,6 +4,7 @@ import Group8 from "./../../components/images/Group8.png";
 import Group9 from "./../../components/images/Group9.png";
 import KO_MEMBER from "./../../components/images/KO_MEMBER.png";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const isLogined = useSelector((state) => state.user.value.isLogined);
@@ -19,26 +20,26 @@ const Main = () => {
         <div className="section1_size">
           <div className="section_img">
             <p>
-              <a href="/counsel">
+              <Link to="/counsel">
                 <img src={Group7} alt="상담하기" />
                 상담하기
-              </a>
+              </Link>
             </p>
             <p>
-              <a href={!isLogined ? "/counsel/search" : "/mypage/counsel"}>
+              <Link to={!isLogined ? "/counsel/search" : "/mypage/counsel"}>
                 <img src={Group8} alt="조회하기" />
                 조회하기
-              </a>
+              </Link>
             </p>
           </div>
           <div className="ai">
             <p>
-              <a href="/counsel">
+              <Link to="/counsel">
                 <img
                   src={Group9}
                   alt="간단한 질문도 AI도우미가 답변해드려요 beta"
                 />
-              </a>
+              </Link>
             </p>
             <p className="ai_text">
               간단한 질문도 AI도우미가 답변해드려요 <span>BETA</span>

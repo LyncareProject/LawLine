@@ -18,15 +18,19 @@ export const createCounsel = ({
     desc,
   });
 };
+
 export const findAllCounsel = () => {
   return axios.get(API_URL + "counsel");
 };
+
 export const readCounsel = ({ counselId }) => {
   return axios.get(API_URL + `counsel/${counselId}`);
 };
+
 export const searchCounsel = ({ phone, password }) => {
   return axios.post(API_URL + `counsel/search`, { phone, password });
 };
+
 export const updateCounsel = ({
   counselId,
   title,
@@ -43,6 +47,7 @@ export const updateCounsel = ({
     desc,
   });
 };
+
 export const deleteCounsel = ({ counselId }) => {
   return axios.delete(API_URL + `counsel/${counselId}`);
 };
@@ -50,3 +55,4 @@ export const deleteCounsel = ({ counselId }) => {
 export const findUserCounsel = ({ userId }) => {
   return axios.get(API_URL + `counsel/user/${userId}`);
 };
+

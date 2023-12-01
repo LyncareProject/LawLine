@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SocialKakao from "../../components/SocialKakao/SocialKakao";
 import { toast } from "react-toastify";
 import { signIn } from "../../services/authService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/userSlice";
 
@@ -48,7 +48,6 @@ const UserLogin = () => {
   const sendBtn = async () => {
     try {
       const response = await signIn({ email, password, isAutoLogin });
-      console.log(response);
       dispatch(
         login({
           isLogined: true,
@@ -56,6 +55,7 @@ const UserLogin = () => {
           email: response.email,
           username: response.username,
           profileImg: response.profileImg,
+          signUpPath: response.signUpPath,
           roles: response.roles,
         })
       );
@@ -128,9 +128,9 @@ const UserLogin = () => {
             로그인 상태 유지
           </p>
         </div>
-        <a className="FindBtn" href="/">
-          아이디/비밀번호 찾기
-        </a>
+        <Link  className="FindBtn" to="/findpassword">
+          비밀번호 찾기
+        </Link>
       </div>
       <button className="FetchBtn" onClick={sendBtn}>
         로그인

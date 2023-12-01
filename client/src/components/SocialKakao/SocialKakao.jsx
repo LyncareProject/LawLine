@@ -19,7 +19,8 @@ const SocialKakao = () => {
           email: response.email,
           username: response.username,
           profileImg: response.profileImg,
-          role: response.role,
+          signUpPath: response.signUpPath,
+          roles: response.roles,
         })
       );
       toast.success(<h3>{response.username}님 반갑습니다</h3>, {

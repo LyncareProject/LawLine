@@ -6,8 +6,9 @@ import NoUser from "../../assets/images/NoUser.png";
 import { useDispatch } from "react-redux";
 import { deleteUser, findUser, updateUser } from "../../services/userService";
 import styles from "./MyPage.module.css";
-import { logout } from "../../redux/userSlice";
+// import { logout } from "../../redux/userSlice";
 import Button from "../../components/Button/Button";
+import useLogout from "../../utils/Logout";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const MyPage = () => {
   const [phone, setPhone] = useState("");
   const [phoneChange, setPhoneChange] = useState(false);
   const dispatch = useDispatch();
-  console.log(userInfo);
+  const logout = useLogout();
   useEffect(() => {
     const varityAuth = async () => {
       try {
@@ -88,14 +89,13 @@ const MyPage = () => {
       });
     }
   };
-  const logoutBtn = () => {
-    dispatch(logout());
-    localStorage.removeItem("Tokens");
+
+  const logoutBtn = async () => {
+    await logout(userInfo.signUpPath);
     toast.success(<h3>로그아웃 되었습니다.</h3>, {
       position: "top-center",
       autoClose: 2000,
     });
-    navigate("/");
   };
   if (loading) {
     return <h1>Loading...</h1>;
@@ -162,19 +162,23 @@ const MyPage = () => {
             <p>내 상담</p>
             <p>{">"}</p>
           </div>
-          <div
-            onClick={() => {
-              navigate("/mypage/password", { state: userInfo._id });
-            }}
-          >
-            <p>비밀번호 변경</p>
-            <p>{">"}</p>
-          </div>
+          {userInfo.signUpPath === "LawLine" && (
+            <div
+              onClick={() => {
+                navigate("/mypage/password", { state: userInfo._id });
+              }}
+            >
+              <p>비밀번호 변경</p>
+              <p>{">"}</p>
+            </div>
+          )}
           <div onClick={deleteUserBtn}>
             <p>회원 탈퇴</p>
             <p>{">"}</p>
           </div>
-          <button className={styles.LogoutBtn} onClick={logoutBtn}>로그아웃</button>
+          <button className={styles.LogoutBtn} onClick={logoutBtn}>
+            로그아웃
+          </button>
         </div>
       </div>
     </div>

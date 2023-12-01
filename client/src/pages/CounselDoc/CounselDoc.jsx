@@ -74,7 +74,7 @@ const CounselDoc = () => {
           if (response.data.userId === authInfo.id) {
             setAuth(true);
           }
-          if (authInfo.roles === "Laywer" || authInfo.roles === "Admin") {
+          if (authInfo.roles === "Lawyer" || authInfo.roles === "Admin") {
             setAuth(true);
           }
         }
@@ -111,7 +111,7 @@ const CounselDoc = () => {
               backgroundColor: "#CFCFCF",
             }}
           />
-          {(user.roles === "Laywer" || user.roles === "Admin") && (
+          {(user.roles === "Lawyer" || user.roles === "Admin") && (
             <CommentEdit
               username={user.username}
               counselId={data._id}
