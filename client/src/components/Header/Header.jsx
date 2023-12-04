@@ -1,8 +1,6 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/images/Logo.png";
-import hamburger_icon from "../../components/images/hamburger_icon.png";
-import x_icon from "../../components/images/x_icon.png";
+import MiniLogo from "../../assets/images/MiniLogo.png";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import NoUser from "../../assets/images/NoUser.png";
@@ -24,18 +22,11 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <img
-        className="hamburger_icon"
-        src={hamburger_icon}
-        alt="hamburger_icon"
-      />
-      <img className="x_icon" src={x_icon} alt="x_icon" />
       <div className="HeaderWrap">
         <div className="HeaderLeft">
           <a href="/">
-            <img className="Logo" src={Logo} alt="Logo" />
+            <img className="Logo" src={MiniLogo} alt="Logo" />
           </a>
-
           <div className="Menu">
             <Link to="/counsel/list">상담 사례</Link>
             <Link to="/counsel">상담 신청</Link>
@@ -55,9 +46,14 @@ const Header = () => {
               <img src={user.profileImg || NoUser} alt="profileImg" />
             </div>
           ) : (
-            <Link className="LoginBtn" to="login">
-              로그인
-            </Link>
+            <>
+              <Link className="LoginBtn" to="/regist">
+                회원가입
+              </Link>
+              <Link className="LoginBtn" to="/login">
+                로그인
+              </Link>
+            </>
           )}
           {userControl && (
             <UserControl

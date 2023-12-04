@@ -1,6 +1,4 @@
 import "./CounselConfirm.css";
-import iconcall from "./../../components/images/iconcall.png";
-import iconkey from "./../../components/images/iconkey.png";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 import Text from "../../components/Text/Text";

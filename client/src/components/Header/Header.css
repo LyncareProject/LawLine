@@ -1,15 +1,14 @@
 .Header {
   width: 100%;
   height: 80px;
-  border-bottom: 1px solid #c4c8cb;
+  background-color: inherit;
 }
 .Logo {
-  width: 170px;
-  margin-right: 10px;
+  width: 30px;
 }
 .HeaderWrap {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1000px;
   height: 100%;
   margin: auto;
   display: flex;
