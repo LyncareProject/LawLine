@@ -8,32 +8,25 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: inherit;
   z-index: 9;
 }
 .MobileHeader .Icon {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
 }
 
-.MobileHeader .Logo {
-  width: 160px;
-  padding: 16px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 .Sidebar {
   position: absolute;
+  top: 0;
   display: flex;
   width: 100%;
-  padding: 10px;
+  padding: 20px 0;
   transition: all 0.3s ease-in;
-  z-index: 8;
+  z-index: 11;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
   border-top: 1px solid #ededed;
   border-bottom: 1px solid #7a8287;
   box-sizing: border-box;

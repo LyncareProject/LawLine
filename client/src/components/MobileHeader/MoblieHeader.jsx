@@ -1,7 +1,7 @@
 import "./MobileHeader.css";
 import Logo from "../../assets/images/Logo.png";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/userSlice";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ import Text from "../Text/Text";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
+  faChevronUp,
   faRightFromBracket,
   faRightToBracket,
   faUser,
@@ -43,30 +44,22 @@ const MobileHeader = () => {
             setSidebar(!sidebar);
           }}
         />
-
-        <a className="LogoWrap" href="/">
-          <img className="Logo" src={Logo} alt="Logo" />
-        </a>
         {!user.isLogined ? (
-          <FontAwesomeIcon
-            className="Icon"
-            icon={faRightToBracket}
+          <p
+            style={{ fontSize: "18px", fontWeight: "800" }}
             onClick={() => {
               navigate("/login");
             }}
-          />
+          >
+            로그인
+          </p>
         ) : (
-
-            <FontAwesomeIcon
-              className="Icon"
-              icon={faUser}
-              onClick={() => {
-                navigate('/mypage')
-              }}
-            />
+          <Link to='/mypage' className="ProfileImg">
+            <img src={user.profileImg || NoUser} alt="profileImg" />
+          </Link>
         )}
       </div>
-      <Sidebar marginTop={sidebar ? "0" : "-300px"} />
+      <Sidebar marginTop={sidebar ? "0" : "-300px"} setSidebar={setSidebar} />
     </>
   );
 };
@@ -74,7 +67,12 @@ const MobileHeader = () => {
 const Sidebar = (props) => {
   return (
     <div className="Sidebar" style={{ marginTop: props.marginTop }}>
-      <a href="/">
+      <Link
+        to="/"
+        onClick={() => {
+          props.setSidebar(false);
+        }}
+      >
         <Text
           textAlign={"center"}
           fontSize={"20px"}
@@ -83,8 +81,13 @@ const Sidebar = (props) => {
           margin={"10px 0"}
           text={"홈"}
         />
-      </a>
-      <a href="/counsel/list">
+      </Link>
+      <Link
+        to="/counsel/list"
+        onClick={() => {
+          props.setSidebar(false);
+        }}
+      >
         <Text
           textAlign={"center"}
           fontSize={"20px"}
@@ -93,8 +96,13 @@ const Sidebar = (props) => {
           margin={"10px 0"}
           text={"상담 사례"}
         />
-      </a>
-      <a href="/counsel">
+      </Link>
+      <Link
+        to="/counsel"
+        onClick={() => {
+          props.setSidebar(false);
+        }}
+      >
         <Text
           textAlign={"center"}
           fontSize={"20px"}
@@ -103,8 +111,13 @@ const Sidebar = (props) => {
           margin={"10px 0"}
           text={"상담 신청"}
         />
-      </a>
-      <a href="/counsel/search">
+      </Link>
+      <Link
+        to="/counsel/search"
+        onClick={() => {
+          props.setSidebar(false);
+        }}
+      >
         <Text
           textAlign={"center"}
           fontSize={"20px"}
@@ -113,7 +126,13 @@ const Sidebar = (props) => {
           margin={"10px 0"}
           text={"상담 조회"}
         />
-      </a>
+      </Link>
+      <FontAwesomeIcon
+        onClick={() => {
+          props.setSidebar(false);
+        }}
+        icon={faChevronUp}
+      />
     </div>
   );
 };

@@ -43,12 +43,11 @@
   color: #5b5b5b;
   padding: 13px 0;
   border-bottom: 0.5px solid #bdbdbd;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 500;
 }
 .Profile > li > span {
   color: #5b5b5b;
-  font-size: 19px;
   font-weight: 700;
 }
 .Profile > li:first-child {
@@ -61,4 +60,9 @@
 }
 .Profile > li:last-child {
   border-bottom: 1px solid #535353;
+}
+@media screen {
+  .MainBanner {
+    overflow: hidden;
+  }
 }
