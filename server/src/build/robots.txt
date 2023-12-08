@@ -10,3 +10,4 @@ Allow: /img/
 Allow: /favicon
 Allow: /css/
 Allow: /js/
+Allow: /.png
