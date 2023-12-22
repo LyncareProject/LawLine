@@ -104,6 +104,7 @@ exports.readComment = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
 exports.updateComment = async (req, res) => {
   try {
     req.body.updatedAt = moment()

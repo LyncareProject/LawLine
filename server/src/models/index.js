@@ -14,5 +14,7 @@ db.comment = require("./comment.model");
 db.forward = require("./forward.model");
 db.authNumber = require("./authNumber.model");
 db.request = require("./request.model");
+db.chat = require("./chat.model");
+db.room = require("./room.model");
 
 module.exports = db;
