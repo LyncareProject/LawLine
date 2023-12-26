@@ -2,8 +2,12 @@
 User-agent: *
 Disallow: /
 Allow: /$
+Allow: /main
 Allow: /counsel
 Allow: /counsel/list
 Allow: /counsel/search
-Allow: /img
+Allow: /img/
 Allow: /favicon
+Allow: /css/
+Allow: /js/
+Allow: /.png
