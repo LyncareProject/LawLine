@@ -55,4 +55,6 @@ export const deleteCounsel = ({ counselId }) => {
 export const findUserCounsel = ({ userId }) => {
   return axios.get(API_URL + `counsel/user/${userId}`);
 };
-
+export const createCounselByAi = ({ userId, desc }) => {
+  return axios.post(API_URL + `counsel/ai`, { userId, desc });
+};

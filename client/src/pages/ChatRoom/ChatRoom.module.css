@@ -1,37 +1,152 @@
 .ChatRoom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
   width: 100%;
-  max-width: 1180px;
+  height: 100vh;
+}
+.Wrap {
+  width: 100%;
+  max-width: 1000px;
+  height: calc(100vh - 80px);
   margin: 0 auto;
-  min-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-.ChatRoomBody {
+.ChatWrap {
+  width: 100%;
   flex: 1;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-.ChatRoomInput {
-  padding: 10px 20px;
-  border-top: 1px solid #EDEDED;
+.ChatWrap::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.User {
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 80%;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  align-self: flex-end;
   box-sizing: border-box;
 }
-.ChatRoomInput > input{
+.Ai {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 100%;
   font-size: 18px;
-  border: none;
-  flex: 1;
+  font-weight: 600;
+  margin-bottom: 30px;
+  align-self: flex-start;
+  box-sizing: border-box;
 }
-.ChatRoomInput > input:focus{
+.ChatUser {
+  padding: 10px 20px;
+  background-color: rgb(255, 219, 225);
+  border-radius: 10px;
+  line-height: 1.5em;
+  white-space: pre-wrap;
+}
 
+.AiImage {
+  border: 1px solid #ededed;
+  border-radius: 50px;
+  width: 40px;
+  margin-right: 20px;
+}
+.ChatAI {
+  padding: 10px 20px;
+  background-color: rgb(183, 201, 255);
+  border-radius: 10px;
+  line-height: 1.5em;
+  white-space: pre-wrap;
+}
+
+.CounselBtn {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #00c126;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+.MessageInputWrap {
+  display: flex;
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid #ededed;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+.MessageInput {
+  flex: 1;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: hidden;
+  border: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.MessageInput:focus {
   outline: none;
 }
-.ChatRoomInput > button {
-  margin-left: 10px;
-  padding: 7px 10px;
+.MessageBtn {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: hidden;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #00C126;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.Disabled {
+  display: none;
+}
+.AILoading {
+  position: absolute;
+  top: 0;
+  height: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.AILoadingText {
+  font-size: 38px;
+  font-weight: 800;
   color: #FFF;
+  animation: twinkle 2s infinite;
+}
+@keyframes twinkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+  
 }

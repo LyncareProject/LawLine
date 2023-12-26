@@ -5,11 +5,11 @@ import AiComment from "../../assets/images/AiComment.png";
 import KOMember from "../../assets/images/KO_Member.png";
 import Text from "../../components/Text/Text";
 import Button from "../../components/Button/Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Main = () => {
   // const isLogined = useSelector((state) => state.user.value.isLogined);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
       <div className={styles.MainBanner}>
@@ -34,15 +34,17 @@ const Main = () => {
       <div className={styles.Section01}>
         <div className={styles.Wrap}>
           <Button
-            pressButton={()=>{
-              navigate('/counsel')
+            pressButton={() => {
+              navigate("/counsel");
             }}
             buttonColor={"#000"}
             buttonTextColor={"#FFF"}
             buttonMargin={"0"}
             buttonName={"상담하기"}
           />
-          <img className={styles.AiComment} src={AiComment} alt="AiComment" />
+          <Link to={"/lawbot/chat"}>
+            <img className={styles.AiComment} src={AiComment} alt="AiComment" />
+          </Link>
         </div>
       </div>
       <div className={styles.Section02}>
