@@ -127,7 +127,7 @@ exports.createCounselByAi = async (req, res) => {
 
     conversationTitle.push({
       role: "user",
-      content: `${desc}를 한줄의 제목으로 만들어줘. 여기에는 상담이나 신청에 관한 이야기가 들어가지 말아야 해.`,
+      content: `대화 내용은 ${desc}이야. 이를 토대로 정리해서 변호사에게 상담신청을 하고 싶어. 상담신청을 위해 한줄의 제목으로 만들어줘. 여기에는 변호사 상담이나 신청에 관한 이야기가 들어가지 말아야 해. 또한 유저의 개인정보는 들어가면 안돼.`,
     });
 
     const userData = await User.findOne({ _id: userId });
@@ -139,7 +139,7 @@ exports.createCounselByAi = async (req, res) => {
 
     conversationDesc.push({
       role: "user",
-      content: `${desc}를 정리해서 매끄러운 문장으로 만들어줘. 여기에는 상담이나 신청에 관한 이야기가 들어가지 말아야 해.`,
+      content: `${desc}\n해당 대화 내용은 AI 법률 비서와 주고 받은 메세지 내역이야. 이를 토대로 정리해서 변호사에게 상담 신청을 할 계획이야. 이 문서는 공식 문서로 변호사가 이해하기 쉽게 글을 정리해줘. 여기에는 변호사 상담이나 변호사 상담 신청에 대한 이야기가 들어가지 말고 상담 내용 및 유저의 정보의 이야기만 들어가야 해.`,
     });
 
     const descByAi = await openai.chat.completions.create({

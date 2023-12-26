@@ -25,6 +25,7 @@ exports.verifyToken = async (req, res, next) => {
     if (authResult.message === "jwt expired") {
       console.log("Access token expired");
       const refreshToken = req.headers.refresh;
+      console.log('refreshToken : ', refreshToken)
       const refreshResult = await refreshVerify(
         refreshToken,
         jwt.decode(accessToken, JWT_SECRET_KEY).id

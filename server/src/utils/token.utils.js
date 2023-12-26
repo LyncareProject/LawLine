@@ -65,6 +65,7 @@ exports.makeRefreshTokenInfinite = async ({ id }) => {
 exports.refreshVerify = async (token, id) => {
   try {
     const user = await Token.findOne({ id });
+    console.log('user : ', user)
     if (user.token === token) {
       try {
         jwt.verify(token, JWT_SECRET_KEY);
