@@ -6,9 +6,10 @@ import useWebSocket, { ReadyState } from "react-use-websocket";
 import { createRoom, findRoom } from "../../services/roomService";
 import styles from "./ChatRoom.module.css";
 import Header from "../../components/Header/Header";
-import AiBot from "../../assets/images/AiBot.png";
+import AiBot from "../../assets/images/AiImg.png";
 import { createCounselByAi } from "../../services/counselService";
-import WebSocket_URL from '../../services/websocketConfig'
+import WebSocket_URL from "../../services/websocketConfig";
+import MobileHeader from "../../components/MobileHeader/MoblieHeader";
 
 const ChatRoom = () => {
   // useHooks
@@ -16,7 +17,8 @@ const ChatRoom = () => {
   const chatContentsRef = useRef(null);
 
   // useState
-  const [aiLoading, setAiLoading] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [aiLoading, setAiLoading] = useState(false);
   const [userId, setUserId] = useState(null);
   const [message, setMessage] = useState("");
   const [stream, setStream] = useState(false);
@@ -37,6 +39,16 @@ const ChatRoom = () => {
     const newRows = Math.min(Math.max(numberOfLineBreaks + 1, 1), 7);
     setTextareaRows(newRows);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // 화면 접속시 회원 검증
   useEffect(() => {
@@ -152,13 +164,13 @@ const ChatRoom = () => {
   };
   const CounselBtn = async () => {
     try {
-      setAiLoading(true)
+      setAiLoading(true);
       await createCounselByAi({
         userId,
         desc: JSON.stringify(chatHistory),
       });
       // const lastMessage = chatHistory[chatHistory.length - 1];
-      
+
       // await createCounselByAi({
       //   userId,
       //   desc: JSON.stringify(lastMessage.content),
@@ -169,19 +181,19 @@ const ChatRoom = () => {
       });
       navigate("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast.error(error.response.message, {
         position: "top-center",
         autoClose: 2000,
       });
     } finally {
-      setAiLoading(false)
+      setAiLoading(false);
     }
   };
   return (
     <div className={styles.ChatRoom}>
       {aiLoading && <AILoading />}
-      <Header />
+      {windowWidth >= 768 ? <Header /> : <MobileHeader />}
       <div className={styles.Wrap}>
         <div className={styles.ChatWrap} ref={chatContentsRef}>
           {chatHistory.length >= 1 &&
@@ -221,6 +233,9 @@ const ChatRoom = () => {
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
+                if (stream) {
+                  return;
+                }
                 e.preventDefault();
                 sendMessageBtn();
               }
@@ -239,12 +254,15 @@ const ChatRoom = () => {
   );
 };
 
-const AILoading = ()=>{
-  return(
+const AILoading = () => {
+  return (
     <div className={styles.AILoading}>
-      <h2 className={styles.AILoadingText}>AI가 상담 내용을 분석 및 정리 하고 있습니다. 이 작업은 최대 3분 정도 소요됩니다.</h2>
+      <h2 className={styles.AILoadingText}>
+        AI가 상담 내용을 분석 및 정리 하고 있습니다. 이 작업은 최대 3분 정도
+        소요됩니다.
+      </h2>
     </div>
-  )
-}
+  );
+};
 
 export default ChatRoom;

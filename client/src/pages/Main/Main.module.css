@@ -27,9 +27,23 @@
   flex-direction: column;
   align-items: center;
 }
+.CounselSection {
+  padding: 50px 0;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
 .AiComment {
   margin-top: 10px;
   width: 100%;
+  transition: all 0.3s;
+}
+.AiComment:hover {
+  opacity: 0.8;
 }
 .KOMember {
   width: 182px;
@@ -55,7 +69,7 @@
   font-size: 20px;
   font-weight: 500;
   color: #000;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   border-bottom: 1px solid #535353;
 }
 .Profile > li:last-child {
@@ -64,5 +78,8 @@
 @media screen {
   .MainBanner {
     overflow: hidden;
+  }
+  .CounselSection {
+    padding: 50px 20px;
   }
 }

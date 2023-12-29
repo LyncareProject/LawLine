@@ -3,6 +3,8 @@ import styles from "./Main.module.css";
 import MainBannerImg from "../../assets/images/MainBannerImg.png";
 import AiComment from "../../assets/images/AiComment.png";
 import KOMember from "../../assets/images/KO_Member.png";
+import AiCounsel from "../../assets/images/AiCounsel.png";
+import LawyerCounsel from "../../assets/images/LawyerCounsel.png";
 import Text from "../../components/Text/Text";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
@@ -31,8 +33,38 @@ const Main = () => {
         />
         <img src={MainBannerImg} alt="MainBannerImg" />
       </div>
-      <div className={styles.Section01}>
+      <div className={styles.CounselSection}>
+        <Text
+          textAlign={"center"}
+          fontSize={"24px"}
+          fontWeight={"600"}
+          fontColor={"#000"}
+          margin={"27px 0 0 0"}
+          text={"상담 솔루션 선택하기"}
+        />
+        <Link to={"/lawbot/chat"}>
+          <img className={styles.AiComment} src={AiCounsel} alt="AiComment" />
+        </Link>
+        <Link to={"/counsel"}>
+          <img
+            className={styles.AiComment}
+            src={LawyerCounsel}
+            alt="AiComment"
+          />
+        </Link>
+      </div>
+      {/* <div className={styles.Section01}>
         <div className={styles.Wrap}>
+          <Link to={"/lawbot/chat"}>
+            <img className={styles.AiComment} src={AiCounsel} alt="AiComment" />
+          </Link>
+          <Link to={"/counsel"}>
+            <img
+              className={styles.AiComment}
+              src={LawyerCounsel}
+              alt="AiComment"
+            />
+          </Link>
           <Button
             pressButton={() => {
               navigate("/counsel");
@@ -46,7 +78,7 @@ const Main = () => {
             <img className={styles.AiComment} src={AiComment} alt="AiComment" />
           </Link>
         </div>
-      </div>
+      </div> */}
       <div className={styles.Section02}>
         <div className={styles.Wrap}>
           <img className={styles.KOMember} src={KOMember} alt="AiComment" />

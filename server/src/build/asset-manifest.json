@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.f6b35aa2.css",
-    "main.js": "/static/js/main.e0e225b5.js",
+    "main.css": "/static/css/main.d4bb61a2.css",
+    "main.js": "/static/js/main.95a74cdf.js",
     "static/js/787.d5fa4d18.chunk.js": "/static/js/787.d5fa4d18.chunk.js",
     "static/media/KO_Member.png": "/static/media/KO_Member.f7c6646a1fd2926a0beb.png",
     "static/media/MainBannerImg.png": "/static/media/MainBannerImg.05c8d7453eec64a0cb40.png",
     "static/media/Logo.png": "/static/media/Logo.bd43c191290db4dcc603.png",
-    "static/media/AiBot.png": "/static/media/AiBot.c507a54a3faaf65e83ce.png",
+    "static/media/LawyerCounsel.png": "/static/media/LawyerCounsel.c6571c571a6b0b9a9e02.png",
+    "static/media/AiCounsel.png": "/static/media/AiCounsel.41f6c962f42896309b15.png",
     "static/media/IconHamburger.png": "/static/media/IconHamburger.fc087e69ee57413c4234.png",
     "static/media/FooterLogo.png": "/static/media/FooterLogo.1f6f346bf67bdf51b7cc.png",
     "index.html": "/index.html",
-    "main.f6b35aa2.css.map": "/static/css/main.f6b35aa2.css.map",
-    "main.e0e225b5.js.map": "/static/js/main.e0e225b5.js.map",
+    "main.d4bb61a2.css.map": "/static/css/main.d4bb61a2.css.map",
+    "main.95a74cdf.js.map": "/static/js/main.95a74cdf.js.map",
     "787.d5fa4d18.chunk.js.map": "/static/js/787.d5fa4d18.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f6b35aa2.css",
-    "static/js/main.e0e225b5.js"
+    "static/css/main.d4bb61a2.css",
+    "static/js/main.95a74cdf.js"
   ]
 }
