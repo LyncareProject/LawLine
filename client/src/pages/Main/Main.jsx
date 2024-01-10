@@ -8,10 +8,22 @@ import LawyerCounsel from "../../assets/images/LawyerCounsel.png";
 import Text from "../../components/Text/Text";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Main = () => {
-  // const isLogined = useSelector((state) => state.user.value.isLogined);
+  const isLogined = useSelector((state) => state.user.value.isLogined);
   const navigate = useNavigate();
+  const navigateAiChat = () => {
+    if (!isLogined) {
+      toast.error(<h3>해당 서비스는 로그인이 필요한 서비스 입니다.</h3>, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      navigate("/login");
+      return;
+    }
+    navigate("/lawbot/chat");
+  };
   return (
     <div>
       <div className={styles.MainBanner}>
@@ -42,9 +54,9 @@ const Main = () => {
           margin={"27px 0 0 0"}
           text={"상담 솔루션 선택하기"}
         />
-        <Link to={"/lawbot/chat"}>
+        <div onClick={navigateAiChat}>
           <img className={styles.AiComment} src={AiCounsel} alt="AiComment" />
-        </Link>
+        </div>
         <Link to={"/counsel"}>
           <img
             className={styles.AiComment}
