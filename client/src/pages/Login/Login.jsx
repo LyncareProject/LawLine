@@ -28,7 +28,7 @@ const Login = () => {
             setCategory("Lawyer");
           }}
         >
-          변호사로 로그인
+          변호사 로그인
         </div>
       </div>
       {category === "User" ? <UserLogin /> : <LawyerLogin />}

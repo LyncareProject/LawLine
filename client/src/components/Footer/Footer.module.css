@@ -6,7 +6,7 @@
   font-weight: 700;
 }
 .wrap {
-  width: 100%;
+  width: 90%;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -50,6 +50,9 @@
 }
 .right img {
   width: 130px;
+}
+.Footer_footer__kXlYa .Footer_wrap__yqYx5{
+   width: 80%;
 }
 @media (max-width: 768px) {
   .wrap {
