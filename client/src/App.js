@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
 import "./App.css";
 import Main from "./pages/Main/Main";
@@ -36,6 +36,15 @@ function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
 
+  const Layout = () => {
+    return (
+      <div>
+        <Outlet />
+        {windowWidth >= 768 ? <Footer /> : null}
+      </div>
+    );
+  };
+
   // 브라우저 넓이 측정
   useEffect(() => {
     const handleResize = () => {
@@ -64,7 +73,6 @@ function App() {
       verifyAuth();
     }
   }, [dispatch]);
-  
 
   return (
     <ScrollToTop>
@@ -72,7 +80,9 @@ function App() {
         <ToastContainer />
         {windowWidth >= 768 ? <Header /> : <MobileHeader />}
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Main />} />
+          </Route>
           <Route path="/Inquiry" element={<Inquiry />} />
           <Route path="/counsel" element={<Counsel />} />
           <Route path="/counsel/confirm" element={<CounselConfirm />} />
@@ -94,7 +104,7 @@ function App() {
 
           <Route path="/:path" element={<ForwardingLink />} />
         </Routes>
-        {windowWidth >= 768 ? <Footer /> : <MobileFooter />}
+        {windowWidth <= 768 ? <MobileFooter /> : null}
       </div>
     </ScrollToTop>
   );
